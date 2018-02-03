@@ -1,0 +1,26 @@
+#list {
+  position: absolute;
+  bottom: 0.2rem;
+  width: 10rem;
+  overflow: hidden;
+  height: 3rem;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+#list::-webkit-scrollbar {
+  display: none;
+}
+#list ul {
+  width: 500%;
+  overflow: hidden;
+}
+#list ul li {
+  float: left;
+  width: 2.5rem;
+  height: 100%;
+  padding: 0 0.1rem;
+  opacity: 0.5;
+}
+#list ul li.on {
+  opacity: 1;
+}

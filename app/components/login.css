@@ -1,0 +1,14 @@
+#login {
+  padding-top: 200px;
+  width: 60%;
+  margin: auto;
+}
+#login .btn {
+  margin: 30px auto;
+  width: 40%;
+  display: block;
+  padding: 5px;
+}
+#login p {
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+#market {
+  height: 100%;
+  background: url("../images/market-bg.png");
+  background-size: 100%;
+}
+#market .list-content {
+  position: absolute;
+  top: 10%;
+  height: 90%;
+  width: 100%;
+}
+#market .list-content .sort {
+  height: 1rem;
+  border-radius: 15px;
+  margin-left: 5%;
+  background-color: #fff;
+  border: 0;
+  padding: 0.1rem;
+}
+#market .list-content > ul {
+  height: 90%;
+  margin-top: 4%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#market .list-content > ul::-webkit-scrollbar {
+  display: none;
+}

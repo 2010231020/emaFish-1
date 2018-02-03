@@ -1,0 +1,61 @@
+{
+  "name": "emaFish",
+  "version": "0.0.2",
+  "description": "ema fish game",
+  "main": "''",
+  "scripts": {
+    "build": "webpack -p --config webpack.production.config.js --progress --profile --colors && node server.js",
+    "dev": "set PORT=1238 && node dev-server.js"
+  },
+  "keywords": [
+    "React",
+    "Webpack",
+    "Babel",
+    "Starter",
+    "template"
+  ],
+  "author": "Cober",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.0.0-rc.4",
+    "body-parser": "~1.15.1",
+    "compression": "^1.6.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "handlebars-helpers": "^0.6.1",
+    "hbs": "~4.0.0",
+    "less": "^2.7.1",
+    "serve-favicon": "~2.3.0",
+    "less-middleware": "~2.0.1",
+    "morgan": "~1.7.0",
+    "json-loader": "^0.5.4",
+    "json5-loader": "^0.6.0",
+    "jsx-loader": "^0.13.2",
+    "node-libs-browser": "1.0.0",
+    "react": "15.0.1",
+    "react-dom": "15.0.1",
+    "proxy-middleware": "^0.15.0",
+    "react-router": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.7.7",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.6.0",
+    "babel-preset-react": "6.5.0",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "0.23.1",
+    "file-loader": "0.8.5",
+    "gulp": "^3.9.1",
+    "gulp.spritesmith": "^6.9.0",
+    "http-proxy-middleware": "^0.17.4",
+    "merge-stream": "^1.0.1",
+    "react-hot-loader": "1.3.0",
+    "style-loader": "0.13.1",
+    "url-loader": "0.5.7",
+    "webpack": "1.13.0",
+    "webpack-dev-server": "1.14.1",
+    "webpack-hot-middleware": "^2.21.0",
+    "webpack-spritesmith": "^0.4.0"
+  }
+}

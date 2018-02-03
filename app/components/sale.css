@@ -1,0 +1,47 @@
+#sale {
+  height: 100%;
+  background: url("../images/sale-bg.png");
+  background-size: 100%;
+}
+#sale .list-content {
+  position: absolute;
+  top: 20%;
+  height: 80%;
+  width: 100%;
+}
+#sale .list-content .price {
+  width: 80%;
+  margin: 0 5% 5% 5%;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 5% 5% 2% 5%;
+}
+#sale .list-content .price > div {
+  width: 70%;
+  margin-left: 10%;
+  margin-bottom: 4%;
+  font-size: 0;
+}
+#sale .list-content .price > div > span {
+  width: 40%;
+  display: inline-block;
+  text-align: center;
+  font-size: 0.35rem;
+  color: #444;
+}
+#sale .list-content .price > div > input {
+  width: 60%;
+  background-color: #f5efe6;
+  border: 0;
+  font-size: 16px;
+  border-radius: 5px;
+  text-align: center;
+  color: #6a3906;
+  padding: 1px 0;
+}
+#sale .list-content .btn {
+  width: 30%;
+  margin: auto;
+}

@@ -1,0 +1,94 @@
+.gen {
+  width: 80%;
+  margin: 0.5rem auto 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 3px #f7d033 solid;
+  position: relative;
+  height: 7.2rem;
+}
+.gen > ul {
+  width: 70%;
+  margin-left: 30%;
+  margin-bottom: 0.4rem;
+  overflow: hidden;
+}
+.gen .ul1 {
+  font-size: 14px;
+}
+.gen .ul1 li {
+  overflow: hidden;
+  margin-top: 0.4rem;
+}
+.gen .ul1 .span1,
+.gen .ul1 .span2,
+.gen .ul1 .span3 {
+  display: inline-block;
+  float: left;
+  padding: 0.02rem 0;
+}
+.gen .ul1 .span1 {
+  width: 50%;
+  border-radius: 5px;
+  background-color: #80c269;
+  text-align: center;
+  color: #fff;
+}
+.gen .ul1 .span2 {
+  text-align: right;
+}
+.gen .ul1 .span3 {
+  text-align: center;
+}
+.gen .ul1 .span3 img {
+  width: 30%;
+  vertical-align: middle;
+}
+.gen .ul1 .span2,
+.gen .ul1 .span3 {
+  width: 25%;
+}
+.gen .ul2 {
+  height: 100%;
+}
+.gen .ul2 > li {
+  height: 2.2rem;
+}
+.gen .ul2 > li .t {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 16px;
+}
+.gen .ul2 > li .avatar {
+  font-size: 0;
+}
+.gen .ul2 > li .avatar img {
+  display: inline-block;
+  margin: 0.3rem 0.2rem 0 0;
+  width: 1rem;
+}
+.gen .tab {
+  position: absolute;
+  width: 20%;
+  height: 13%;
+}
+.gen .tab.attr1 {
+  left: -4%;
+  top: 5%;
+  background: url("../images/tab-attr1.png") no-repeat center;
+  background-size: 100%;
+}
+.gen .tab.attr1.on {
+  background: url("../images/tab-attr1-on.png") no-repeat center;
+  background-size: 100%;
+}
+.gen .tab.attr2 {
+  left: -4%;
+  top: 20%;
+  background: url("../images/tab-attr2.png") no-repeat center;
+  background-size: 100%;
+}
+.gen .tab.attr2.on {
+  background: url("../images/tab-attr2-on.png") no-repeat center;
+  background-size: 100%;
+}

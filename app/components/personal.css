@@ -1,0 +1,8 @@
+#personal .actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+#personal .actions a {
+  padding: 20px;
+}

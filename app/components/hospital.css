@@ -1,0 +1,46 @@
+#hospital {
+  height: 100%;
+  background: url("../images/hos-bg.png");
+  background-size: 100%;
+}
+#hospital .list-content {
+  position: absolute;
+  top: 23%;
+  height: 77%;
+  width: 80%;
+  padding: 0 10%;
+  font-size: 0;
+}
+#hospital .list-content .f,
+#hospital .list-content .x,
+#hospital .list-content .m {
+  display: inline-block;
+}
+#hospital .list-content .f {
+  width: 40%;
+  padding-left: 5%;
+}
+#hospital .list-content .m {
+  width: 40%;
+  padding-left: 10%;
+}
+#hospital .list-content .x {
+  width: 16%;
+  position: absolute;
+  left: 42%;
+  top: 15%;
+}
+#hospital .list-content .icon-d,
+#hospital .list-content .s,
+#hospital .list-content .start {
+  width: 100%;
+  text-align: center;
+  margin-top: 2%;
+}
+#hospital .list-content .icon-d img {
+  width: 30%;
+}
+#hospital .list-content .s img,
+#hospital .list-content .start img {
+  width: 40%;
+}

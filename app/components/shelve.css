@@ -1,0 +1,68 @@
+.shelve {
+  width: 90%;
+  margin: 0 5% 5% 5%;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.shelve .l {
+  width: 30%;
+  float: left;
+}
+.shelve .l .content {
+  width: 80%;
+  height: 80%;
+  margin: 10% auto;
+}
+.shelve .l .content .avatar .num {
+  font-size: 12px;
+}
+.shelve .detail {
+  width: 40%;
+  padding: 5% 0 0 0;
+  float: left;
+}
+.shelve .detail .content {
+  margin-bottom: 10%;
+  position: relative;
+}
+.shelve .detail .content .span1,
+.shelve .detail .content .span2 {
+  display: inline-block;
+  width: 50%;
+  font-size: 12px;
+}
+.shelve .detail .content .span1 {
+  color: #666;
+  font-weight: bold;
+}
+.shelve .detail .content .span2 {
+  color: #444;
+}
+.shelve .detail .content .text {
+  display: inline-block;
+  background-color: #ffeda3;
+  width: 50%;
+  margin-left: 10%;
+  text-align: center;
+  border-radius: 5px;
+  color: #8d6968;
+}
+.shelve .detail .content .icon {
+  position: absolute;
+  width: 15%;
+  height: 150%;
+  left: -1%;
+  top: -17%;
+}
+.shelve .detail .content .icon.icon3 {
+  background: url("../images/cb.png") no-repeat;
+  background-size: 100%;
+}
+.shelve .sr {
+  width: 20%;
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+}

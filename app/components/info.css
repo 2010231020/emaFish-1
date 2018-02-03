@@ -1,0 +1,38 @@
+.info {
+  width: 80%;
+  height: 3rem;
+  padding: 10%;
+  overflow: hidden;
+  position: relative;
+}
+.info .l {
+  width: 40%;
+  float: left;
+}
+.info .detail {
+  width: 55%;
+  padding: 0 0 0 5%;
+  float: left;
+}
+.info .detail p {
+  margin-bottom: 10%;
+}
+.info .detail p .span1,
+.info .detail p .span2 {
+  display: inline-block;
+  width: 50%;
+  font-size: 16px;
+}
+.info .detail p .span1 {
+  color: #666;
+  font-weight: bold;
+}
+.info .detail p .span2 {
+  color: #444;
+}
+.info .sr {
+  width: 20%;
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+}
