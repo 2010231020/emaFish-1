@@ -1,0 +1,11 @@
+.sale {
+  position: absolute;
+  right: 0.5rem;
+  top: 12.5rem;
+  width: 5rem;
+  z-index: 2;
+}
+.sale img {
+  width: 40%;
+  margin-right: 10%;
+}
