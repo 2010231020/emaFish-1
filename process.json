@@ -1,5 +1,5 @@
 {
   "production": {
-    "emaCat": "http://192.168.21.36:8080"
+    "emaCat": "http://114.55.250.173:8080/emaCat"
   }
 }
