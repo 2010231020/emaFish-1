@@ -26,7 +26,7 @@ app.use(webpackHotMiddleware(compiler,{
 app.use(express.static(path.join(__dirname, 'build')))
 
 // send all requests to index.html so browserHistory works
-app.use('/emaCat', proxy('http://192.168.21.36:8080'));
+app.use('/emaCat', proxy('http://192.168.11.2:8099/emaCat'));
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })

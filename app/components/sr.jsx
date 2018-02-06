@@ -6,7 +6,11 @@ module.exports = React.createClass({
 		const {ssr} = this.props;
 		return (
 			<div className='sr'>
-				<img className='image' src={require('../images/ssr.png')}/>
+				{ssr==='SSR'&&<img src={require('../images/ssr.png')}/>}
+				{ssr==='SR'&&<img src={require('../images/sr.png')}/>}
+				{ssr==='R'&&<img src={require('../images/r.png')}/>}
+				{ssr==='N'&&<img src={require('../images/n.png')}/>}
+
 			</div>
 		)
 	}

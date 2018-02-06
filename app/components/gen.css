@@ -1,11 +1,11 @@
 .gen {
   width: 80%;
-  margin: 0.5rem auto 0 auto;
-  background-color: #fff;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  border: 3px #f7d033 solid;
+  border: 3px #449fbd solid;
   position: relative;
-  height: 7.2rem;
+  height: 6rem;
 }
 .gen > ul {
   width: 70%;
@@ -26,13 +26,36 @@
   display: inline-block;
   float: left;
   padding: 0.02rem 0;
+  color: #fff;
 }
 .gen .ul1 .span1 {
   width: 50%;
   border-radius: 5px;
-  background-color: #80c269;
   text-align: center;
-  color: #fff;
+}
+.gen .ul1 .span1.t1 {
+  background: url("../images/bg-t1.png") no-repeat;
+  background-size: 100% 100%;
+}
+.gen .ul1 .span1.t2 {
+  background: url("../images/bg-t2.png") no-repeat;
+  background-size: 100% 100%;
+}
+.gen .ul1 .span1.t3 {
+  background: url("../images/bg-t3.png") no-repeat;
+  background-size: 100% 100%;
+}
+.gen .ul1 .span1.t4 {
+  background: url("../images/bg-t4.png") no-repeat;
+  background-size: 100% 100%;
+}
+.gen .ul1 .span1.t5 {
+  background: url("../images/bg-t5.png") no-repeat;
+  background-size: 100% 100%;
+}
+.gen .ul1 .span1.t6 {
+  background: url("../images/bg-t6.png") no-repeat;
+  background-size: 100% 100%;
 }
 .gen .ul1 .span2 {
   text-align: right;
@@ -57,7 +80,22 @@
 .gen .ul2 > li .t {
   display: block;
   margin-top: 0.2rem;
-  font-size: 16px;
+  font-size: 0.3rem;
+  color: #fff;
+}
+.gen .ul2 > li .t .f,
+.gen .ul2 > li .t .m {
+  display: inline-block;
+  padding: 0.2rem 0.5rem 0.1rem 0.5rem;
+  color: #fff;
+}
+.gen .ul2 > li .t .f {
+  background: url("../images/bg-parents.png") no-repeat center;
+  background-size: 100% 100%;
+}
+.gen .ul2 > li .t .m {
+  background: url("../images/bg-children.png") no-repeat center;
+  background-size: 100% 100%;
 }
 .gen .ul2 > li .avatar {
   font-size: 0;
@@ -84,11 +122,17 @@
 }
 .gen .tab.attr2 {
   left: -4%;
-  top: 20%;
+  top: 25%;
   background: url("../images/tab-attr2.png") no-repeat center;
   background-size: 100%;
 }
 .gen .tab.attr2.on {
   background: url("../images/tab-attr2-on.png") no-repeat center;
+  background-size: 100%;
+}
+.gen .tab.attr3 {
+  left: -4%;
+  top: 5%;
+  background: url("../images/tab-attr3-on.png") no-repeat center;
   background-size: 100%;
 }

@@ -1,9 +1,9 @@
 require('./shelve.css');
 import React from 'react';
 import Avatar from './avatar';
-import Sr from './sr';
 
-let util = require('../util/util')
+let util = require('../util/util');
+
 
 module.exports = React.createClass({
 	getInitialState: function () {
@@ -14,19 +14,6 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	buy(catId, orderId) {
-		console.log(catId, orderId);
-		let postData = {
-			uid: util.getCookie('uid'),
-			catId: catId,
-			orderId: orderId
-		};
-		util.reqPost('/emaCat/transcation/buyCat', postData, data => {
-			console.log(data);
-			const path = '/family';
-			this.context.router.push(path);
-		})
-	},
 	show(catId, orderId, uid) {
 		util.setCookie('catId', catId);
 		util.setCookie('orderId', orderId);
@@ -34,26 +21,40 @@ module.exports = React.createClass({
 		const path = '/personal';
 		this.context.router.push(path);
 	},
+	buy(catId, orderId) {
+		console.log(catId, orderId);
+		let postData = {
+			uid: util.getCookie('uid'),
+			catId: catId,
+			orderId: orderId
+		};
+		alert('购买中……');
+		util.reqPost('/emaCat/transcation/buyCat', postData, data => {
+			console.log(data);
+			alert('购买成功!');
+			setTimeout(() => {
+				const path = '/family';
+				this.context.router.push(path);
+			}, 3000);
+		})
+	},
 	render: function () {
-		const {from} = this.props;
+		const {from} = this.props || 'normal';
 		const {item} = this.props;
 		return (
-			<li className='shelve' onClick={this.buy.bind(this, item.catId, item.orderId)}>
+			<div className={from === 'cattr' ? 'shelve' : 'shelve bg'}>
 				<div className='l'>
 					<div className='content'>
-						<Avatar catId={item.catId}/>
+						<Avatar fid={item.catId} ssr={item.rarity}/>
 					</div>
 				</div>
-				<div className='detail'>
-					<div className='content'><span className='span1'>姓名</span><span className='span2'>小怂包</span></div>
-					<div className='content'><span className='span1'>世代</span><span className='span2'>{item.gen}</span></div>
+				<div className={from === 'market' ? 'detail from-market' : 'detail'}>
+					<div className='content content1'>小小小丑鱼</div>
 					<div className='content'><span className='span1'>生育速度</span><span className='span2'>100000</span></div>
-					{from !== 'sale' &&
-					<div className='content' ><span
-						className='text'>{item.price}</span><i className='icon icon3'/></div>}
+					<div className='content'><span className='span1'>小鱼编号</span><span className='span2'>#{item.catId}</span></div>
+					{from === 'market' && <div className='content content4'><span className='text'>{item.price}</span></div>}
 				</div>
-				<Sr/>
-			</li>
+			</div>
 		);
 	}
 });

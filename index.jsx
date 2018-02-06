@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, hashHistory, Redirect,browserHistory} from 'react-router';
 import Login from './app/components/login';
 import Sale from './app/components/sale.jsx';
-import Mai from './app/components/mai';
+import Social from './app/components/social';
 import Brothel from './app/components/brothel.jsx';
 import Family from './app/components/family';
 import Personal from './app/components/personal';
@@ -23,8 +23,8 @@ ReactDOM.render(
 			<Route path="/brothel" component={Brothel}/>
 			<Route path="/market" component={Market}/>
 			<Route path="/sale" component={Sale}/>
-			<Route path="/mai" component={Mai}/>
-			<Route path="/birth" component={Hospital}/>
+			<Route path="/social" component={Social}/>
+			<Route path="/hospital" component={Hospital}/>
 		</Router>
 	,
 	document.getElementById("myApp")

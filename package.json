@@ -5,7 +5,7 @@
   "main": "''",
   "scripts": {
     "build": "webpack -p --config webpack.production.config.js --progress --profile --colors && node server.js",
-    "dev": "set PORT=1238 && node dev-server.js"
+    "dev": "set PORT=1234 && node dev-server.js"
   },
   "keywords": [
     "React",
@@ -25,18 +25,18 @@
     "express": "~4.13.4",
     "handlebars-helpers": "^0.6.1",
     "hbs": "~4.0.0",
-    "less": "^2.7.1",
-    "serve-favicon": "~2.3.0",
-    "less-middleware": "~2.0.1",
-    "morgan": "~1.7.0",
     "json-loader": "^0.5.4",
     "json5-loader": "^0.6.0",
     "jsx-loader": "^0.13.2",
+    "less": "^2.7.1",
+    "less-middleware": "~2.0.1",
+    "morgan": "~1.7.0",
     "node-libs-browser": "1.0.0",
+    "proxy-middleware": "^0.15.0",
     "react": "15.0.1",
     "react-dom": "15.0.1",
-    "proxy-middleware": "^0.15.0",
-    "react-router": "^2.0.0"
+    "react-router": "^2.0.0",
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "babel-core": "6.7.7",

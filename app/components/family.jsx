@@ -7,6 +7,7 @@ import Interaction from './interaction';
 import Status from './status';
 import List from './list';
 import Cattr from './cattr';
+import Action from './action';
 
 let util = require('../util/util');
 
@@ -16,6 +17,8 @@ module.exports = React.createClass({
 			showFlag: false,
 			catList: [],
 			showF: false,
+			curItem: {},
+			fishShow: false
 		}
 	},
 	contextTypes: {
@@ -33,10 +36,9 @@ module.exports = React.createClass({
 			});
 			if (data.catList.length > 0) {
 				this.setState({
-					showF: true
+					fishShow: true
 				});
 			}
-			util.setCookie('catId', data.catList[util.getCookie('catIndex') || 0].catId);
 		});
 	},
 	componentDidMount() {
@@ -47,23 +49,25 @@ module.exports = React.createClass({
 			showFlag: !this.state.showFlag
 		});
 	},
+	changeCurItem(item) {
+		this.setState({
+			showFlag: !this.state.showFlag,
+			showF: true,
+			curItem: item
+		});
+	},
 	render() {
 		const showFlag = this.state.showFlag;
 		return (
 			<div id='family'>
 				<Back/>
 				<Res from='1'/>
-				{this.state.showF && <Interaction/>}
 
-				{this.state.showF && <div onClick={this.changeShowFlag}>
-					<Show/>
-				</div>}
+				{this.state.fishShow && <Show/>}
 
-				{this.state.showF && <Status/>}
-
-				<List catList={this.state.catList}/>
+				<List changeShow={this.changeCurItem.bind(this)} catList={this.state.catList}/>
 				{showFlag &&
-				<Cattr handleShow={this.changeShowFlag.bind(this)} item={this.state.catList[util.getCookie('catIndex') || 0]}/>}
+				<Cattr from={'me'} handleShow={this.changeShowFlag.bind(this)} item={this.state.catList[util.getCookie('catIndex') || 0]}/>}
 			</div>
 		);
 	}

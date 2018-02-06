@@ -1,51 +1,66 @@
 .shelve {
-  width: 90%;
-  margin: 0 5% 5% 5%;
+  width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #fff;
   border-radius: 10px;
+  height: 4rem;
+  &.bg{
+    background: url("../images/bg-list.png") no-repeat;
+    background-size: 100% 100%;
+  }
   .l {
-    width: 30%;
+    width: 40%;
     float: left;
+    height: 100%;
     .content {
-      width: 80%;
-      height: 80%;
-      margin: 10% auto;
+      width: 50%;
+      height: 64%;
+      margin: 18% auto;
       .avatar {
-        .num {
-          font-size: 12px;
-        }
       }
     }
   }
   .detail {
     width: 40%;
-    padding: 5% 0 0 0;
+    padding: 10% 0 0 0;
     float: left;
+    &.from-market{
+      padding: 6% 0 0 0;
+    }
     .content {
-      margin-bottom: 10%;
+      margin-bottom: 5%;
       position: relative;
+      height: 0.6rem;
+      text-align: center;
+      line-height: 0.6rem;
+      color: white;
+      &.content1{
+        background: url("../images/name.png") no-repeat;
+        background-size: 100% 100%;
+        font-weight: bold;
+        font-size: 0.33rem;
+      }
+      &.content4{
+        margin-top: -1%;
+        margin-left: -5%;
+      }
       .span1, .span2 {
         display: inline-block;
         width: 50%;
         font-size: 12px;
       }
       .span1 {
-        color: #666;
         font-weight: bold;
-      }
-      .span2 {
-        color: #444;
+        opacity: 0.6;
       }
       .text{
         display: inline-block;
-        background-color: #ffeda3;
-        width: 50%;
-        margin-left: 10%;
+        background: url("../images/tab-sale3.png") no-repeat center;
+        background-size: 100%;
+        width: 76%;
         text-align: center;
         border-radius: 5px;
-        color: #8d6968;
+        color: #fff;
       }
 
       .icon {
@@ -54,17 +69,7 @@
         height: 150%;
         left: -1%;
         top: -17%;
-        &.icon3 {
-          background: url("../images/cb.png") no-repeat;
-          background-size: 100%;
-        }
       }
     }
-  }
-  .sr {
-    width: 20%;
-    position: absolute;
-    right: 10%;
-    bottom: 10%;
   }
 }

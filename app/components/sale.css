@@ -8,20 +8,25 @@
   top: 20%;
   height: 80%;
   width: 100%;
+  opacity: 0.9;
 }
 #sale .list-content .price {
-  width: 80%;
-  margin: 0 5% 5% 5%;
+  width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #fff;
+  background: url("../images/bg-list.png") no-repeat;
+  background-size: 100% 100%;
   border-radius: 10px;
-  padding: 5% 5% 2% 5%;
+  height: 5rem;
+}
+#sale .list-content .price .d1 {
+  margin-top: 8%;
 }
 #sale .list-content .price > div {
   width: 70%;
   margin-left: 10%;
   margin-bottom: 4%;
+  margin-top: 4%;
   font-size: 0;
 }
 #sale .list-content .price > div > span {
@@ -29,19 +34,26 @@
   display: inline-block;
   text-align: center;
   font-size: 0.35rem;
-  color: #444;
+  color: #fff;
+  font-weight: bold;
 }
 #sale .list-content .price > div > input {
-  width: 60%;
-  background-color: #f5efe6;
+  width: 45%;
+  background: url("../images/tab-sale1.png") no-repeat;
+  background-size: 100% 100%;
   border: 0;
-  font-size: 16px;
+  font-size: 0.4rem;
   border-radius: 5px;
   text-align: center;
-  color: #6a3906;
+  color: #fff;
   padding: 1px 0;
+  line-height: 0.6rem;
+}
+#sale .list-content .price > div > input.t {
+  background: url("../images/tab-sale2.png") no-repeat;
+  background-size: 100% 100%;
 }
 #sale .list-content .btn {
-  width: 30%;
+  width: 25%;
   margin: auto;
 }

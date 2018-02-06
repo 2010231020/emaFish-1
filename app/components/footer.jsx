@@ -13,8 +13,8 @@ module.exports = React.createClass({
 			<div id="footer">
 				<Link to='/family' className='tab-bar'><i className='icon icon1'/></Link>
 				<Link to='/market' className='tab-bar'><i className='icon icon2'/></Link>
-				<Link to='/birth' className='tab-bar'><i className='icon icon3'/></Link>
-				<Link to='/market' className='tab-bar'><i className='icon icon4'/></Link>
+				<Link to='/hospital' className='tab-bar'><i className='icon icon3'/></Link>
+				<Link to='/social' className='tab-bar'><i className='icon icon4'/></Link>
 			</div>
 		);
 	}

@@ -20,18 +20,19 @@ module.exports = React.createClass({
 		}, data => {
 			console.log(data);
 			data && data.uid && util.setCookie('uid', data.uid, {path: '/'});
+			data && data.luckNum && util.setCookie('luckNum', data.luckNum, {path: '/'});
+			data && data.qouta && util.setCookie('qouta', data.qouta, {path: '/'});
 			util.delCookie('from');
 			const path = '/home';
 			this.context.router.push(path);
+
 		});
 	},
 	render: function () {
 		return (
-			<div>
-				<div id="login">
-					<p>用户名：<input id='userName' type='text'/></p>
-					<button onClick={this.login} className='btn'>登录</button>
-				</div>
+			<div id="login">
+				<p>用户名：<input id='userName' type='text'/></p>
+				<button onClick={this.login} className='btn'>登录</button>
 			</div>
 		);
 	}

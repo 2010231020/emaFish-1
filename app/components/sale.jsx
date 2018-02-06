@@ -3,12 +3,12 @@ import React from 'react';
 import Back from './back';
 import Res from './res';
 import Shelve from './shelve';
+
 let util = require('../util/util')
 
 module.exports = React.createClass({
 	getInitialState: function () {
-		return {
-		}
+		return {}
 	},
 	contextTypes: {
 		router: React.PropTypes.object
@@ -29,7 +29,8 @@ module.exports = React.createClass({
 	},
 	render: function () {
 		const item = {
-			catId:util.getCookie('catId')
+			catId: util.getCookie('catId'),
+			rarity: util.getCookie('rarity')
 		};
 		return (
 			<div id='sale'>
@@ -37,9 +38,11 @@ module.exports = React.createClass({
 				<Res/>
 				<div className='list-content'>
 					<ul>
-						<Shelve from='sale' item={item}/>
+						<li>
+							<Shelve from='sale' item={item}/>
+						</li>
 						<li className='price'>
-							<div>
+							<div className={'d1'}>
 								<span>初始价格</span>
 								<input id='s_price' type='number' defaultValue='0'/>
 							</div>
@@ -49,12 +52,12 @@ module.exports = React.createClass({
 							</div>
 							<div>
 								<span>拍卖时间</span>
-								<input type='number' defaultValue='0'/>
+								<input className={'t'} type='number' defaultValue='0'/>
 							</div>
 						</li>
 					</ul>
 					<div className='btn' onClick={this.sale}>
-						<img src={require('../images/sale1.png')}/>
+						<img src={require('../images/sale2.png')}/>
 					</div>
 				</div>
 			</div>

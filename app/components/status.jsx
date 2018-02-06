@@ -42,28 +42,27 @@ module.exports = React.createClass({
 		this.getList();
 	},
 	render: function () {
+		const {item} = this.props;
+		const date = new Date(item.birthday);
 		return (
 			<div id='status'>
 				<div className='status1'>
 					<div className='content'>
-						<img src={require('../images/status1.png')}/>
-						<span className='text'>SSR</span>
+						<span className='title'>评级</span>
+						<span className='text'>{item.rarity}</span>
 					</div>
 				</div>
 				<div className='status2'>
 					<div className='content'>
-						<img src={require('../images/status2.png')}/>
-						<span className='text'>13,000</span>
+						<span className='title'>生日</span>
+						<span className='text'>{[date.getFullYear(), date.getMonth()+1, date.getDate()].join('-')}</span>
 					</div>
 				</div>
 				<div className='status3'>
 					<div className='content'>
-						<img src={require('../images/status3.png')}/>
-						<span className='text'>生育中</span>
+						<span className='title'>GEN</span>
+						<span className='text'>{item.gen}</span>
 					</div>
-				</div>
-				<div className='sale' onClick={this.sale}>
-					<img src={require('../images/sale.png')}/>
 				</div>
 			</div>
 		);

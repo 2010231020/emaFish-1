@@ -37,7 +37,7 @@ module.exports = React.createClass({
 	render() {
 		return (
 			<div id='home' className='full'>
-				<Res from='1'/>
+				<Res/>
 				{this.state.showF && <Show/>}
 
 				<Footer/>

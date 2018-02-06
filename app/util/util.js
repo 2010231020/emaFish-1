@@ -9,17 +9,17 @@ function common(url, options, callback) {
 			}
 		}
 	).then(json => {
-		if (json.resultCode && json.resultCode === 200) {  // 判断请求是否正确
-			if(json.data){
+		if (json.resultCode && (json.resultCode === 200 || json.resultCode === 300)) {  // 判断请求是否正确
+			if (json.data) {
 				return json.data
-			}else {
+			} else {
 				callback(json);
 			}
 		} else {
 			console.error(json);
 		}
 	}).then(data => {
-		if(data)callback(data);
+		if (data) callback(data);
 	})
 }
 
@@ -57,5 +57,14 @@ module.exports = {
 	},
 	delCookie(name) {
 		document.cookie = `${name}='';expires=-1`;
+	},
+	getImgHost() {
+		let imgHost = '';
+		if (process.env.NODE_ENV !== 'production') {
+			imgHost = 'http://192.168.11.2:8099/emaCat';
+		} else {
+			imgHost = 'http://192.168.11.2:8099/emaCat';
+		}
+		return imgHost;
 	}
 };

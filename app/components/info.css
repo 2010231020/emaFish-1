@@ -6,7 +6,7 @@
   position: relative;
 }
 .info .l {
-  width: 40%;
+  width: 30%;
   float: left;
 }
 .info .detail {
@@ -16,6 +16,7 @@
 }
 .info .detail p {
   margin-bottom: 10%;
+  color: #fff;
 }
 .info .detail p .span1,
 .info .detail p .span2 {
@@ -24,11 +25,7 @@
   font-size: 16px;
 }
 .info .detail p .span1 {
-  color: #666;
   font-weight: bold;
-}
-.info .detail p .span2 {
-  color: #444;
 }
 .info .sr {
   width: 20%;
