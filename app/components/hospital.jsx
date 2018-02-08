@@ -101,10 +101,7 @@ module.exports = React.createClass({
 						// const path = '/family';
 						// this.context.router.push(path);
 					} else {
-						util.popShow();
-						this.setState({
-							popStr: data.resultMsg
-						});
+						util.popShow(data.resultMsg.replace('java.lang.RuntimeException: ', ''));
 					}
 
 				})
@@ -124,7 +121,7 @@ module.exports = React.createClass({
 						const path = '/family';
 						this.context.router.push(path);
 					} else {
-						util.popShow(data.resultMsg.replace('java.lang.Exception: ', ''));
+						util.popShow(data.resultMsg.replace('java.lang.RuntimeException: ', ''));
 					}
 				})
 			}
