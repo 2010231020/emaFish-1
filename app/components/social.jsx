@@ -38,7 +38,11 @@ module.exports = React.createClass({
 				// const path = '/family';
 				// this.context.router.push(path);
 			} else {
-				util.popShow(data.resultMsg.replace('java.lang.Exception: ',''));
+				if(data.resultMsg==="java.lang.Exception: luckNum is 0"){
+					util.popShow('没有捕捉机会啦');
+				}else{
+					util.popShow(data.resultMsg.replace('java.lang.Exception: ',''));
+				}
 			}
 			// setTimeout(() => {
 			// 	const path = '/family';
