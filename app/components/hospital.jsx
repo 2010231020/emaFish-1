@@ -124,7 +124,7 @@ module.exports = React.createClass({
 						const path = '/family';
 						this.context.router.push(path);
 					} else {
-						alert(data.resultMsg);
+						util.popShow(data.resultMsg.replace('java.lang.Exception: ', ''));
 					}
 				})
 			}
