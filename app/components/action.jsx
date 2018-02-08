@@ -22,7 +22,7 @@ module.exports = React.createClass({
 			catId: catId
 		};
 		util.reqPost('/emaCat/transcation/releaseFish', postData, data => {
-			alert('放生成功，您获得5次捕鱼机会！');
+			util.popShow('放生成功');
 			util.hideLoading();
 			const path = '/social';
 			this.context.router.push(path);

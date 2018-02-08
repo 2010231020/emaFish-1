@@ -6,6 +6,7 @@ import Show from './show';
 import Cattr from './cattr';
 import Shelve from './shelve';
 import {Link} from 'react-router';
+import Popup from './popup';
 
 let util = require('../util/util');
 
@@ -33,11 +34,11 @@ module.exports = React.createClass({
 			if (data.resultCode === 200) {
 
 				this.getList();
-				alert('捕捉成功!');
+				util.popShow('捕捉成功');
 				// const path = '/family';
 				// this.context.router.push(path);
 			} else {
-				alert(data.resultMsg);
+				util.popShow(data.resultMsg.replace('java.lang.Exception: ',''));
 			}
 			// setTimeout(() => {
 			// 	const path = '/family';
@@ -100,7 +101,8 @@ module.exports = React.createClass({
 			catId: catId
 		};
 		util.reqPost('/emaCat/transcation/releaseFish', postData, data => {
-			alert('放生成功，您获得5次捕鱼机会！');
+
+			util.popShow('放生成功');
 			util.hideLoading();
 			this.setState({
 				handleChange: !this.state.handleChange
@@ -111,6 +113,7 @@ module.exports = React.createClass({
 	render: function () {
 		return (
 			<div id='social'>
+				<Popup/>
 				<Back to='/home'/>
 				<Res handleChange={this.state.handleChange}/>
 				<Show uid={1}/>

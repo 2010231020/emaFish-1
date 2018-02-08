@@ -67,5 +67,12 @@ module.exports = {
 	},
 	hideLoading() {
 		document.getElementById('loading').style.display = 'none';
+	},
+	popShow(str) {
+		document.getElementById('popup').style.display = 'block';
+		document.getElementById('popup-text').innerHTML = str;
+	},
+	popHide() {
+		document.getElementById('popup').style.display = 'none';
 	}
 };

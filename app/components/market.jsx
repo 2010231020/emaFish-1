@@ -4,6 +4,7 @@ import Back from './back';
 import Shelve from './shelve';
 import Res from './res';
 import Cattr from './cattr';
+import Popup from './popup';
 
 let util = require('../util/util');
 
@@ -50,6 +51,7 @@ module.exports = React.createClass({
 		return (
 			<div id='market'>
 				<Back/>
+				<Popup/>
 				<Res changeHandle={this.state.changeHandle}/>
 				<div className='list-content'>
 					{/*<select className='sort'>*/}

@@ -8,7 +8,8 @@ let util = require('../util/util');
 
 module.exports = React.createClass({
 	getInitialState() {
-		return {}
+		return {
+		}
 	},
 	close() {
 		this.props.handleShow();
@@ -26,7 +27,7 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/transcation/buyCat', postData, data => {
 			console.log(data);
 			util.hideLoading();
-			alert('购买成功!');
+			util.popShow('购买成功');
 			this.props.handleShow();
 			this.props.buyCallback();
 		})

@@ -5,6 +5,8 @@ import Res from './res';
 import util from '../util/util';
 import Cattr from './cattr';
 import Shelve from './shelve';
+import Popup from './popup';
+
 
 module.exports = React.createClass({
 	getInitialState: function () {
@@ -19,7 +21,7 @@ module.exports = React.createClass({
 			curItem: {},
 			listShow: false,
 			currentChoice: 'f',
-			curAttr: 'hos'//hos:表示有确定按钮;normal:正常界面
+			curAttr: 'hos',//hos:表示有确定按钮;normal:正常界面
 		}
 	},
 	contextTypes: {
@@ -68,11 +70,12 @@ module.exports = React.createClass({
 			}
 		});
 	},
+
 	papa(type) {
 		let mainCatId = this.state.fid;
 		let secondCatId = this.state.mid;
 		if (mainCatId === secondCatId) {
-			alert('不要和自己交配');
+			util.popShow('不要和自己交配');
 		} else {
 			let postData = {
 				uid: util.getCookie('uid'),
@@ -94,11 +97,14 @@ module.exports = React.createClass({
 							showFlag: true,
 							curItem: data.child
 						});
-						alert('繁殖成功!');
+						util.popShow('繁殖成功');
 						// const path = '/family';
 						// this.context.router.push(path);
 					} else {
-						alert(data.resultMsg);
+						util.popShow();
+						this.setState({
+							popStr: data.resultMsg
+						});
 					}
 
 				})
@@ -149,6 +155,7 @@ module.exports = React.createClass({
 		return (
 			<div id='hospital'>
 				<Back/>
+				<Popup str={this.state.popStr}/>
 				<Res from={'1'}/>
 				<div className='list-content'>
 					<div className={'parents'}>

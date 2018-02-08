@@ -8,6 +8,7 @@ import Status from './status';
 import List from './list';
 import Cattr from './cattr';
 import Action from './action';
+import Popup from './popup';
 
 let util = require('../util/util');
 
@@ -62,6 +63,7 @@ module.exports = React.createClass({
 		return (
 			<div id='family'>
 				<Back/>
+				<Popup/>
 				<Res from='1'/>
 
 				{this.state.fishShow && <Show/>}
