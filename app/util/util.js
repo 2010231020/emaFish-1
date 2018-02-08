@@ -61,14 +61,11 @@ module.exports = {
 	},
 	getImgHost() {
 		let imgHost = '';
-		if (process.env.NODE_ENV !== 'production') {
-			imgHost = 'http://192.168.11.2:8099/emaCat';
-		} else {
-			imgHost = 'http://114.55.250.173:8080/emaCat';
-		}
+		// imgHost = 'http://192.168.11.2:8099/emaCat';
+		imgHost = 'http://114.55.250.173:8080/emaCat';
 		return imgHost;
 	},
-	hideLoading(){
+	hideLoading() {
 		document.getElementById('loading').style.display = 'none';
 	}
 };
