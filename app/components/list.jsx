@@ -12,19 +12,6 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	getList() {
-		let uid = util.getCookie('uid');
-		const postData = {
-			uid: uid
-		};
-		util.reqPost('/emaCat/currency/getUserCatList', postData, data => {
-			console.log(data);
-			this.setState({
-				list: data.catList
-			});
-		});
-		console.log(uid);
-	},
 	selectCat(ind, item) {
 		const fr = util.getCookie('from');
 		this.setState({
@@ -52,9 +39,12 @@ module.exports = React.createClass({
 	},
 	render() {
 		const {catList} = this.props;
+		if (catList.length > 0) {
+			document.getElementById('domUl').style.width = catList.length * 2.7 + 'rem';
+		}
 		return (
 			<div id='list'>
-				<ul>
+				<ul id='domUl'>
 					{catList.map((item, i) => <li className={this.state.isOn == i ? 'on' : ''}
 																				onClick={this.selectCat.bind(this, i, item)}><img
 						src={`${util.getImgHost()}/fish/${item.catId}/small_icon_${item.catId}.png`}/></li>)}

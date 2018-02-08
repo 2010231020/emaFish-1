@@ -20,6 +20,7 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/user/getUserData', {
 			uid: uid
 		}, data => {
+			util.hideLoading();
 			data && data.luckNum && util.setCookie('luckNum', data.luckNum, {path: '/'});
 			data && data.qouta && util.setCookie('qouta', data.qouta, {path: '/'});
 			this.setState({

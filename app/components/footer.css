@@ -3,12 +3,12 @@
   bottom: 0.5rem;
   width: 10rem;
   height: 2.5rem;
-  display: flex;
 }
 #footer .tab-bar {
-  display: flex;
-  flex: 1;
-  position: relative;
+  float: left;
+  width: 25%;
+  display: inline-block;
+  height: 100%;
 }
 #footer .tab-bar .icon {
   width: 100%;

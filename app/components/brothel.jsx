@@ -17,6 +17,7 @@ module.exports = React.createClass({
 	},
 	componentDidMount() {
 		util.reqPost('/emaCat/commodity/getCatLeaseList', data => {
+			util.hideLoading();
 			this.setState({
 				list: data.catList
 			});

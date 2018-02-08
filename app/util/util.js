@@ -1,4 +1,5 @@
 function common(url, options, callback) {
+	document.getElementById('loading').style.display = 'block';
 	fetch(url, options).then(res => {
 			if (res.ok) {
 				return res.json()
@@ -66,5 +67,8 @@ module.exports = {
 			imgHost = 'http://114.55.250.173:8080/emaCat';
 		}
 		return imgHost;
+	},
+	hideLoading(){
+		document.getElementById('loading').style.display = 'none';
 	}
 };

@@ -23,3 +23,41 @@
   width: 10rem;
   height: 100%;
 }
+#social .pop {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+}
+#social .pop > ul {
+  position: absolute;
+  width: 100%;
+  top: 1.8rem;
+  bottom: 1rem;
+  overflow: auto;
+}
+#social .pop .back {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+}
+#social .pop .back img {
+  width: 70%;
+}
+#social .pop .no-fish {
+  color: white;
+  font-size: 0.4rem;
+  text-align: center;
+  margin-top: 50%;
+  height: 4rem;
+  background: url("../images/bg-list.png") no-repeat;
+  background-size: 100% 100%;
+}
+#social .pop .no-fish p {
+  padding-top: 1rem;
+}

@@ -4,7 +4,7 @@
   "description": "ema fish game",
   "main": "''",
   "scripts": {
-    "build": "webpack -p --config webpack.production.config.js --progress --profile --colors && set PORT=1235 && node server.js",
+    "build": "webpack -p --config webpack.production.config.js --progress --profile --colors && set PORT=30002 && node server.js",
     "dev": "set PORT=1234 && node dev-server.js"
   },
   "keywords": [

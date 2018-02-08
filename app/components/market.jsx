@@ -31,16 +31,20 @@ module.exports = React.createClass({
 			});
 		}
 	},
-	componentDidMount() {
+	getList() {
 		const postData = {
 			curPage: 1,
 			pageSize: 100
 		};
 		util.reqPost('/emaCat/commodity/getCatDealList', postData, data => {
+			util.hideLoading();
 			this.setState({
 				list: data.catList
 			});
 		});
+	},
+	componentDidMount() {
+		this.getList();
 	},
 	render: function () {
 		return (
@@ -48,18 +52,19 @@ module.exports = React.createClass({
 				<Back/>
 				<Res changeHandle={this.state.changeHandle}/>
 				<div className='list-content'>
-					<select className='sort'>
-						<option>按生育速度排列</option>
-					</select>
+					{/*<select className='sort'>*/}
+						{/*<option>按生育速度排列</option>*/}
+					{/*</select>*/}
 					<ul>
 						{this.state.list.map(item => <li onClick={this.changeShowFlag.bind(this, item)}><Shelve
 							item={item}
-							from='market'/>
+							from='market'
+							/>
 						</li>)}
 					</ul>
 				</div>
 				{this.state.showFlag &&
-				<Cattr from={'market'} item={this.state.curItem} handleShow={this.changeShowFlag.bind(this)}/>}
+				<Cattr buyCallback={this.getList} from={'market'} item={this.state.curItem} handleShow={this.changeShowFlag.bind(this)}/>}
 			</div>
 		);
 	}

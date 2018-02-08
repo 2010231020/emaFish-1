@@ -1,7 +1,11 @@
 #back {
-  width: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   position: absolute;
-  z-index: 999;
+  z-index: 500;
   left: 0;
   top: 0.3rem;
+}
+#back img {
+  width: 70%;
 }

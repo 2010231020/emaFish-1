@@ -22,6 +22,7 @@ module.exports = React.createClass({
 			price: price
 		};
 		util.reqPost('/emaCat/transcation/createCatOrder', postData, data => {
+			util.hideLoading();
 			console.log(data);
 			const path = '/market';
 			this.context.router.push(path);

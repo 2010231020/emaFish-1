@@ -21,23 +21,6 @@ module.exports = React.createClass({
 		const path = '/personal';
 		this.context.router.push(path);
 	},
-	buy(catId, orderId) {
-		console.log(catId, orderId);
-		let postData = {
-			uid: util.getCookie('uid'),
-			catId: catId,
-			orderId: orderId
-		};
-		alert('购买中……');
-		util.reqPost('/emaCat/transcation/buyCat', postData, data => {
-			console.log(data);
-			alert('购买成功!');
-			setTimeout(() => {
-				const path = '/family';
-				this.context.router.push(path);
-			}, 3000);
-		})
-	},
 	render: function () {
 		const {from} = this.props || 'normal';
 		const {item} = this.props;

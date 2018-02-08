@@ -30,6 +30,7 @@ module.exports = React.createClass({
 			uid: uid
 		};
 		util.reqPost('/emaCat/currency/getUserCatList', postData, data => {
+			util.hideLoading();
 			console.log(data);
 			this.setState({
 				catList: data.catList

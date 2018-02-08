@@ -4,6 +4,7 @@ import Back from './back';
 import Res from './res';
 import util from '../util/util';
 import Cattr from './cattr';
+import Shelve from './shelve';
 
 module.exports = React.createClass({
 	getInitialState: function () {
@@ -15,22 +16,61 @@ module.exports = React.createClass({
 			m: false,
 			s: false,
 			showFlag: false,
-			sonInfo: {}
+			curItem: {},
+			listShow: false,
+			currentChoice: 'f',
+			curAttr: 'hos'//hos:表示有确定按钮;normal:正常界面
 		}
 	},
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	show: function () {
-		// event.preventDefault();
+	to(currentChoice) {
+		this.setState({
+			curAttr: 'hos',
+			currentChoice: currentChoice,
+			listShow: true
+		});
 	},
-	to(path, fr) {
-		util.setCookie('from', fr);
-		this.context.router.push(path);
+	closePop(catId) {
+		if (this.state.currentChoice === 'f') {
+			this.setState({
+				f: true,
+				s: false,
+				fid: catId,
+				listShow: false
+			});
+		} else {
+			this.setState({
+				m: true,
+				s: false,
+				mid: catId,
+				listShow: false
+			});
+		}
+	},
+	getList() {
+		let uid = util.getCookie('uid');
+		const postData = {
+			uid: uid
+		};
+		util.reqPost('/emaCat/currency/getUserCatList', postData, data => {
+			console.log(data);
+			this.setState({
+				list: data.catList
+			});
+			if (data.catList && data.catList.length > 0) {
+				// this.setState({
+				// 	listShow: true
+				// });
+			} else {
+
+			}
+		});
 	},
 	papa(type) {
-		let mainCatId = util.getCookie('fid');
-		let secondCatId = util.getCookie('mid');
+		let mainCatId = this.state.fid;
+		let secondCatId = this.state.mid;
 		if (mainCatId === secondCatId) {
 			alert('不要和自己交配');
 		} else {
@@ -40,17 +80,19 @@ module.exports = React.createClass({
 				mainCatId: mainCatId
 			};
 			if (type === 0) {
-				alert('请等待!');
 				util.reqPost('/emaCat/breed/withSelfCat', postData, data => {
 					util.delCookie('fid');
 					util.delCookie('mid');
 					util.delCookie('from');
 					console.log(data);
+					util.hideLoading();
 					if (data.resultCode === 200) {
 						this.setState({
+							curAttr: 'normal',
 							s: true,
 							sonInfo: data.child,
-							showFlag: true
+							showFlag: true,
+							curItem: data.child
 						});
 						alert('繁殖成功!');
 						// const path = '/family';
@@ -70,6 +112,7 @@ module.exports = React.createClass({
 					console.log(data);
 					util.delCookie('mainCat');
 					util.delCookie('from');
+					util.hideLoading();
 					if (data.resultCode === 200) {
 						alert('繁殖成功!');
 						const path = '/family';
@@ -80,27 +123,27 @@ module.exports = React.createClass({
 				})
 			}
 		}
-
 	},
-	changeShowFlag() {
+	changeShowFlag(type, item) {
+		if (type === 1) {
+			this.setState({
+				showFlag: !this.state.showFlag,
+				curItem: item
+			});
+		} else {
+			this.setState({
+				showFlag: !this.state.showFlag,
+				curItem: this.state.sonInfo
+			});
+		}
+	},
+	changeListShow() {
 		this.setState({
-			showFlag: !this.state.showFlag
+			listShow: !this.state.listShow
 		});
 	},
 	componentDidMount() {
-		console.log(util.getCookie('fid'), util.getCookie('mid'));
-		if (util.getCookie('fid') && util.getCookie('fid') != '' && util.getCookie('fid') != "''") {
-			this.setState({
-				f: true,
-				fid: util.getCookie('fid')
-			});
-		}
-		if (util.getCookie('mid') && util.getCookie('mid') != '' && util.getCookie('mid') != "''") {
-			this.setState({
-				m: true,
-				mid: util.getCookie('mid')
-			});
-		}
+		this.getList();
 	},
 	render: function () {
 		return (
@@ -108,18 +151,20 @@ module.exports = React.createClass({
 				<Back/>
 				<Res from={'1'}/>
 				<div className='list-content'>
-					{this.state.f &&
-					<img onClick={this.to.bind(this, '/family', 'f')} className='f'
-							 src={`${util.getImgHost()}/fish/${this.state.fid}/small_icon_${this.state.fid}.png`}/>}
-					{!this.state.f &&
-					<img onClick={this.to.bind(this, '/family', 'f')} className='f' src={require('../images/catty-s.png')}/>}
+					<div className={'parents'}>
+						{this.state.f &&
+						<img onClick={this.to.bind(this, 'f')} className='f'
+								 src={`${util.getImgHost()}/fish/${this.state.fid}/small_icon_${this.state.fid}.png`}/>}
+						{!this.state.f &&
+						<img onClick={this.to.bind(this, 'f')} className='f' src={require('../images/fish-null.png')}/>}
 
-					<img onClick={this.papa.bind(this, 0)} className='x' src={require('../images/xin.png')}/>
-					{this.state.m &&
-					<img onClick={this.to.bind(this, '/family', 'm')} className='m'
-							 src={`${util.getImgHost()}/fish/${this.state.mid}/small_icon_${this.state.mid}.png`}/>}
-					{!this.state.m &&
-					<img onClick={this.to.bind(this, '/family', 'm')} className='m' src={require('../images/catty-s.png')}/>}
+						<img onClick={this.papa.bind(this, 0)} className='x' src={require('../images/xin.png')}/>
+						{this.state.m &&
+						<img onClick={this.to.bind(this, 'm')} className='m'
+								 src={`${util.getImgHost()}/fish/${this.state.mid}/small_icon_${this.state.mid}.png`}/>}
+						{!this.state.m &&
+						<img onClick={this.to.bind(this, 'm')} className='m' src={require('../images/fish-null.png')}/>}
+					</div>
 					{/*<div className='m'>*/}
 					{/*{this.state.m &&*/}
 					{/*<img onClick={this.to.bind(this, '/family', 'm')}  src={require('../images/catty-f.png')}/>}*/}
@@ -128,17 +173,33 @@ module.exports = React.createClass({
 						<img src={require('../images/icon-d.png')}/>
 					</div>
 					{!this.state.s &&
-					<div className='s'>
+					<div className='s' onClick={this.papa.bind(this, 0)}>
 						<img src={require('../images/catty-s.png')}/></div>}
 					{this.state.s &&
-					<div className='s' onClick={this.changeShowFlag}>
+					<div className='s' onClick={this.changeShowFlag.bind(this, 0)}>
 						<img
 							src={`${util.getImgHost()}/fish/${this.state.sonInfo.catId}/small_icon_${this.state.sonInfo.catId}.png`}/>
 					</div>}
 
 				</div>
 				{this.state.showFlag &&
-				<Cattr from={'hos'} handleShow={this.changeShowFlag.bind(this)} item={this.state.sonInfo}/>}
+				<Cattr from={this.state.curAttr} handlePop={this.closePop} handleShow={this.changeShowFlag.bind(this)}
+							 item={this.state.curItem}/>}
+
+				{this.state.listShow && <div className={'pop'}>
+					<ul>
+						{this.state.list.map(item => <li onClick={this.changeShowFlag.bind(this, 1, item)}><Shelve
+							item={item}
+							from='hos'
+						/>
+						</li>)}
+					</ul>
+					<i onClick={this.changeListShow} className={'back'}>
+						<img src={require('../images/back.png')}/>
+					</i>
+				</div>}
+
+
 			</div>
 		);
 	}

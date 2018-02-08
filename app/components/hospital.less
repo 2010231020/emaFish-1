@@ -9,36 +9,66 @@
     width: 80%;
     padding: 0 10%;
     font-size: 0;
-    .f, .x, .m {
-      display: inline-block;
+    .parents{
+      position: relative;
+      overflow: hidden;
+      .f, .x, .m {
+        display: inline-block;
+      }
+      .f {
+        width: 40%;
+        float: left;
+      }
+      .m {
+        width: 40%;
+        float: right;
+      }
+      .x {
+        width: 17%;
+        position: absolute;
+        left: 42%;
+        top: 30%;
+      }
     }
-    .f {
-      width: 40%;
-      padding-left: 5%;
-    }
-    .m {
-      width: 40%;
-      padding-left: 10%;
-    }
-    .x {
-      width: 16%;
-      position: absolute;
-      left: 42%;
-      top: 15%;
-    }
-    .icon-d,.s,.start{
+    .icon-d, .s, .start {
       width: 100%;
       text-align: center;
-      margin-top: 2%;
+      margin-top: 10%;
     }
-    .icon-d{
-      img{
+    .icon-d {
+      img {
         width: 30%;
       }
     }
-    .s,.start{
-      img{
+    .s, .start {
+      img {
         width: 40%;
+      }
+    }
+  }
+  .pop {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    > ul {
+      position: absolute;
+      width: 100%;
+      top: 1.8rem;
+      bottom: 1rem;
+      overflow: auto;
+    }
+    .back{
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: 0.3rem;
+      img{
+        width: 70%;
       }
     }
   }

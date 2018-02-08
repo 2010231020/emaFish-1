@@ -17,6 +17,7 @@ module.exports = React.createClass({
 			price: price
 		};
 		util.reqPost('/emaCat/transcation/leaseCatOrder', postData, data => {
+			util.hideLoading();
 			console.log(data);
 			const path = '/brothel';
 			this.context.router.push(path);

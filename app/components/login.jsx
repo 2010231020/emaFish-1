@@ -18,6 +18,7 @@ module.exports = React.createClass({
 			applicationType: 'ema',
 			applicationToken: applicationToken
 		}, data => {
+			util.hideLoading();
 			console.log(data);
 			data && data.uid && util.setCookie('uid', data.uid, {path: '/'});
 			data && data.luckNum && util.setCookie('luckNum', data.luckNum, {path: '/'});

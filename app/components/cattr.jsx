@@ -8,8 +8,7 @@ let util = require('../util/util');
 
 module.exports = React.createClass({
 	getInitialState() {
-		return {
-		}
+		return {}
 	},
 	close() {
 		this.props.handleShow();
@@ -24,15 +23,21 @@ module.exports = React.createClass({
 			catId: catId,
 			orderId: orderId
 		};
-		alert('购买中……');
 		util.reqPost('/emaCat/transcation/buyCat', postData, data => {
 			console.log(data);
+			util.hideLoading();
 			alert('购买成功!');
-			setTimeout(() => {
-				const path = '/family';
-				this.context.router.push(path);
-			}, 3000);
+			this.props.handleShow();
+			this.props.buyCallback();
 		})
+	},
+	choice(catId) {
+		this.props.handleShow();
+		this.props.handlePop(catId);
+	},
+	social(catId) {
+		this.props.handleShow();
+		this.props.handlePop(catId);
 	},
 	render() {
 		const {item} = this.props;
@@ -42,7 +47,9 @@ module.exports = React.createClass({
 				<div className='content'>
 					<Shelve from={'cattr'} item={item}/>
 					<Gen from={from} item={item}/>
-					<Action from={from} buy={this.buy.bind(this,item.catId,item.orderId)}/>
+					<Action from={from} buy={this.buy.bind(this, item.catId, item.orderId)}
+									choice={this.choice.bind(this, item.catId)}
+									social={this.social.bind(this, item.catId)}/>
 				</div>
 				<i className='close' onClick={this.close}/>
 			</div>

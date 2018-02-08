@@ -22,6 +22,7 @@ module.exports = React.createClass({
 			uid: uid
 		};
 		util.reqPost('/emaCat/currency/getUserCatList', postData, data => {
+			util.hideLoading();
 			console.log(data);
 			if (data.catList.length > 0) {
 				this.setState({
@@ -39,7 +40,6 @@ module.exports = React.createClass({
 			<div id='home' className='full'>
 				<Res/>
 				{this.state.showF && <Show/>}
-
 				<Footer/>
 			</div>
 		);
