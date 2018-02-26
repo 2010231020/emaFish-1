@@ -3,7 +3,7 @@
   position: absolute;
   right: 0.3rem;
   top: 0.4rem;
-  z-index: 1;
+  z-index: 10;
 }
 #res .tab1 {
   background: url("../images/tab1.png") no-repeat center;

@@ -3,6 +3,7 @@ import React from 'react';
 import Res from './res';
 import Footer from './footer';
 import Show from './show';
+import Leaf from './leaf';
 
 let util = require('../util/util');
 
@@ -41,6 +42,7 @@ module.exports = React.createClass({
 				<Res/>
 				{this.state.showF && <Show/>}
 				<Footer/>
+				<Leaf/>
 			</div>
 		);
 	}

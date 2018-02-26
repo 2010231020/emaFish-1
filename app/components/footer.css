@@ -3,6 +3,7 @@
   bottom: 0.5rem;
   width: 10rem;
   height: 2.5rem;
+  z-index: 10;
 }
 #footer .tab-bar {
   float: left;
@@ -15,18 +16,18 @@
   height: 100%;
 }
 #footer .tab-bar .icon1 {
-  background: url("../images/tab-bar1.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../images/tab-bar1.png") no-repeat center;
+  background-size: 80% 80%;
 }
 #footer .tab-bar .icon2 {
-  background: url("../images/tab-bar2.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../images/tab-bar2.png") no-repeat center;
+  background-size: 80% 80%;
 }
 #footer .tab-bar .icon3 {
-  background: url("../images/tab-bar3.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../images/tab-bar3.png") no-repeat center;
+  background-size: 80% 80%;
 }
 #footer .tab-bar .icon4 {
-  background: url("../images/tab-bar4.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../images/tab-bar4.png") no-repeat center;
+  background-size: 80% 80%;
 }
