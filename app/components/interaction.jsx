@@ -9,7 +9,12 @@ module.exports = React.createClass({
 	render: function () {
 		return (
 			<div id='interaction'>
-				<img src={require('../images/inter-tab.png')}/>
+				<div className={'a1'}>
+					<img src={require('../images/interaction1.png')}/>
+				</div>
+				<div className={'a2'}>
+					<img src={require('../images/interaction2.png')}/>
+				</div>
 			</div>
 		);
 	}

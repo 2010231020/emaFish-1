@@ -1,0 +1,89 @@
+.itemBoxLoop(@counter) when (@counter > 0) { //循环生成相应背景图
+  .itemBoxLoop((@counter - 1)); // 递归调用自身
+  &.l@{counter} {
+    i {
+      background: url("../images/item_box_@{counter}.png") no-repeat center;
+      background-size: 1rem;
+    }
+  }
+}
+
+@import 'util';
+
+#item {
+  position: absolute;
+  top: 0.3rem;
+  z-index: 10;
+  p {
+    color: red;
+  }
+  .a1 > i {
+    display: inline-block;
+    width: 1.56rem;
+    margin-left: 0.3rem;
+    height: 1.57rem;
+    &.icon1 {
+      .commonBackground("../images/item.png");
+    }
+    &.icon2 {
+      .commonBackground("../images/item_close.png");
+    }
+  }
+  .a2 > i {
+    display: inline-block;
+    width: 1.25rem;
+    margin-left: 0.4rem;
+    margin-top: 0.2rem;
+    height: 1.25rem;
+    &.icon1 {
+      .commonBackground("../images/item_market.png");
+    }
+  }
+  .popup {
+    position: absolute;
+    top: 3rem;
+    width: 7.67rem;
+    height: 7.7rem;
+    left: 1.17rem;
+    .commonBackground("../images/item_popup.png");
+
+    > ul {
+      width: 80%;
+      height: 80%;
+      padding: 10%;
+    }
+
+    .item0 {
+      li {
+        float: left;
+        .commonBackground("../images/item_box_bg.png");
+        width: 33%;
+        height: 33%;
+        i {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+        }
+        .itemBoxLoop(9);
+      }
+    }
+
+    .item1{
+      li {
+        float: left;
+        width: 50%;
+        height: 50%;
+        background: url("../images/list.png") no-repeat center;
+        background-size: 100% 100%;
+        text-align: center;
+        color: red;
+      }
+    }
+
+    .item7{
+      color: lime;
+      text-align: center;
+      padding-top: 3rem;
+    }
+  }
+}

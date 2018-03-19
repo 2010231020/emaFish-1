@@ -1,6 +1,5 @@
 require('./market.css');
 import React from 'react';
-import Back from './back';
 import Shelve from './shelve';
 import Res from './res';
 
@@ -26,7 +25,6 @@ module.exports = React.createClass({
 	render: function () {
 		return (
 			<div id='market'>
-				<Back/>
 				<Res/>
 				<div className='list-content'>
 					<select className='sort'>

@@ -1,17 +1,20 @@
 #list {
   position: absolute;
-  bottom: 0.2rem;
-  width: 10rem;
+  top: 2rem;
+  width: 9rem;
+  left: 0.5rem;
   overflow: hidden;
   height: 3rem;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+  z-index: 2;
 }
 #list::-webkit-scrollbar {
   display: none;
 }
 #list ul {
-  min-width: 2.7rem;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 #list ul li {
@@ -19,7 +22,6 @@
   width: 2.5rem;
   height: 100%;
   padding: 0 0.1rem;
-  opacity: 0.5;
   background: url("../images/list.png") no-repeat center;
   background-size: 100% 100%;
 }

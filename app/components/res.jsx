@@ -46,8 +46,10 @@ module.exports = React.createClass({
 		}
 		return (
 			<div id='res'>
-				{/*<div className='tab1 res1'><span className='text'>{this.state.luckNum}</span><i className='icon icon1'/></div>*/}
-				{/*<div className='tab1 res2'><span className='text'>{this.state.qouta}</span><i className='icon icon2'/></div>*/}
+				{/*<div className='tab1 res1'><span className='text'>{this.state.luckNum}</span></div>*/}
+				{/*<div className='tab1 res2'><span className='text'>{this.state.qouta}</span></div>*/}
+				<div className='tab1 res1'><span className='text'><img src={require('../images/res1_num.png')}/></span></div>
+				<div className='tab1 res2'><span className='text'><img src={require('../images/res2_num.png')}/></span></div>
 			</div>
 		);
 	}

@@ -1,6 +1,5 @@
 require('./hospital.css');
 import React from 'react';
-import Back from './back';
 import Res from './res';
 import util from '../util/util';
 import Cattr from './cattr';
@@ -151,7 +150,6 @@ module.exports = React.createClass({
 	render: function () {
 		return (
 			<div id='hospital'>
-				<Back/>
 				<Popup str={this.state.popStr}/>
 				<Res from={'1'}/>
 				<div className='list-content'>

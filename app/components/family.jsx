@@ -1,14 +1,11 @@
 require('./family.css');
 import React from 'react';
-import Back from './back';
 import Show from './show';
 import Res from './res';
-import Interaction from './interaction';
-import Status from './status';
 import List from './list';
 import Cattr from './cattr';
-import Action from './action';
 import Popup from './popup';
+import Leaf from './leaf';
 
 let util = require('../util/util');
 
@@ -30,7 +27,7 @@ module.exports = React.createClass({
 		const postData = {
 			uid: uid
 		};
-		util.reqPost('/emaCat/currency/getUserCatList', postData, data => {
+		util.reqPost('/emaCat/currency/getUserFishList', postData, data => {
 			util.hideLoading();
 			console.log(data);
 			this.setState({
@@ -62,9 +59,9 @@ module.exports = React.createClass({
 		const showFlag = this.state.showFlag;
 		return (
 			<div id='family'>
-				<Back/>
 				<Popup/>
 				<Res from='1'/>
+				<Leaf/>
 
 				{this.state.fishShow && <Show/>}
 

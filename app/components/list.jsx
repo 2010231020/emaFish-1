@@ -20,13 +20,13 @@ module.exports = React.createClass({
 		console.log(ind);
 		util.setCookie('catIndex', ind);
 		if (fr == 'f') {
-			util.setCookie('fid', item.catId);
+			util.setCookie('fid', item.fishId);
 			this.context.router.push('/hospital');
 		} else if (fr == 'm') {
-			util.setCookie('mid', item.catId);
+			util.setCookie('mid', item.fishId);
 			this.context.router.push('/hospital');
 		} else {
-			util.setCookie('catId', item.catId);
+			util.setCookie('fishId', item.fishId);
 			util.setCookie('rarity', item.rarity);
 		}
 		this.props.changeShow(item);
@@ -38,16 +38,16 @@ module.exports = React.createClass({
 		// this.getList();
 	},
 	render() {
-		const {catList} = this.props;
-		if (catList.length > 0) {
-			document.getElementById('domUl').style.width = catList.length * 2.7 + 'rem';
+		const {list} = this.props;
+		if (list.length > 0) {
+			// document.getElementById('domUl').style.width = catList.length * 2.7 + 'rem';
 		}
 		return (
 			<div id='list'>
 				<ul id='domUl'>
-					{catList.map((item, i) => <li className={this.state.isOn == i ? 'on' : ''}
+					{list.map((item, i) => <li className={this.state.isOn == i ? 'on' : ''}
 																				onClick={this.selectCat.bind(this, i, item)}><img
-						src={`${util.getImgHost()}/fish/${item.catId}/small_icon_${item.catId}.png`}/></li>)}
+						src={`${util.getImgHost()}/fish/${item.fishId}/small_icon_${item.fishId}.png`}/></li>)}
 				</ul>
 			</div>
 		);

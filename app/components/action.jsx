@@ -16,10 +16,10 @@ module.exports = React.createClass({
 	},
 	free() {
 		let uid = util.getCookie('uid');
-		let catId = util.getCookie('catId');
+		let fishId = util.getCookie('fishId');
 		const postData = {
 			uid: uid,
-			catId: catId
+			fishId: fishId
 		};
 		util.reqPost('/emaCat/transcation/releaseFish', postData, data => {
 			util.popShow('放生成功');

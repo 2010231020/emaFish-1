@@ -8,8 +8,8 @@ module.exports = React.createClass({
 		const uid = this.props.uid || util.getCookie('uid');
 		return (
 			<div className='show'>
-				<iframe src={`http://emfstatic.lemonade-game.com?uid=${uid}`}/>
-				{/*<iframe src={`http://192.168.10.210:5239/index.html?uid=${uid}`}/>*/}
+				{/*<iframe src={`http://emfstatic.lemonade-game.com?uid=${uid}`}/>*/}
+				<iframe id={'iframe'} src={`http://cober1.com:5239/index.html?uid=${uid}`}/>
 			</div>
 		);
 	}

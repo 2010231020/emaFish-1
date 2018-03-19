@@ -8,3 +8,10 @@
   width: 10rem;
   height: 100%;
 }
+#home button {
+  position: absolute;
+  z-index: 10000;
+}
+#home .bo {
+  mix-blend-mode: overlay;
+}

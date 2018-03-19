@@ -1,6 +1,5 @@
 require('./social.css');
 import React from 'react';
-import Back from './back';
 import Res from './res';
 import Show from './show';
 import Cattr from './cattr';
@@ -98,11 +97,11 @@ module.exports = React.createClass({
 	componentDidMount() {
 		this.getList();
 	},
-	closePop(catId) {
+	closePop(fishId) {
 		let uid = util.getCookie('uid');
 		const postData = {
 			uid: uid,
-			catId: catId
+			fishId: fishId
 		};
 		util.reqPost('/emaCat/transcation/releaseFish', postData, data => {
 
@@ -118,7 +117,6 @@ module.exports = React.createClass({
 		return (
 			<div id='social'>
 				<Popup/>
-				<Back to='/home'/>
 				<Res handleChange={this.state.handleChange}/>
 				<Show uid={1}/>
 				<footer>

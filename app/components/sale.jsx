@@ -1,6 +1,5 @@
 require('./sale.css');
 import React from 'react';
-import Back from './back';
 import Res from './res';
 import Shelve from './shelve';
 
@@ -18,10 +17,10 @@ module.exports = React.createClass({
 		let postData = {
 			uid: util.getCookie('uid'),
 			upDays: 1,
-			catId: util.getCookie('catId'),
+			fishId: util.getCookie('fishId'),
 			price: price
 		};
-		util.reqPost('/emaCat/transcation/createCatOrder', postData, data => {
+		util.reqPost('/emaCat/transcation/createFishOrder', postData, data => {
 			util.hideLoading();
 			console.log(data);
 			const path = '/market';
@@ -30,12 +29,11 @@ module.exports = React.createClass({
 	},
 	render: function () {
 		const item = {
-			catId: util.getCookie('catId'),
+			fishId: util.getCookie('fishId'),
 			rarity: util.getCookie('rarity')
 		};
 		return (
 			<div id='sale'>
-				<Back to='/family'/>
 				<Res/>
 				<div className='list-content'>
 					<ul>

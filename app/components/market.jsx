@@ -1,10 +1,10 @@
 require('./market.css');
 import React from 'react';
-import Back from './back';
 import Shelve from './shelve';
 import Res from './res';
 import Cattr from './cattr';
 import Popup from './popup';
+import Back from './back';
 
 let util = require('../util/util');
 
@@ -37,10 +37,10 @@ module.exports = React.createClass({
 			curPage: 1,
 			pageSize: 100
 		};
-		util.reqPost('/emaCat/commodity/getCatDealList', postData, data => {
+		util.reqPost('/emaCat/commodity/getFishDealList', postData, data => {
 			util.hideLoading();
 			this.setState({
-				list: data.catList
+				list: data.fishList
 			});
 		});
 	},

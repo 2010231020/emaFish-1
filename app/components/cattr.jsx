@@ -17,14 +17,14 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	buy(catId, orderId) {
-		console.log(catId, orderId);
+	buy(fishId, orderId) {
+		console.log(fishId, orderId);
 		let postData = {
 			uid: util.getCookie('uid'),
-			catId: catId,
+			fishId: fishId,
 			orderId: orderId
 		};
-		util.reqPost('/emaCat/transcation/buyCat', postData, data => {
+		util.reqPost('/emaCat/transcation/buyFish', postData, data => {
 			console.log(data);
 			util.hideLoading();
 			util.popShow('购买成功');
@@ -32,13 +32,13 @@ module.exports = React.createClass({
 			this.props.buyCallback();
 		})
 	},
-	choice(catId) {
+	choice(fishId) {
 		this.props.handleShow();
-		this.props.handlePop(catId);
+		this.props.handlePop(fishId);
 	},
-	social(catId) {
+	social(fishId) {
 		this.props.handleShow();
-		this.props.handlePop(catId);
+		this.props.handlePop(fishId);
 	},
 	render() {
 		const {item} = this.props;
@@ -48,9 +48,9 @@ module.exports = React.createClass({
 				<div className='content'>
 					<Shelve from={'cattr'} item={item}/>
 					<Gen from={from} item={item}/>
-					<Action from={from} buy={this.buy.bind(this, item.catId, item.orderId)}
-									choice={this.choice.bind(this, item.catId)}
-									social={this.social.bind(this, item.catId)}/>
+					<Action from={from} buy={this.buy.bind(this, item.fishId, item.orderId)}
+									choice={this.choice.bind(this, item.fishId)}
+									social={this.social.bind(this, item.fishId)}/>
 				</div>
 				<i className='close' onClick={this.close}/>
 			</div>
