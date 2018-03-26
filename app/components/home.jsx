@@ -8,7 +8,7 @@ import Item2 from './item2';
 import Item7 from './item7';
 import Item10 from './item10';
 import Item12 from './item12';
-import {Link} from 'react-router';
+import Item13 from './item13';
 import List from './list';
 
 let util = require('../util/util');
@@ -187,7 +187,7 @@ module.exports = React.createClass({
 						<i className={'icon1'}/>
 					</div>
 					{this.state.popFlag && <div className={`popup popup${this.state.type}`}>
-						{{
+						{{//功能列表
 							0: <ul className={'item0'}>
 								<li className={'l1'} onClick={this.changeType.bind(this, 1)}><i/></li>
 								<li className={'l2'} onClick={this.changeType.bind(this, 2)}><i/></li>
@@ -199,14 +199,22 @@ module.exports = React.createClass({
 								<li className={'l8'}><i/></li>
 								<li className={'l9'}><i/></li>
 							</ul>,
+							//鱼列表
 							1: <List fishList={this.state.fishList}
 											 changeCurItem={this.changeCurItem.bind(this)}/>,
+							//装饰背包
 							2: <Item2 setDecorate={this.setDecorate.bind(this)} list={this.state.item2list}/>,
+							//孵化
 							7: <Item7/>,
+							//鱼属性页面
 							9: <Cattr changeType={this.changeType.bind(this)} handleShow={this.changeShowFlag.bind(this)}
 												item={this.state.curItem}/>,
+							//寄语编辑页面
 							10: <Item10 item={this.state.curItem}/>,
-							12: <Item12/>
+							//鱼市页面
+							12: <Item12/>,
+							//寄语历史页面
+							13: <Item13/>
 						}[this.state.type]}
 					</div>
 					}
