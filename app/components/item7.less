@@ -1,0 +1,115 @@
+@import "util";
+
+.item7 {
+  width: 100%;
+  height: 100%;
+
+  background: url("../images/birth_bg.png") no-repeat center;
+  .info {
+    padding-top: 1rem;
+    margin-left: 0.6rem;
+    overflow: hidden;
+    .l {
+      float: left;
+      width: 2.22rem;
+      height: 2.22rem;
+      .commonBackground("../images/birth_bg1.png");
+      > i {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: url("../images/birth_1.png") no-repeat center;
+      }
+    }
+    .r {
+      float: left;
+      width: 4.35rem;
+      height: 2.22rem;
+      .commonBackground("../images/birth_bg2.png");
+      position: relative;
+      > textarea {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        left: 10%;
+        top: 10%;
+        display: block;
+        margin: auto;
+        background: none;
+        border: none;
+        color: white;
+        &::placeholder {
+          color: #3aa8cb;
+          padding-top: 0.7rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .fee {
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+    margin-top: 0.8rem;
+    .l, .r {
+      float: left;
+      width: 50%;
+      height: 1rem;
+      position: relative;
+      > i {
+        display: inline-block;
+        position: absolute;
+      }
+      .radio {
+        width: 0.22rem;
+        height: 0.22rem;
+        .commonBackground("../images/choose.png");
+        left: 0.2rem;
+        top: 0.35rem;
+        &.on {
+          .commonBackground("../images/choose-on.png");
+        }
+      }
+      .underline {
+        width: 2.17rem;
+        height: 0.22rem;
+        .commonBackground("../images/birth_underline.png");
+        left: 0.6rem;
+        bottom: 0.12rem;
+      }
+    }
+    .coin2, .coin1 {
+      width: 0.77rem;
+      height: 0.82rem;
+      left: 0.6rem;
+      z-index: 2;
+    }
+    .coin1 {
+      .commonBackground("../images/coin.png");
+    }
+    .coin2 {
+      .commonBackground("../images/action_4.png");
+    }
+
+  }
+
+  .pay {
+    width: 2.66rem;
+    height: 1.23rem;
+    .commonBackground("../images/birth_bg3.png");
+    margin: auto;
+    margin-top: 0.5rem;
+    > i {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      &.coin1 {
+        background: url("../images/coin.png") no-repeat center;
+      }
+      &.coin2 {
+        background: url("../images/action_4.png") no-repeat center;
+      }
+    }
+  }
+}

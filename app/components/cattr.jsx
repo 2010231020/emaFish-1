@@ -1,15 +1,14 @@
 require('./cattr.css');
 import React from 'react';
-import Shelve from './shelve';
 import Gen from './gen';
 import Action from './action';
+import Avatar from './avatar';
 
 let util = require('../util/util');
 
 module.exports = React.createClass({
 	getInitialState() {
-		return {
-		}
+		return {}
 	},
 	close() {
 		this.props.handleShow();
@@ -36,23 +35,30 @@ module.exports = React.createClass({
 		this.props.handleShow();
 		this.props.handlePop(fishId);
 	},
-	social(fishId) {
-		this.props.handleShow();
-		this.props.handlePop(fishId);
+	changeType() {
+		this.props.changeType(10);
 	},
 	render() {
 		const {item} = this.props;
-		const from = this.props.from || 'market';
 		return (
 			<div id='cattr'>
 				<div className='content'>
-					<Shelve from={'cattr'} item={item}/>
-					<Gen from={from} item={item}/>
-					<Action from={from} buy={this.buy.bind(this, item.fishId, item.orderId)}
-									choice={this.choice.bind(this, item.fishId)}
-									social={this.social.bind(this, item.fishId)}/>
+					<div className={'shelve'}>
+						<div className='l'>
+							<div className='content'>
+								<Avatar fid={item.fishId} ssr={item.rarity}/>
+							</div>
+						</div>
+						<div className={'r'} onClick={this.changeType.bind(this)}>
+							<p className={'msg'}>在年轻人的颈项上，没有什么东西能比事业心这颗灿烂的宝珠更迷人的了。</p>
+						</div>
+					</div>
+
+					<Gen item={item}/>
+					<Action item={item}/>
 				</div>
-				<i className='close' onClick={this.close}/>
+				<span className={'fish_num'}>#{item.fishId}</span>
+				{/*<i className='close' onClick={this.close}/>*/}
 			</div>
 		)
 	}

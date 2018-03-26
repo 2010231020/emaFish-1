@@ -1,134 +1,78 @@
-.gen{
-  width: 80%;
-  margin: 0 auto;
-  background-color: rgba(0,0,0,0.1);
-  border-radius: 10px;
-  border: 3px #449fbd solid;
+@import "util";
+
+.gen {
+  width: 5.17rem;
+  height: 3.62rem;
+  .commonBackground("../images/cattr_bg.png");
   position: relative;
-  height: 6rem;
-  >ul{
-    width: 70%;
-    margin-left: 30%;
-    margin-bottom: 0.4rem;
-    overflow: hidden;
-  }
-  .ul1{
-    font-size: 14px;
-    li{
-      overflow: hidden;
-      margin-top: 0.4rem;
-    }
-    .span1,.span2,.span3{
-      display: inline-block;
-      float: left;
-      padding: 0.02rem 0;
-      color: #fff;
-    }
-    .span1{
+  margin: 0.1rem 0 0 0.6rem;
+  > ul {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    padding-top: 9%;
+    li {
       width: 50%;
-      border-radius: 5px;
-      text-align: center;
-      &.t1{
-        background: url("../images/bg-t1.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      &.t2{
-        background: url("../images/bg-t2.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      &.t3{
-        background: url("../images/bg-t3.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      &.t4{
-        background: url("../images/bg-t4.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      &.t5{
-        background: url("../images/bg-t5.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      &.t6{
-        background: url("../images/bg-t6.png") no-repeat;
-        background-size: 100% 100%;
-      }
-    }
-    .span2{
-      text-align: right;
-    }
-    .span3{
-      text-align: center;
-      img{
-        width: 30%;
-        vertical-align: middle;
-      }
-    }
-    .span2,.span3{
-      width: 25%;
-    }
-  }
-  .ul2{
-    height: 100%;
-    >li{
-      height: 2.2rem;
-      .t{
-        display: block;
-        margin-top: 0.2rem;
-        font-size: 0.3rem;
-        color: #fff;
-        .f,.m{
-          display: inline-block;
-          padding: 0.2rem 0.5rem 0.1rem 0.5rem;
-          color: #fff;
+      float: left;
+      height: 0.9rem;
+      position: relative;
+      i {
+        display: inline-block;
+        position: absolute;
+        &.sr, &.n, &.r, &.ur {
+          width: 0.63rem;
+          height: 0.46rem;
+          right: 0;
+          top: 0.24rem;
         }
-        .f{
-          background: url("../images/bg-parents.png") no-repeat center;
-          background-size: 100% 100%;
+        &.n{
+          background: url("../images/rare_n.png") no-repeat center;
         }
-        .m{
-          background: url("../images/bg-children.png") no-repeat center;
-          background-size: 100% 100%;
+        &.r{
+          background: url("../images/rare_r.png") no-repeat center;
+        }
+        &.sr{
+          background: url("../images/rare_sr.png") no-repeat center;
+        }
+        &.ur{
+          background: url("../images/rare_ur.png") no-repeat center;
+        }
+
+        &.underline{
+          width: 1.79rem;
+          height: 0.05rem;
+          background: url("../images/cattr_underline1.png") no-repeat center;
+          bottom: 0.21rem;
+          left: 0.18rem;
+        }
+
+        &.cattr{
+          width: 0.58rem;
+          height: 0.72rem;
+          left: 0;
+          top: 0.09rem;
+          z-index: 2;
+
+          &.cattr1{
+            background: url("../images/cattr_1.png") no-repeat center;
+          }
+          &.cattr2{
+            background: url("../images/cattr_2.png") no-repeat center;
+          }
+          &.cattr3{
+            background: url("../images/cattr_3.png") no-repeat center;
+          }
+          &.cattr4{
+            background: url("../images/cattr_4.png") no-repeat center;
+          }
+          &.cattr5{
+            background: url("../images/cattr_5.png") no-repeat center;
+          }
+          &.cattr6{
+            background: url("../images/cattr_6.png") no-repeat center;
+          }
         }
       }
-      .avatar{
-        font-size: 0;
-        img{
-          display: inline-block;
-          margin: 0.3rem 0.2rem 0 0;
-          width: 1rem;
-        }
-      }
-    }
-  }
-  .tab{
-    position: absolute;
-    width: 20%;
-    height: 13%;
-    &.attr1 {
-      left: -4%;
-      top: 5%;
-      background: url("../images/tab-attr1.png") no-repeat center;
-      background-size: 100%;
-      &.on{
-        background: url("../images/tab-attr1-on.png") no-repeat center;
-        background-size: 100%;
-      }
-    }
-    &.attr2 {
-      left: -4%;
-      top: 25%;
-      background: url("../images/tab-attr2.png") no-repeat center;
-      background-size: 100%;
-      &.on{
-        background: url("../images/tab-attr2-on.png") no-repeat center;
-        background-size: 100%;
-      }
-    }
-    &.attr3 {
-      left: -4%;
-      top: 5%;
-      background: url("../images/tab-attr3-on.png") no-repeat center;
-      background-size: 100%;
     }
   }
 }

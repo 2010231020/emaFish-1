@@ -12,24 +12,8 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	selectCat(ind, item) {
-		const fr = util.getCookie('from');
-		this.setState({
-			isOn: ind
-		});
-		console.log(ind);
-		util.setCookie('catIndex', ind);
-		if (fr == 'f') {
-			util.setCookie('fid', item.fishId);
-			this.context.router.push('/hospital');
-		} else if (fr == 'm') {
-			util.setCookie('mid', item.fishId);
-			this.context.router.push('/hospital');
-		} else {
-			util.setCookie('fishId', item.fishId);
-			util.setCookie('rarity', item.rarity);
-		}
-		this.props.changeShow(item);
+	setDecorate(type, id) {
+		this.props.setDecorate(type, id);
 	},
 	componentDidMount() {
 		// this.setState({
@@ -41,8 +25,9 @@ module.exports = React.createClass({
 	getList() {
 		this.setState({
 			list: [
-				{itemId: 'd11.jpg'}, {itemId: 'd13.jpg'},
-				{itemId: 'd21.png'}, {itemId: 'd33.png'}
+				{name: '背景1', type: 1, id: 1}, {name: '背景3', type: 1, id: 3},
+				{name: '石头1', type: 2, id: 1}, {name: '石头2', type: 2, id: 2},
+				{name: '浮萍1', type: 3, id: 1}, {name: '浮萍3', type: 3, id: 3}
 			]
 		});
 		let uid = util.getCookie('uid');
@@ -61,10 +46,16 @@ module.exports = React.createClass({
 		// }
 		console.log(123213213);
 		return (
-			<ul id='item2'>
-				{this.state.list.map((item, i) => <li onClick={this.selectCat.bind(this, i, item)}><img
-					src={require(`../images/${item.itemId}`)}/></li>)}
-			</ul>
+			<div id='item2'>
+				<i className={'pre'}/>
+				<ul className={'item1'}>
+					{this.state.list.map((item, i) => <li onClick={this.props.setDecorate.bind(this, item.type, item.id)}>
+						<img src={require(`../images/d${item.type}${item.id}l.png`)}/>
+						<span className={'num'}>{item.name}</span>
+					</li>)}
+				</ul>
+				<i className={'next'}/>
+			</div>
 		);
 	}
 });

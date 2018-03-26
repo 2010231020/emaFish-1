@@ -90,11 +90,8 @@ module.exports = React.createClass({
 							{list.map((item, i) => <li onClick={this.selectCat.bind(this, i, item)}><img
 								src={`${util.getImgHost()}/fish/${item.fishId}/small_icon_${item.fishId}.png`}/></li>)}
 
-							{visitorList.map((item, i) => <li onClick={this.selectCat.bind(this, i, item)}><img
-								src={`${util.getImgHost()}/fish/${item.fishId}/small_icon_${item.fishId}.png`}/>我是访客标记</li>)}
-
 						</ul>,
-						2: <Item2 list={this.state.item2list}/>,
+						2: <Item2 setDecorate={this.props.setDecorate} list={this.state.item2list}/>,
 						7: <div className={'item7'}>孵化界面……</div>
 					}[this.state.type]}
 				</div>

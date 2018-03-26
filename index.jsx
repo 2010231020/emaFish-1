@@ -10,7 +10,6 @@ import Brothel from './app/components/brothel.jsx';
 import Family from './app/components/family';
 import Personal from './app/components/personal';
 import Market from './app/components/market';
-import Hospital from './app/components/hospital';
 import Home from './app/components/home';
 
 ReactDOM.render(
@@ -24,7 +23,6 @@ ReactDOM.render(
 			<Route path="/market" component={Market}/>
 			<Route path="/sale" component={Sale}/>
 			<Route path="/social" component={Social}/>
-			<Route path="/hospital" component={Hospital}/>
 		</Router>
 	,
 	document.getElementById("myApp")

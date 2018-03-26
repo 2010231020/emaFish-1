@@ -2,6 +2,7 @@ require('./login.css');
 import React from 'react';
 
 let util = require('../util/util');
+let User = require('../util/User');
 
 module.exports = React.createClass({
 	contextTypes: {

@@ -11,41 +11,46 @@ module.exports = React.createClass({
 		router: React.PropTypes.object
 	},
 	sale() {
-		const path = '/sale';
-		this.context.router.push(path);
+		//出售 暂无出售页面
+		// const path = '/sale';
+		// this.context.router.push(path);
 	},
-	free() {
-		let uid = util.getCookie('uid');
-		let fishId = util.getCookie('fishId');
-		const postData = {
-			uid: uid,
-			fishId: fishId
-		};
-		util.reqPost('/emaCat/transcation/releaseFish', postData, data => {
-			util.popShow('放生成功');
-			util.hideLoading();
-			const path = '/social';
-			this.context.router.push(path);
-		});
+	feed() {
+		//暂无喂养接口
 	},
 	buy() {
 		this.props.buy();
 	},
-	choice(){
+	choice() {
 		this.props.choice();
 	},
-	social(){
-		this.props.social();
+	getRes(fishId) {
+		console.log(fishId);
+		//收祝福接口
 	},
 	render: function () {
-		const {from} = this.props;
+		const {item} = this.props;
+
+		const flag = item.travelUid ? 2 : 1;//1:自家鱼；2:访客鱼
 		return (
-			<div className='sale'>
-				{from === 'me' && <img onClick={this.sale} src={require('../images/sale3.png')}/>}
-				{from === 'me' && <img onClick={this.free} src={require('../images/free.png')}/>}
-				{from === 'market' && <img onClick={this.buy} src={require('../images/buy.png')}/>}
-				{from === 'hos' && <img onClick={this.choice} src={require('../images/yes.png')}/>}
-				{from === 'social' && <img onClick={this.social} src={require('../images/free.png')}/>}
+			<div className='action'>
+				{flag === 1 && <div>
+					<div className={'action1'} onClick={this.sale.bind(this, item)}/>
+				</div>}
+				{flag === 1 && <div>
+					<div className={'action2'} onClick={this.feed.bind(this)}/>
+				</div>}
+				{flag === 2 && <div>
+					<div className={'action3'}>
+						<span className={'num'}>88</span>
+					</div>
+				</div>}
+				{flag === 2 && <div>
+					<div className={'action4'} onClick={this.getRes.bind(this, item.fishId)}>
+						<span className={'num'}>88</span>
+					</div>
+				</div>}
+
 			</div>
 		);
 	}

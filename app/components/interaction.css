@@ -8,3 +8,15 @@
 #interaction .a2 {
   margin-top: 0.3rem;
 }
+#interaction .a2,
+#interaction .a1 {
+  position: relative;
+}
+#interaction .num {
+  color: white;
+  position: absolute;
+  width: 1rem;
+  bottom: 0.2rem;
+  right: 0.1rem;
+  text-align: right;
+}

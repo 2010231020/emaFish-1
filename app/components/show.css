@@ -1,5 +1,6 @@
 .show {
   position: absolute;
+  z-index: 1;
 }
 .show iframe {
   width: 100%;

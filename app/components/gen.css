@@ -1,138 +1,77 @@
 .gen {
-  width: 80%;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  border: 3px #449fbd solid;
+  width: 5.17rem;
+  height: 3.62rem;
+  background: url("../images/cattr_bg.png") no-repeat center;
+  background-size: 100% 100%;
   position: relative;
-  height: 6rem;
+  margin: 0.1rem 0 0 0.6rem;
 }
 .gen > ul {
-  width: 70%;
-  margin-left: 30%;
-  margin-bottom: 0.4rem;
-  overflow: hidden;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  padding-top: 9%;
 }
-.gen .ul1 {
-  font-size: 14px;
-}
-.gen .ul1 li {
-  overflow: hidden;
-  margin-top: 0.4rem;
-}
-.gen .ul1 .span1,
-.gen .ul1 .span2,
-.gen .ul1 .span3 {
-  display: inline-block;
-  float: left;
-  padding: 0.02rem 0;
-  color: #fff;
-}
-.gen .ul1 .span1 {
+.gen > ul li {
   width: 50%;
-  border-radius: 5px;
-  text-align: center;
+  float: left;
+  height: 0.9rem;
+  position: relative;
 }
-.gen .ul1 .span1.t1 {
-  background: url("../images/bg-t1.png") no-repeat;
-  background-size: 100% 100%;
-}
-.gen .ul1 .span1.t2 {
-  background: url("../images/bg-t2.png") no-repeat;
-  background-size: 100% 100%;
-}
-.gen .ul1 .span1.t3 {
-  background: url("../images/bg-t3.png") no-repeat;
-  background-size: 100% 100%;
-}
-.gen .ul1 .span1.t4 {
-  background: url("../images/bg-t4.png") no-repeat;
-  background-size: 100% 100%;
-}
-.gen .ul1 .span1.t5 {
-  background: url("../images/bg-t5.png") no-repeat;
-  background-size: 100% 100%;
-}
-.gen .ul1 .span1.t6 {
-  background: url("../images/bg-t6.png") no-repeat;
-  background-size: 100% 100%;
-}
-.gen .ul1 .span2 {
-  text-align: right;
-}
-.gen .ul1 .span3 {
-  text-align: center;
-}
-.gen .ul1 .span3 img {
-  width: 30%;
-  vertical-align: middle;
-}
-.gen .ul1 .span2,
-.gen .ul1 .span3 {
-  width: 25%;
-}
-.gen .ul2 {
-  height: 100%;
-}
-.gen .ul2 > li {
-  height: 2.2rem;
-}
-.gen .ul2 > li .t {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.3rem;
-  color: #fff;
-}
-.gen .ul2 > li .t .f,
-.gen .ul2 > li .t .m {
+.gen > ul li i {
   display: inline-block;
-  padding: 0.2rem 0.5rem 0.1rem 0.5rem;
-  color: #fff;
-}
-.gen .ul2 > li .t .f {
-  background: url("../images/bg-parents.png") no-repeat center;
-  background-size: 100% 100%;
-}
-.gen .ul2 > li .t .m {
-  background: url("../images/bg-children.png") no-repeat center;
-  background-size: 100% 100%;
-}
-.gen .ul2 > li .avatar {
-  font-size: 0;
-}
-.gen .ul2 > li .avatar img {
-  display: inline-block;
-  margin: 0.3rem 0.2rem 0 0;
-  width: 1rem;
-}
-.gen .tab {
   position: absolute;
-  width: 20%;
-  height: 13%;
 }
-.gen .tab.attr1 {
-  left: -4%;
-  top: 5%;
-  background: url("../images/tab-attr1.png") no-repeat center;
-  background-size: 100%;
+.gen > ul li i.sr,
+.gen > ul li i.n,
+.gen > ul li i.r,
+.gen > ul li i.ur {
+  width: 0.63rem;
+  height: 0.46rem;
+  right: 0;
+  top: 0.24rem;
 }
-.gen .tab.attr1.on {
-  background: url("../images/tab-attr1-on.png") no-repeat center;
-  background-size: 100%;
+.gen > ul li i.n {
+  background: url("../images/rare_n.png") no-repeat center;
 }
-.gen .tab.attr2 {
-  left: -4%;
-  top: 25%;
-  background: url("../images/tab-attr2.png") no-repeat center;
-  background-size: 100%;
+.gen > ul li i.r {
+  background: url("../images/rare_r.png") no-repeat center;
 }
-.gen .tab.attr2.on {
-  background: url("../images/tab-attr2-on.png") no-repeat center;
-  background-size: 100%;
+.gen > ul li i.sr {
+  background: url("../images/rare_sr.png") no-repeat center;
 }
-.gen .tab.attr3 {
-  left: -4%;
-  top: 5%;
-  background: url("../images/tab-attr3-on.png") no-repeat center;
-  background-size: 100%;
+.gen > ul li i.ur {
+  background: url("../images/rare_ur.png") no-repeat center;
+}
+.gen > ul li i.underline {
+  width: 1.79rem;
+  height: 0.05rem;
+  background: url("../images/cattr_underline1.png") no-repeat center;
+  bottom: 0.21rem;
+  left: 0.18rem;
+}
+.gen > ul li i.cattr {
+  width: 0.58rem;
+  height: 0.72rem;
+  left: 0;
+  top: 0.09rem;
+  z-index: 2;
+}
+.gen > ul li i.cattr.cattr1 {
+  background: url("../images/cattr_1.png") no-repeat center;
+}
+.gen > ul li i.cattr.cattr2 {
+  background: url("../images/cattr_2.png") no-repeat center;
+}
+.gen > ul li i.cattr.cattr3 {
+  background: url("../images/cattr_3.png") no-repeat center;
+}
+.gen > ul li i.cattr.cattr4 {
+  background: url("../images/cattr_4.png") no-repeat center;
+}
+.gen > ul li i.cattr.cattr5 {
+  background: url("../images/cattr_5.png") no-repeat center;
+}
+.gen > ul li i.cattr.cattr6 {
+  background: url("../images/cattr_6.png") no-repeat center;
 }

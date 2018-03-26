@@ -1,0 +1,49 @@
+@import "util";
+
+.item12 {
+  width: 6.73rem;
+  height: 9.87rem;
+  position: absolute;
+  left: 10%;
+  top: 5%;
+  .sort {
+    overflow: hidden;
+    .sort_btn{
+      float: left;
+      width: 2.17rem;
+      margin: 0.4rem 0 0 0.8rem;
+      height: 0.87rem;
+      color: #bbb;
+      font-weight: bold;
+      font-size: 0.39rem;
+      position: relative;
+      .commonBackground("../images/btn_sort.png");
+      > span {
+        display: inline-block;
+        padding-top: 0.15rem;
+        padding-left: 0.45rem;
+      }
+      &.on {
+        .commonBackground("../images/btn_sort-on.png");
+        > span {
+          color: #fff;
+        }
+      }
+
+      >i{
+        display: inline-block;
+        position: absolute;
+        width: 0.43rem;
+        height: 0.36rem;
+        right: 0.25rem;
+        top: 0.25rem;
+        &.up{
+          .commonBackground("../images/icon_up.png");
+        }
+        &.down{
+          .commonBackground("../images/icon_down.png");
+        }
+      }
+    }
+  }
+}

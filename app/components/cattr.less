@@ -1,27 +1,58 @@
 #cattr {
-  position: absolute;
   width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.4);
-  >.content {
-    width: 10rem;
-    background: url("../images/cattr-bg.png") no-repeat;
-    background-size: 100% 100%;
-    opacity: 0.9;
-    height: 12rem;
-    margin: 2rem auto 0;
-    border-radius: 5px;
+  height: 98%;
+  background: url("../images/item_bg_1.png") no-repeat center;
+  position: relative;
+  .shelve {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 0.8rem;
+    .l {
+      width: 29%;
+      float: left;
+      height: 100%;
+      padding-left: 7%;
+      .content {
+        width: 100%;
+        .avatar {
+        }
+      }
+    }
+
+    .r{
+      float: left;
+      width: 56%;
+      padding-top: 29%;
+      background: url("../images/msg_bg.png") no-repeat center;
+      background-size: 100%;
+      position: relative;
+      .msg{
+        position: absolute;
+        width: 80%;
+        height: 60%;
+        left: 13%;
+        top: 24%;
+        color: #fff;
+      }
+    }
+
   }
-  .close {
-    display: inline-block;
-    background: url("../images/close.png") no-repeat;
-    background-size: 100%;
-    width: 1.2rem;
-    height: 1.2rem;
+
+  .gen,.action{
+    float: left;
+  }
+
+  .fish_num{
+    color: #fff;
     position: absolute;
-    right: 4%;
-    top: 2.3rem;
+    display: inline-block;
+    width: 24%;
+    text-align: center;
+    font-size: 0.34rem;
+    top: 1%;
+    left: 38%;
+    font-weight: bold;
   }
 }
 

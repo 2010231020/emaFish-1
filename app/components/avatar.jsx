@@ -17,7 +17,7 @@ module.exports = React.createClass({
 			<div className='avatar'>
 				<div className='head'>
 					<img className='image' src={`${util.getImgHost()}/fish/${fid}/small_icon_${fid}.png`}/>
-					<img className='avatar1' src={require('../images/avatar1.png')}/>
+					<div className={'exp'}><span className={'lv'}>Lv1</span><i className={'exp-bar'}/></div>
 					<Sr ssr={ssr}/>
 				</div>
 			</div>

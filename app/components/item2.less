@@ -1,15 +1,53 @@
 #item2 {
-
-  li {
-    float: left;
-    width: 50%;
-    height: 50%;
-    background: url("../images/list.png") no-repeat center;
-    background-size: 100% 100%;
-    text-align: center;
-    img{
+  height: 100%;
+  > ul {
+    width: 80%;
+    height: 80%;
+    padding: 10%;
+  }
+  .item1 {
+    li {
+      float: left;
       width: 50%;
-      padding-top: 15%;
+      height: 50%;
+      background: url("../images/item_bg.png") no-repeat center;
+      background-size: 100% 100%;
+      color: red;
+      position: relative;
+      img{
+        width: 90%;
+        padding-top: 7%;
+        padding-left: 3%;
+      }
+      .num{
+        position: absolute;
+        top: 3%;
+        width: 46%;
+        left: 27%;
+        text-align: center;
+        color: #000;
+      }
     }
+  }
+  i{
+    display: block;
+  }
+  .pre,.next{
+    width: 0.8rem;
+    height: 1.3rem;
+    position: absolute;
+    top: 2.8rem;
+  }
+  //上一页
+  .pre{
+    background: url("../images/icon_pre.png") no-repeat center;
+    background-size: 100% 100%;
+    left: -0.4rem;
+  }
+  //下一页
+  .next{
+    background: url("../images/icon_next.png") no-repeat center;
+    background-size: 100% 100%;
+    right: -0.4rem;
   }
 }
