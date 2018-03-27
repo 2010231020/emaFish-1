@@ -48,7 +48,12 @@ module.exports = React.createClass({
 					console.log(data);
 					this.setState({
 						fishList: data.fishList,
-						visitorList: data.fishTravelInfoList
+						visitorList: data.fishTravelInfoList,
+						decList: [
+							{name: '背景1', type: 1, id: 1}, {name: '背景3', type: 1, id: 3},
+							{name: '石头1', type: 2, id: 1}, {name: '石头2', type: 2, id: 2},
+							{name: '浮萍1', type: 3, id: 1}, {name: '浮萍3', type: 3, id: 3}
+						]
 					});
 					console.log(data);
 					if (data.fishList.length > 0 || data.fishTravelInfoList.length > 0) {
@@ -67,6 +72,7 @@ module.exports = React.createClass({
 					util.hideLoading();
 					console.log(data);
 				});
+				//获取装饰商城
 				util.reqPost('/emaCat/transcation/getCommodityList', {curPage: 1, pageSize: 100}, data => {
 					util.hideLoading();
 					console.log(data);
@@ -86,7 +92,7 @@ module.exports = React.createClass({
 		}, 1000);
 
 		window.addEventListener("message", e => {
-			if (e.origin === 'http://cober1.com:5239') {
+			if (e.origin === util.getEgretDomain()) {
 				console.log(e.data);
 				if (e.data.type === 'show') {
 					this.changeCurItem(e.data.msg.type, e.data.msg.fishId);
@@ -99,7 +105,7 @@ module.exports = React.createClass({
 	},
 	sendMsg(type, msg) {
 		console.log('send msg');
-		let domain = 'http://cober1.com:5239';
+		let domain = util.getEgretDomain();
 		document.getElementById("iframe").contentWindow.postMessage({type: type, msg: msg}, domain);
 	},
 	setDecorate(type, index) {
@@ -159,14 +165,14 @@ module.exports = React.createClass({
 			popFlag: true
 		});
 		if (type === 7) {
-			let uid = util.getCookie('uid');
-			const postData = {
-				uid: uid
-			};
-			util.reqPost('/emaCat/currency/hatchFish', postData, data => {
-				util.hideLoading();
-				console.log(data);
-			});
+			// let uid = util.getCookie('uid');
+			// const postData = {
+			// 	uid: uid
+			// };
+			// util.reqPost('/emaCat/currency/hatchFish', postData, data => {
+			// 	util.hideLoading();
+			// 	console.log(data);
+			// });
 		}
 		if (type === 9) {
 			this.setState({
@@ -191,7 +197,7 @@ module.exports = React.createClass({
 							0: <ul className={'item0'}>
 								<li className={'l1'} onClick={this.changeType.bind(this, 1)}><i/></li>
 								<li className={'l2'} onClick={this.changeType.bind(this, 2)}><i/></li>
-								<li className={'l3'}><i/></li>
+								<li className={'l3'} onClick={this.changeType.bind(this, 3)}><i/></li>
 								<li className={'l4'}><i/></li>
 								<li className={'l5'}><i/></li>
 								<li className={'l6'}><i/></li>
@@ -200,10 +206,12 @@ module.exports = React.createClass({
 								<li className={'l9'}><i/></li>
 							</ul>,
 							//鱼列表
-							1: <List fishList={this.state.fishList}
-											 changeCurItem={this.changeCurItem.bind(this)}/>,
+							1: <Item2 type={'fish'} list={this.state.fishList}
+												changeCurItem={this.changeCurItem.bind(this)}/>,
 							//装饰背包
-							2: <Item2 setDecorate={this.setDecorate.bind(this)} list={this.state.item2list}/>,
+							2: <Item2 type={'dec'} setDecorate={this.setDecorate.bind(this)} list={this.state.decList}/>,
+							//装饰商店
+							3: <Item2 type={'market'} setDecorate={this.setDecorate.bind(this)} list={this.state.decList}/>,
 							//孵化
 							7: <Item7/>,
 							//鱼属性页面

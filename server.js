@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'build')))
 
 // send all requests to index.html so browserHistory works
 app.use('/emaCat', proxy(backApi['production']["emaCat"]));
+// app.use('/emaCat', proxy(backApi[backApi['env']]["emaCat"]));
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })

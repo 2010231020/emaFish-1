@@ -1,5 +1,6 @@
 require('./res.css');
 import React from 'react';
+import Num from './num';
 
 let util = require('../util/util');
 
@@ -48,8 +49,8 @@ module.exports = React.createClass({
 			<div id='res'>
 				{/*<div className='tab1 res1'><span className='text'>{this.state.luckNum}</span></div>*/}
 				{/*<div className='tab1 res2'><span className='text'>{this.state.qouta}</span></div>*/}
-				<div className='tab1 res1'><span className='text'><img src={require('../images/res1_num.png')}/></span></div>
-				<div className='tab1 res2'><span className='text'><img src={require('../images/res2_num.png')}/></span></div>
+				<div className='tab1 res1'><Num number={123}/></div>
+				<div className='tab1 res2'><Num number={9999}/></div>
 			</div>
 		);
 	}

@@ -1,3 +1,5 @@
+let {env} = require("json!../../process.json");
+
 function common(url, options, callback) {
 	document.getElementById('loading').style.display = 'block';
 	fetch(url, options).then(res => {
@@ -60,9 +62,16 @@ module.exports = {
 		document.cookie = `${name}='';expires=-1`;
 	},
 	getImgHost() {
+		//缩略图图片服务器
 		let imgHost = '';
-		// imgHost = 'http://192.168.11.2:8099/emaCat';
-		imgHost = 'http://114.55.250.173:8080/emaCat';
+		if (env === 'dev') {
+			// imgHost = 'http://192.168.11.2:8099/emaCat';
+			imgHost = 'http://114.55.250.173:8080/emaCat';
+		} else if (env === 'test') {
+
+		} else if (env === 'production') {
+
+		}
 		return imgHost;
 	},
 	hideLoading() {
@@ -74,5 +83,18 @@ module.exports = {
 	},
 	popHide() {
 		document.getElementById('popup').style.display = 'none';
+	},
+	getEgretDomain() {
+		//egret服务器
+		let url = '';
+		if (env === 'dev') {
+			url = 'http://cober1.com:5239';
+		} else if (env === 'test') {
+			url = 'http://test-emfstatic.lemonade-game.com';
+		} else if (env === 'production') {
+			url = 'emfstatic.lemonade-game.com';
+		}
+		return url;
 	}
 };
+

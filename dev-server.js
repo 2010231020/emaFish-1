@@ -5,6 +5,7 @@ var proxy = require('proxy-middleware');
 const webpack = require("webpack")
 const webpackHotMiddleware = require("webpack-hot-middleware")
 const webpackConfig = require('./webpack.config.js')
+var backApi = require("./process.json");
 
 var app = express();
 
@@ -25,8 +26,9 @@ app.use(webpackHotMiddleware(compiler,{
 app.use(express.static(path.join(__dirname, 'build')))
 
 // send all requests to index.html so browserHistory works
-app.use('/emaCat', proxy('http://192.168.11.2:8080'));
+// app.use('/emaCat', proxy('http://192.168.11.2:8080'));
 // app.use('/emaCat', proxy('http://114.55.250.173:8080/emaCat'));
+app.use('/emaCat', proxy(backApi[backApi['env']]["emaCat"]));
 // app.use('/emaCat', proxy('http://192.168.21.31:8080'));
 // app.use('/emaCat', proxy('http://192.168.20.157:8080/emaCat'));
 

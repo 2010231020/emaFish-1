@@ -1,0 +1,21 @@
+.numLoop(@counter) when (@counter > 0) {
+  .numLoop(@counter - 1);
+  &.num@{counter} {
+    background: url("../images/@{counter}.png") no-repeat center;
+  }
+}
+
+.special_num {
+  text-align: center;
+  i {
+    display: inline-block !important;
+    width: 0.39rem;
+    height: 0.46rem;
+    font-size: 0;
+    .numLoop(9);
+  }
+
+  i + i {
+    margin-left: -0.07rem;
+  }
+}
