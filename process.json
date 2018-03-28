@@ -6,7 +6,10 @@
     "emaCat": "http://192.168.1.12:8080/emaCat"
   },
   "dev": {
+    "emaCat": "http://192.168.1.12:8080/emaCat"
+  },
+  "dev1": {
     "emaCat": "http://192.168.11.2:8080"
   },
-  "env": "test"
+  "env": "dev"
 }
