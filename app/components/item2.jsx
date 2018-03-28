@@ -33,7 +33,9 @@ module.exports = React.createClass({
 				listPosition: ++this.state.listPosition
 			});
 			setTimeout(() => {
-				document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
+				if (document.getElementById('domUl')) {
+					document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
+				}
 			}, 2000);
 		} else if (type === 'pre' && this.state.listPosition > 0) {
 			this.setState({
@@ -41,7 +43,9 @@ module.exports = React.createClass({
 				listPosition: --this.state.listPosition
 			});
 			setTimeout(() => {
-				document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
+				if (document.getElementById('domUl')) {
+					document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
+				}
 			}, 2000);
 		}
 	},

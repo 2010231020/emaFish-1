@@ -1,17 +1,17 @@
 @import "util";
 
 .item12 {
-  width: 6.73rem;
+  width: 7.3rem;
   height: 9.87rem;
   position: absolute;
-  left: 10%;
+  left: 8%;
   top: 5%;
   .sort {
     overflow: hidden;
-    .sort_btn{
+    .sort_btn {
       float: left;
       width: 2.17rem;
-      margin: 0.4rem 0 0 0.8rem;
+      margin: 0.4rem 0 0 1rem;
       height: 0.87rem;
       color: #bbb;
       font-weight: bold;
@@ -30,18 +30,121 @@
         }
       }
 
-      >i{
+      > i {
         display: inline-block;
         position: absolute;
         width: 0.43rem;
         height: 0.36rem;
         right: 0.25rem;
         top: 0.25rem;
-        &.up{
+        &.up {
           .commonBackground("../images/icon_up.png");
         }
-        &.down{
+        &.down {
           .commonBackground("../images/icon_down.png");
+        }
+      }
+    }
+  }
+
+  .list-content {
+    width: 100%;
+    height: 7.8rem;
+    margin-top: 0.2rem;
+    overflow: hidden;
+    ul {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      li {
+        width: 7.1rem;
+        height: 2.63rem;
+        .commonBackground("../images/market_list_bg.png");
+        overflow: hidden;
+        .l {
+          width: 2.22rem;
+          height: 2.22rem;
+          float: left;
+          margin: 0.2rem 0 0 0.2rem;
+        }
+
+        .price {
+          width: 3.17rem;
+          height: 2rem;
+          float: left;
+          margin-top: 0.5rem;
+          &.only1{
+            height: 1rem;
+            margin-top: 1rem;
+          }
+          > div {
+            width: 100%;
+            height: 1rem;
+            position: relative;
+            > i {
+              display: inline-block;
+              position: absolute;
+            }
+            .radio {
+              width: 0.22rem;
+              height: 0.22rem;
+              .commonBackground("../images/choose.png");
+              left: 0.2rem;
+              top: 0.35rem;
+              &.on {
+                .commonBackground("../images/choose-on.png");
+              }
+            }
+          }
+          .underline {
+            width: 2.17rem;
+            height: 0.22rem;
+            .commonBackground("../images/birth_underline.png");
+            left: 0.6rem;
+            bottom: 0.12rem;
+          }
+          .coin2, .coin1 {
+            width: 0.77rem;
+            height: 0.82rem;
+            left: 0.6rem;
+            z-index: 2;
+          }
+          .coin1 {
+            .commonBackground("../images/coin.png");
+          }
+          .coin2 {
+            .commonBackground("../images/action_4.png");
+          }
+          .special_num {
+            display: inline-block;
+            position: absolute;
+            left: 1.3rem;
+            bottom: 0.25rem;
+            z-index: 2;
+            width: 1.4rem;
+            height: 0.48rem;
+          }
+        }
+
+
+        .pay {
+          width: 1.26rem;
+          height: 1.23rem;
+          float: left;
+          .commonBackground("../images/action_bg1.png");
+          margin-top: 0.9rem;
+          margin-left: -0.2rem;
+          > i {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            &.coin1 {
+              background: url("../images/coin.png") no-repeat center;
+            }
+            &.coin2 {
+              background: url("../images/action_4.png") no-repeat center;
+            }
+          }
         }
       }
     }

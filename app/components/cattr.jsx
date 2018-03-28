@@ -46,7 +46,7 @@ module.exports = React.createClass({
 					<div className={'shelve'}>
 						<div className='l'>
 							<div className='content'>
-								<Avatar fid={item.fishId} ssr={item.rarity}/>
+								<Avatar item={item}/>
 							</div>
 						</div>
 						<div className={'r'} onClick={this.changeType.bind(this)}>
