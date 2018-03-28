@@ -1,8 +1,8 @@
 .item12 {
-  width: 6.73rem;
+  width: 7.3rem;
   height: 9.87rem;
   position: absolute;
-  left: 10%;
+  left: 8%;
   top: 5%;
 }
 .item12 .sort {
@@ -11,7 +11,7 @@
 .item12 .sort .sort_btn {
   float: left;
   width: 2.17rem;
-  margin: 0.4rem 0 0 0.8rem;
+  margin: 0.4rem 0 0 1rem;
   height: 0.87rem;
   color: #bbb;
   font-weight: bold;
@@ -47,4 +47,111 @@
 .item12 .sort .sort_btn > i.down {
   background: url("../images/icon_down.png") no-repeat center;
   background-size: 100% 100%;
+}
+.item12 .list-content {
+  width: 100%;
+  height: 7.8rem;
+  margin-top: 0.2rem;
+  overflow: hidden;
+}
+.item12 .list-content ul {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.item12 .list-content ul li {
+  width: 7.1rem;
+  height: 2.63rem;
+  background: url("../images/market_list_bg.png") no-repeat center;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.item12 .list-content ul li .l {
+  width: 2.22rem;
+  height: 2.22rem;
+  float: left;
+  margin: 0.2rem 0 0 0.2rem;
+}
+.item12 .list-content ul li .price {
+  width: 3.17rem;
+  height: 2rem;
+  float: left;
+  margin-top: 0.5rem;
+}
+.item12 .list-content ul li .price.only1 {
+  height: 1rem;
+  margin-top: 1rem;
+}
+.item12 .list-content ul li .price > div {
+  width: 100%;
+  height: 1rem;
+  position: relative;
+}
+.item12 .list-content ul li .price > div > i {
+  display: inline-block;
+  position: absolute;
+}
+.item12 .list-content ul li .price > div .radio {
+  width: 0.22rem;
+  height: 0.22rem;
+  background: url("../images/choose.png") no-repeat center;
+  background-size: 100% 100%;
+  left: 0.2rem;
+  top: 0.35rem;
+}
+.item12 .list-content ul li .price > div .radio.on {
+  background: url("../images/choose-on.png") no-repeat center;
+  background-size: 100% 100%;
+}
+.item12 .list-content ul li .price .underline {
+  width: 2.17rem;
+  height: 0.22rem;
+  background: url("../images/birth_underline.png") no-repeat center;
+  background-size: 100% 100%;
+  left: 0.6rem;
+  bottom: 0.12rem;
+}
+.item12 .list-content ul li .price .coin2,
+.item12 .list-content ul li .price .coin1 {
+  width: 0.77rem;
+  height: 0.82rem;
+  left: 0.6rem;
+  z-index: 2;
+}
+.item12 .list-content ul li .price .coin1 {
+  background: url("../images/coin.png") no-repeat center;
+  background-size: 100% 100%;
+}
+.item12 .list-content ul li .price .coin2 {
+  background: url("../images/action_4.png") no-repeat center;
+  background-size: 100% 100%;
+}
+.item12 .list-content ul li .price .special_num {
+  display: inline-block;
+  position: absolute;
+  left: 1.3rem;
+  bottom: 0.25rem;
+  z-index: 2;
+  width: 1.4rem;
+  height: 0.48rem;
+}
+.item12 .list-content ul li .pay {
+  width: 1.26rem;
+  height: 1.23rem;
+  float: left;
+  background: url("../images/action_bg1.png") no-repeat center;
+  background-size: 100% 100%;
+  margin-top: 0.9rem;
+  margin-left: -0.2rem;
+}
+.item12 .list-content ul li .pay > i {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.item12 .list-content ul li .pay > i.coin1 {
+  background: url("../images/coin.png") no-repeat center;
+}
+.item12 .list-content ul li .pay > i.coin2 {
+  background: url("../images/action_4.png") no-repeat center;
 }

@@ -9,7 +9,7 @@ import Item7 from './item7';
 import Item10 from './item10';
 import Item12 from './item12';
 import Item13 from './item13';
-import List from './list';
+import Popup from './popup';
 
 let util = require('../util/util');
 let User = require('../util/User');
@@ -230,6 +230,7 @@ module.exports = React.createClass({
 				{this.state.showF && <Show/>}
 				<Res/>
 				<Interaction/>
+				<Popup/>
 			</div>
 
 		);

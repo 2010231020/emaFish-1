@@ -11,14 +11,13 @@ module.exports = React.createClass({
 		router: React.PropTypes.object
 	},
 	render() {
-		const {fid} = this.props;
-		const {ssr} = this.props;
+		const {item} = this.props;
 		return (
 			<div className='avatar'>
 				<div className='head'>
-					<img className='image' src={`${util.getImgHost()}/fish/${fid}/small_icon_${fid}.png`}/>
+					<img className='image' src={`${util.getImgHost()}/fish/${item.fishId}/small_icon_${item.fishId}.png`}/>
 					<div className={'exp'}><span className={'lv'}>Lv1</span><i className={'exp-bar'}/></div>
-					<Sr ssr={ssr}/>
+					<Sr ssr={item.rarity}/>
 				</div>
 			</div>
 		)
