@@ -20,7 +20,6 @@ module.exports = React.createClass({
 	},
 	buy() {
 		this.props.buy();
-
 	},
 	choice() {
 		this.props.choice();
