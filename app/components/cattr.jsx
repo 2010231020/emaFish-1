@@ -17,12 +17,12 @@ module.exports = React.createClass({
 		router: React.PropTypes.object
 	},
 	buy(fishId, orderId) {
-		console.log(fishId, orderId);
-		let postData = {
-			uid: util.getCookie('uid'),
-			fishId: fishId,
-			orderId: orderId
-		};
+			console.log(fishId, orderId);
+			let postData = {
+				uid: util.getCookie('uid'),
+				fishId: fishId,
+				orderId: orderId
+			};
 		util.reqPost('/emaCat/transcation/buyFish', postData, data => {
 			console.log(data);
 			util.hideLoading();

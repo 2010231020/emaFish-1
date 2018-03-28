@@ -22,6 +22,7 @@ module.exports = React.createClass({
 		this.setState({
 			coinType: type
 		});
+
 		// var a = '3156793';
 		// var tmpArr = a.split("");
 		// var tmp1 = tmpArr;
@@ -42,6 +43,11 @@ module.exports = React.createClass({
 	},
 	componentDidMount() {
 	},
+	changeType() {
+		this.props.changeType(13);
+	},
+
+
 	render: function () {
 		const {item} = this.props;
 		return (
@@ -50,7 +56,7 @@ module.exports = React.createClass({
 					<textarea placeholder={'在这里写上寄语吧'}></textarea>
 				</div>
 				{this.state.actionType === 1 && <div className={'action10'}>
-					<div className={'l'}><i/></div>
+					<div className={'l'} onClick={this.changeType.bind(this)}><i/></div>
 					<div className={'r'} onClick={this.changeActionType.bind(this, 2)}><i/></div>
 				</div>}
 

@@ -81,9 +81,9 @@ module.exports = React.createClass({
 
 
 		//连接egret
-		let connectFlag = setInterval(() => {
-			this.sendMsg('connect', 'server connect');
-		}, 1000);
+		// let connectFlag = setInterval(() => {
+		// 	this.sendMsg('connect', 'server connect');
+		// }, 1000);
 
 		window.addEventListener("message", e => {
 			if (e.origin === 'http://cober1.com:5239') {
@@ -173,6 +173,11 @@ module.exports = React.createClass({
 				popFlag: true
 			})
 		}
+		if (type === 13){
+			this.setState({
+				popFlag: true
+			})
+		}
 	},
 	render() {
 		return (
@@ -210,11 +215,11 @@ module.exports = React.createClass({
 							9: <Cattr changeType={this.changeType.bind(this)} handleShow={this.changeShowFlag.bind(this)}
 												item={this.state.curItem}/>,
 							//寄语编辑页面
-							10: <Item10 item={this.state.curItem}/>,
+							10: <Item10 item={this.state.curItem} changeType={this.changeType.bind(this)} />,
 							//鱼市页面
 							12: <Item12/>,
 							//寄语历史页面
-							13: <Item13/>
+							13: <Item13 item={this.state.curItem}/>,
 						}[this.state.type]}
 					</div>
 					}
