@@ -1,0 +1,39 @@
+.special_num {
+  text-align: center;
+}
+.special_num i {
+  display: inline-block !important;
+  width: 0.39rem;
+  height: 0.46rem;
+  font-size: 0;
+}
+.special_num i.num1 {
+  background: url("../images/1.png") no-repeat center;
+}
+.special_num i.num2 {
+  background: url("../images/2.png") no-repeat center;
+}
+.special_num i.num3 {
+  background: url("../images/3.png") no-repeat center;
+}
+.special_num i.num4 {
+  background: url("../images/4.png") no-repeat center;
+}
+.special_num i.num5 {
+  background: url("../images/5.png") no-repeat center;
+}
+.special_num i.num6 {
+  background: url("../images/6.png") no-repeat center;
+}
+.special_num i.num7 {
+  background: url("../images/7.png") no-repeat center;
+}
+.special_num i.num8 {
+  background: url("../images/8.png") no-repeat center;
+}
+.special_num i.num9 {
+  background: url("../images/9.png") no-repeat center;
+}
+.special_num i + i {
+  margin-left: -0.07rem;
+}

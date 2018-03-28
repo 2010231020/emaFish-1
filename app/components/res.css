@@ -20,7 +20,7 @@
   background: url("../images/res2.png") no-repeat center;
   background-size: 100%;
 }
-#res .tab1 .text {
+#res .tab1 .special_num {
   display: inline-block;
   width: 60%;
   margin-left: 1rem;
@@ -28,7 +28,4 @@
   height: 0.5rem;
   text-align: center;
   font-size: 0.4rem;
-}
-#res .tab1 .text img {
-  width: 1rem;
 }
