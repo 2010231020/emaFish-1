@@ -18,7 +18,7 @@ app.use(require("webpack-dev-middleware")(compiler, {
 	quiet: true //向控制台显示任何内容
 }));
 
-app.use(webpackHotMiddleware(compiler,{
+app.use(webpackHotMiddleware(compiler, {
 	log: false,
 	heartbeat: 2000,
 }));
@@ -33,11 +33,12 @@ app.use('/emaCat', proxy(backApi[backApi['env']]["emaCat"]));
 // app.use('/emaCat', proxy('http://192.168.20.157:8080/emaCat'));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+	res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 var PORT = process.env.PORT || 9002
 
-app.listen(PORT, function() {
-  console.log('Production Express server running at localhost:' + PORT)
-})
+app.listen(PORT, function () {
+	console.log('Production Express server running at localhost:' + PORT);
+	console.log('environment:' + backApi[backApi['env']]["emaCat"]);
+});

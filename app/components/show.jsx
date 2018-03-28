@@ -9,7 +9,7 @@ module.exports = React.createClass({
 		return (
 			<div className='show'>
 				{/*<iframe src={`http://emfstatic.lemonade-game.com?uid=${uid}`}/>*/}
-				<iframe id={'iframe'} src={`http://cober1.com:5239/index.html?uid=${uid}`}/>
+				<iframe id={'iframe'} src={`${util.getEgretDomain()}?uid=${uid}`}/>
 			</div>
 		);
 	}
