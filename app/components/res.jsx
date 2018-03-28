@@ -17,40 +17,15 @@ module.exports = React.createClass({
 		router: React.PropTypes.object
 	},
 	getList() {
-		let uid = util.getCookie('uid');
-		util.reqPost('/emaCat/user/getUserData', {
-			uid: uid
-		}, data => {
-			util.hideLoading();
-			data && data.luckNum && util.setCookie('luckNum', data.luckNum, {path: '/'});
-			data && data.qouta && util.setCookie('qouta', data.qouta, {path: '/'});
-			this.setState({
-				luckNum: data.luckNum,
-				qouta: data.qouta
-			});
-		});
 	},
 	componentDidMount() {
-		this.setState({
-			luckNum: util.getCookie('luckNum') || 0,
-			qouta: util.getCookie('qouta') || 0
-		});
-		this.getList();
 	},
 	render() {
-		const {handleChange} = this.props;
-		if (handleChange !== this.state.handleChange) {
-			this.setState({
-				handleChange: handleChange
-			});
-			this.getList();
-		}
+		const {userData, chargingSink} = this.props;
 		return (
 			<div id='res'>
-				{/*<div className='tab1 res1'><span className='text'>{this.state.luckNum}</span></div>*/}
-				{/*<div className='tab1 res2'><span className='text'>{this.state.qouta}</span></div>*/}
-				<div className='tab1 res1'><Num number={123}/></div>
-				<div className='tab1 res2'><Num number={9999}/></div>
+				<div className='tab1 res1'><Num number={chargingSink.resourceNum || 0}/></div>
+				<div className='tab1 res2'><Num number={userData.qouta || 0}/></div>
 			</div>
 		);
 	}

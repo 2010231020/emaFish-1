@@ -7,6 +7,9 @@
   height: 0.46rem;
   font-size: 0;
 }
+.special_num i.num0 {
+  background: url("../images/0.png") no-repeat center;
+}
 .special_num i.num1 {
   background: url("../images/1.png") no-repeat center;
 }

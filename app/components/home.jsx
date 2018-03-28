@@ -26,7 +26,11 @@ module.exports = React.createClass({
 			popFlag: false,
 			itemFlag: false,
 			type: 0,
-			connectFlag: true
+			connectFlag: true,
+			userInfo: {},
+			userPondInfo: {},//鱼塘信息
+			userData: {},//用户信息，不包括水草
+			chargingSink: {}//水草信息
 		}
 	},
 	contextTypes: {
@@ -55,18 +59,12 @@ module.exports = React.createClass({
 							{name: '浮萍1', type: 3, id: 1}, {name: '浮萍3', type: 3, id: 3}
 						]
 					});
-					console.log(data);
 					if (data.fishList.length > 0 || data.fishTravelInfoList.length > 0) {
 						this.setState({
 							showF: true
 						});
 					}
 
-				});
-
-				util.reqPost('/emaCat/currency/getUserBagAndPond', {uid: uid}, data => {
-					util.hideLoading();
-					console.log(data);
 				});
 				util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
 					util.hideLoading();
@@ -80,11 +78,24 @@ module.exports = React.createClass({
 			}
 
 		});
+
+
+		util.reqPost('/emaCat/currency/getUserBagAndPond', {uid: uid}, data => {
+			util.hideLoading();
+			this.setState({
+				userInfo: data,
+				userPondInfo: data.userPondInfoList[0],
+				userData: data.userData,
+				chargingSink: data.chargingSink,
+				decorate1: data.userPondInfoList[0].backgroundId % 3 + 1,
+				decorate2: data.userPondInfoList[0].stoneId % 3 + 1,
+			});
+			console.log('个人信息', data);
+		});
 	},
 	componentDidMount() {
 		this.getList();
 		util.delCookie('from');
-
 
 		//连接egret
 		let connectFlag = setInterval(() => {
@@ -228,8 +239,8 @@ module.exports = React.createClass({
 					}
 				</div>
 				{this.state.showF && <Show/>}
-				<Res/>
-				<Interaction/>
+				<Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>
+				<Interaction userPondInfo={this.state.userPondInfo} chargingSink={this.state.chargingSink}/>
 				<Popup/>
 			</div>
 
