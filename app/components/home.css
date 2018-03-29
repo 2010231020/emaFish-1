@@ -1,16 +1,12 @@
 #home {
   height: 100%;
 }
-#home.bg1 {
-  background: url('../images/d11.jpg') no-repeat center;
-  background-size: 100% 100%;
-}
-#home.bg2 {
-  background: url('../images/d12.jpg') no-repeat center;
-  background-size: 100% 100%;
-}
 #home.bg3 {
-  background: url('../images/d13.jpg') no-repeat center;
+  background: url('../images/d3.jpg') no-repeat center;
+  background-size: 100% 100%;
+}
+#home.bg6 {
+  background: url('../images/d6.jpg') no-repeat center;
   background-size: 100% 100%;
 }
 #home .show {
@@ -25,16 +21,12 @@
   height: 100%;
   z-index: 0;
 }
-#home .bg-stone.stone1 {
-  background: url('../images/d21.png') no-repeat center;
+#home .bg-stone.stone4 {
+  background: url('../images/d4.png') no-repeat center;
   background-size: 100% 100%;
 }
-#home .bg-stone.stone2 {
-  background: url('../images/d22.png') no-repeat center;
-  background-size: 100% 100%;
-}
-#home .bg-stone.stone3 {
-  background: url('../images/d23.png') no-repeat center;
+#home .bg-stone.stone7 {
+  background: url('../images/d7.png') no-repeat center;
   background-size: 100% 100%;
 }
 #home button {
@@ -48,9 +40,6 @@
   position: absolute;
   top: 0.3rem;
   z-index: 11;
-}
-#item p {
-  color: red;
 }
 #item .a1 > i {
   display: inline-block;

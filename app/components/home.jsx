@@ -30,7 +30,8 @@ module.exports = React.createClass({
 			userInfo: {},
 			userPondInfo: {},//鱼塘信息
 			userData: {},//用户信息，不包括水草
-			chargingSink: {}//水草信息
+			chargingSink: {},//水草信息
+			userBagInfo: [],//背包信息
 		}
 	},
 	contextTypes: {
@@ -69,17 +70,24 @@ module.exports = React.createClass({
 				util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
 					util.hideLoading();
 					console.log(data);
-				});
-				//获取装饰商城
-				util.reqPost('/emaCat/transcation/getCommodityList', {curPage: 1, pageSize: 100}, data => {
-					util.hideLoading();
-					console.log(data);
+					User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
+					User.getInstance().setPropDictionary(data.propDictionaryInfos);
 				});
 			}
 
 		});
 
-
+		//获取装饰商城
+		util.reqPost('/emaCat/transcation/getCommodityList', {curPage: 1, pageSize: 100}, data => {
+			util.hideLoading();
+			console.log(data);
+			this.setState({
+				commodityList: data.commodityList
+			})
+		});
+	},
+	getUserInfoList() {
+		let uid = util.getCookie('uid');
 		util.reqPost('/emaCat/currency/getUserBagAndPond', {uid: uid}, data => {
 			util.hideLoading();
 			this.setState({
@@ -87,14 +95,16 @@ module.exports = React.createClass({
 				userPondInfo: data.userPondInfoList[0],
 				userData: data.userData,
 				chargingSink: data.chargingSink,
-				decorate1: data.userPondInfoList[0].backgroundId % 3 + 1,
-				decorate2: data.userPondInfoList[0].stoneId % 3 + 1,
+				decorate1: data.userPondInfoList[0].backgroundId,
+				decorate2: data.userPondInfoList[0].stoneId,
+				userBagInfo: data.userBagInfo
 			});
 			console.log('个人信息', data);
 		});
 	},
 	componentDidMount() {
 		this.getList();
+		this.getUserInfoList();
 		util.delCookie('from');
 
 		//连接egret
@@ -119,17 +129,19 @@ module.exports = React.createClass({
 		let domain = util.getEgretDomain();
 		document.getElementById("iframe").contentWindow.postMessage({type: type, msg: msg}, domain);
 	},
-	setDecorate(type, index) {
-		if (type === 1) {//背景
+	setDecorate(propId) {//1-9
+		let propItem = User.getInstance().getProp(propId);
+		let type = propItem.propType + '';
+		if (type === '2') {//背景123
 			this.setState({
-				decorate1: index
+				decorate1: propId
 			});
-		} else if (type === 2) {//石头
+		} else if (type === '3') {//石头456
 			this.setState({
-				decorate2: index
+				decorate2: propId
 			});
-		} else if (type === 3) {//荷叶
-			this.sendMsg('setDec', index);
+		} else if (type === '4') {//荷叶789
+			this.sendMsg('setDec', propId);
 		}
 	},
 	changeShowFlag() {
@@ -175,16 +187,6 @@ module.exports = React.createClass({
 			type: type,
 			popFlag: true
 		});
-		if (type === 7) {
-			// let uid = util.getCookie('uid');
-			// const postData = {
-			// 	uid: uid
-			// };
-			// util.reqPost('/emaCat/currency/hatchFish', postData, data => {
-			// 	util.hideLoading();
-			// 	console.log(data);
-			// });
-		}
 		if (type === 9) {
 			this.setState({
 				popFlag: true
@@ -220,16 +222,17 @@ module.exports = React.createClass({
 							1: <Item2 type={'fish'} list={this.state.fishList}
 												changeCurItem={this.changeCurItem.bind(this)}/>,
 							//装饰背包
-							2: <Item2 type={'dec'} setDecorate={this.setDecorate.bind(this)} list={this.state.decList}/>,
+							2: <Item2 type={'dec'} setDecorate={this.setDecorate.bind(this)} list={this.state.userBagInfo}/>,
 							//装饰商店
-							3: <Item2 type={'market'} setDecorate={this.setDecorate.bind(this)} list={this.state.decList}/>,
+							3: <Item2 getUserInfoList={this.getUserInfoList.bind(this)}  type={'market'} setDecorate={this.setDecorate.bind(this)} list={this.state.commodityList}/>,
 							//孵化
-							7: <Item7/>,
+							7: <Item7 getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
-							9: <Cattr changeType={this.changeType.bind(this)} handleShow={this.changeShowFlag.bind(this)}
+							9: <Cattr getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
+												handleShow={this.changeShowFlag.bind(this)}
 												item={this.state.curItem}/>,
 							//寄语编辑页面
-							10: <Item10 item={this.state.curItem}/>,
+							10: <Item10 item={this.state.curItem} getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼市页面
 							12: <Item12/>,
 							//寄语历史页面
@@ -240,7 +243,8 @@ module.exports = React.createClass({
 				</div>
 				{this.state.showF && <Show/>}
 				<Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>
-				<Interaction userPondInfo={this.state.userPondInfo} chargingSink={this.state.chargingSink}/>
+				<Interaction getUserInfoList={this.getUserInfoList.bind(this)} userPondInfo={this.state.userPondInfo}
+										 chargingSink={this.state.chargingSink}/>
 				<Popup/>
 			</div>
 

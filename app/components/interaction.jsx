@@ -5,8 +5,7 @@ let util = require('../util/util');
 
 module.exports = React.createClass({
 	getInitialState: function () {
-		return {
-		}
+		return {}
 	},
 	componentDidMount() {
 	},
@@ -18,9 +17,8 @@ module.exports = React.createClass({
 		};
 		util.reqPost('/emaCat/currency/chargingSinkInfo', postData, data => {
 			util.hideLoading();
-			this.setState({
-				ungetResourceNum: data.chargingSink.ungetResourceNum
-			});
+			console.log('chargingSinkInfo', data);
+			this.props.getUserInfoList();
 		});
 	},
 	getPraise(type) {//鱼塘点赞
@@ -34,6 +32,7 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/travel/fabulousFishPond', postData, data => {
 			util.hideLoading();
 			console.log(data);
+			this.props.getUserInfoList();
 		});
 	},
 	render: function () {

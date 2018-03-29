@@ -64,6 +64,17 @@
   display: inline-block;
   position: absolute;
 }
+.item7 .fee .l .special_num,
+.item7 .fee .r .special_num {
+  position: absolute;
+  width: 1.3rem;
+  left: 1.3rem;
+  top: 0.2rem;
+}
+.item7 .fee .l.only1,
+.item7 .fee .r.only1 {
+  margin-left: 25%;
+}
 .item7 .fee .l .radio,
 .item7 .fee .r .radio {
   width: 0.22rem;

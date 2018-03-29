@@ -8,7 +8,10 @@ let util = require('../util/util');
 
 module.exports = React.createClass({
 	getInitialState() {
-		return {}
+		return {
+			item: {},
+			exp: 0
+		}
 	},
 	close() {
 		this.props.handleShow();
@@ -35,29 +38,43 @@ module.exports = React.createClass({
 		this.props.handleShow();
 		this.props.handlePop(fishId);
 	},
+	refreshInfo(data) {
+		let tmpObj = {
+			exp: data.exp,
+			level: data.level
+		};
+		this.setState({
+			item: Object.assign(this.state.item, tmpObj)
+		});
+		this.props.getUserInfoList();
+	},
 	changeType() {
 		this.props.changeType(10);
 	},
+	componentDidMount() {
+		this.setState({
+			item: this.props.item
+		})
+	},
 	render() {
-		const {item} = this.props;
 		return (
 			<div id='cattr'>
 				<div className='content'>
 					<div className={'shelve'}>
 						<div className='l'>
 							<div className='content'>
-								<Avatar item={item}/>
+								<Avatar item={this.state.item}/>
 							</div>
 						</div>
 						<div className={'r'} onClick={this.changeType.bind(this)}>
-							<p className={'msg'}>在年轻人的颈项上，没有什么东西能比事业心这颗灿烂的宝珠更迷人的了。</p>
+							<p className={'msg'}>{this.state.item.fishNote || '还没有寄语'}</p>
 						</div>
 					</div>
 
 					<Gen item={item}/>
-					<Action item={item}/>
+					<Action refreshInfo={this.refreshInfo.bind(this)} item={this.state.item}/>
 				</div>
-				<span className={'fish_num'}>#{item.fishId}</span>
+				<span className={'fish_num'}>#{this.state.item.fishId}</span>
 				{/*<i className='close' onClick={this.close}/>*/}
 			</div>
 		)

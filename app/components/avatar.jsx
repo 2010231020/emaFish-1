@@ -16,7 +16,8 @@ module.exports = React.createClass({
 			<div className='avatar'>
 				<div className='head'>
 					<img className='image' src={`${util.getImgHost()}/fish/${item.fishId}/small_icon_${item.fishId}.png`}/>
-					<div className={'exp'}><span className={'lv'}>Lv1</span><i className={'exp-bar'}/></div>
+					<div className={'exp'}><span className={'lv'}>Lv{item.level}</span><i style={{width: `${item.exp}%`}}
+																																								className={'exp-bar'}/></div>
 					<Sr ssr={item.rarity}/>
 				</div>
 			</div>
