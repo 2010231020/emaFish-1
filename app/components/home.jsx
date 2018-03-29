@@ -129,6 +129,9 @@ module.exports = React.createClass({
 	setDecorate(propId) {//1-9
 		let propItem = User.getInstance().getProp(propId);
 		let type = propItem.propType + '';
+		if (type === '1' && propId === 2) {
+			this.changeType(7);
+		}
 		if (type === '2') {//背景123
 			this.setState({
 				decorate1: propId
@@ -206,12 +209,12 @@ module.exports = React.createClass({
 						{{//功能列表
 							0: <ul className={'item0'}>
 								<li className={'l1'} onClick={this.changeType.bind(this, 1)}><i/></li>
-								<li className={'l2'} onClick={this.changeType.bind(this, 2)}><i/></li>
-								<li className={'l3'} onClick={this.changeType.bind(this, 3)}><i/></li>
+								<li className={'l2'} onClick={this.changeType.bind(this, 3)}><i/></li>
+								<li className={'l3'} onClick={this.changeType.bind(this, 12)}><i/></li>
 								<li className={'l4'}><i/></li>
-								<li className={'l5'}><i/></li>
-								<li className={'l6'}><i/></li>
-								<li className={'l7'} onClick={this.changeType.bind(this, 7)}><i/></li>
+								<li className={'l5'} onClick={this.popState.bind(this)}><i/></li>
+								<li className={'l6'} onClick={this.changeType.bind(this, 2)}><i/></li>
+								<li className={'l7'}><i/></li>
 								<li className={'l8'}><i/></li>
 								<li className={'l9'}><i/></li>
 							</ul>,

@@ -64,6 +64,7 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/transcation/buyCommodity', postData, data => {
 			util.hideLoading();
 			console.log(data);
+			util.popShow(data.resultMsg.replace('java.lang.Exception: ',''));
 			this.props.getUserInfoList();
 		});
 	},
