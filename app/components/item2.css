@@ -369,6 +369,9 @@
   overflow-x: scroll;
   position: absolute;
 }
+#item2 .list > ul::-webkit-scrollbar {
+  display: none;
+}
 #item2 .list > ul li {
   float: left;
   width: 3.06rem;

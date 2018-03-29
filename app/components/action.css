@@ -8,6 +8,7 @@
   height: 1.26rem;
   margin-top: 0.4rem;
   background: url("../images/action_bg1.png") no-repeat center;
+  background-size: 100% 100%;
 }
 .action > div .action1,
 .action > div .action2,

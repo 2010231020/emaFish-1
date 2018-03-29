@@ -91,7 +91,7 @@ module.exports = React.createClass({
 				chargingSink: data.chargingSink,
 				decorate1: data.userPondInfoList[0].backgroundId,
 				decorate2: data.userPondInfoList[0].stoneId,
-				userBagInfo: data.userBagInfo
+				userBagInfo: data.userBagInfo.concat(data.userDecorateInfoList)
 			});
 			console.log('个人信息', data);
 		});

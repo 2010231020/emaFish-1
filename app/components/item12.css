@@ -60,6 +60,9 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
+.item12 .list-content ul::-webkit-scrollbar {
+  display: none;
+}
 .item12 .list-content ul li {
   width: 7.1rem;
   height: 2.63rem;
