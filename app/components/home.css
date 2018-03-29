@@ -19,7 +19,7 @@
   top: 0;
   width: 10rem;
   height: 100%;
-  z-index: 2;
+  z-index: 2000;
   background: url("../images/loading.jpg") no-repeat center;
   background-size: 100% 100%;
 }
@@ -37,10 +37,6 @@
 #home .bg-stone.stone7 {
   background: url('../images/d7.png') no-repeat center;
   background-size: 100% 100%;
-}
-#home button {
-  position: absolute;
-  z-index: 10000;
 }
 #home .bo {
   mix-blend-mode: overlay;
