@@ -164,7 +164,9 @@
 }
 .item12 .list-content ul li .pay > i.coin1 {
   background: url("../images/coin.png") no-repeat center;
+  background-size: 0.75rem 0.75rem;
 }
 .item12 .list-content ul li .pay > i.coin2 {
   background: url("../images/action_4.png") no-repeat center;
+  background-size: 0.75rem 0.75rem;
 }

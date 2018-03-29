@@ -34,7 +34,7 @@ module.exports = React.createClass({
 		return (
 			<div id="login">
 				<p>用户名：<input id='userName' type='text'/></p>
-				<button onClick={this.login} className='btn'>登录</button>
+				<button onClick={this.login} className='btn'/>
 
 			</div>
 		);

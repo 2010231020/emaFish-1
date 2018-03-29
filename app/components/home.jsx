@@ -241,7 +241,7 @@ module.exports = React.createClass({
 					}
 				</div>
 				{this.state.showF && <Show/>}
-				{this.state.loadingFlag && <div className={'loading'}></div>}
+				{this.state.loadingFlag && <div className={'loading'}/>}
 				<Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>
 				<Interaction getUserInfoList={this.getUserInfoList.bind(this)} userPondInfo={this.state.userPondInfo}
 										 chargingSink={this.state.chargingSink}/>

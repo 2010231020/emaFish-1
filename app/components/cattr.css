@@ -92,21 +92,23 @@
   height: 0.46rem;
   left: 1.6rem;
   top: 0.2rem;
-  background: url("../images/72h.png") no-repeat center;
+  background: url("../images/72h1.png") no-repeat center;
   background-size: 100% 100%;
 }
 #cattr .sale_content .sale_info .price,
 #cattr .sale_content .sale_info .time {
-  width: 0.77rem;
-  height: 0.82rem;
   left: 0.6rem;
   z-index: 2;
 }
 #cattr .sale_content .sale_info .time {
-  background: url("../images/sale_time.png") no-repeat center;
+  width: 0.51rem;
+  height: 0.7rem;
+  background: url("../images/sale_time@2x.png") no-repeat center;
   background-size: 100% 100%;
 }
 #cattr .sale_content .sale_info .price {
+  height: 0.75rem;
+  width: 0.75rem;
   background: url("../images/action_4.png") no-repeat center;
   background-size: 100% 100%;
 }

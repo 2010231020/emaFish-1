@@ -144,6 +144,7 @@
 }
 .item10 .pay > i.coin2 {
   background: url("../images/action_4.png") no-repeat center;
+  background-size: 0.75rem 0.75rem;
 }
 .item10 .fish_num {
   color: #fff;
