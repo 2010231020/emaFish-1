@@ -11,5 +11,5 @@
   "dev1": {
     "emaCat": "http://192.168.11.2:8080"
   },
-  "env": "dev"
+  "env": "test"
 }
