@@ -58,6 +58,7 @@
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 .item12 .list-content ul li {
   width: 7.1rem;

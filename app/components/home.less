@@ -1,12 +1,12 @@
 @import "util";
 
-.stoneBg(@counter){
+.stoneBg(@counter) {
   &.stone@{counter} {
     .commonBackground('../images/d@{counter}.png');
   }
 }
 
-.bg(@counter){ //循环生成相应背景图 0 1 2
+.bg(@counter) { //循环生成相应背景图 0 1 2
   &.bg@{counter} {
     .commonBackground('../images/d@{counter}.jpg');
   }
@@ -30,6 +30,14 @@
     top: 0;
     width: 10rem;
     height: 100%;
+  }
+  .loading {
+    position: absolute;
+    top: 0;
+    width: 10rem;
+    height: 100%;
+    z-index: 2;
+    .commonBackground("../images/loading.jpg");
   }
   .bg-stone {
     position: absolute;

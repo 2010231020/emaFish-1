@@ -20,6 +20,7 @@ module.exports = React.createClass({
 			showFlag: false,
 			fishList: [],
 			showF: false,
+			loadingFlag: true,
 			visitorList: [],
 			decorate1: 1,
 			decorate2: 2,
@@ -54,18 +55,11 @@ module.exports = React.createClass({
 					this.setState({
 						fishList: data.fishList,
 						visitorList: data.fishTravelInfoList,
-						decList: [
-							{name: '背景1', type: 1, id: 1}, {name: '背景3', type: 1, id: 3},
-							{name: '石头1', type: 2, id: 1}, {name: '石头2', type: 2, id: 2},
-							{name: '浮萍1', type: 3, id: 1}, {name: '浮萍3', type: 3, id: 3}
-						]
 					});
-					if (data.fishList.length > 0 || data.fishTravelInfoList.length > 0) {
-						this.setState({
-							showF: true
-						});
-					}
 
+					this.setState({
+						showF: true
+					});
 				});
 				util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
 					util.hideLoading();
@@ -107,10 +101,10 @@ module.exports = React.createClass({
 		this.getUserInfoList();
 		util.delCookie('from');
 
-		//连接egret
-		// let connectFlag = setInterval(() => {
-		// 	this.sendMsg('connect', 'server connect');
-		// }, 1000);
+		// 连接egret
+		let connectFlag = setInterval(() => {
+			this.sendMsg('connect', 'server connect');
+		}, 1000);
 
 		window.addEventListener("message", e => {
 			if (e.origin === util.getEgretDomain()) {
@@ -119,6 +113,9 @@ module.exports = React.createClass({
 					this.changeCurItem(e.data.msg.type, e.data.msg.fishId);
 				} else if (e.data.type === 'connect') {
 					clearInterval(connectFlag);
+					this.setState({
+						loadingFlag: false
+					});
 					console.log('egret connected');
 				}
 			}
@@ -244,6 +241,7 @@ module.exports = React.createClass({
 					}
 				</div>
 				{this.state.showF && <Show/>}
+				{this.state.loadingFlag && <div className={'loading'}></div>}
 				<Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>
 				<Interaction getUserInfoList={this.getUserInfoList.bind(this)} userPondInfo={this.state.userPondInfo}
 										 chargingSink={this.state.chargingSink}/>

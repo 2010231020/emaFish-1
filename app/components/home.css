@@ -14,6 +14,15 @@
   width: 10rem;
   height: 100%;
 }
+#home .loading {
+  position: absolute;
+  top: 0;
+  width: 10rem;
+  height: 100%;
+  z-index: 2;
+  background: url("../images/loading.jpg") no-repeat center;
+  background-size: 100% 100%;
+}
 #home .bg-stone {
   position: absolute;
   top: 0;

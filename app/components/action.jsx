@@ -11,10 +11,8 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	sale() {
-		//出售 暂无出售页面
-		// const path = '/sale';
-		// this.context.router.push(path);
+	toSale() {
+		this.props.toSale();
 	},
 	feed(fishId) {
 		//暂无喂养接口
@@ -48,7 +46,7 @@ module.exports = React.createClass({
 		return (
 			<div className='action'>
 				{flag === 1 && <div>
-					<div className={'action1'} onClick={this.sale.bind(this, item)}/>
+					<div className={'action1'} onClick={this.toSale.bind(this, item)}/>
 				</div>}
 				{flag === 1 && <div>
 					<div className={'action2'} onClick={this.feed.bind(this, item.fishId)}>
