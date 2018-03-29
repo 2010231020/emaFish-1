@@ -14,7 +14,6 @@ module.exports = React.createClass({
 			sortType: 1,//1:price;2:rare,
 			priceType: true,//true:up;false:down,
 			rareType: true,//true:up;false:down,
-
 		}
 	},
 	contextTypes: {
@@ -59,7 +58,7 @@ module.exports = React.createClass({
 	},
 	componentDidMount() {
 		this.getList(1);
-	},
+	},   //加载DOM之前运行的方法。默认运行一次
 	buy(fishId, orderId) {
 		console.log(fishId, orderId);
 		let postData = {

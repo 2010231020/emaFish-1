@@ -108,9 +108,9 @@ module.exports = React.createClass({
 		util.delCookie('from');
 
 		//连接egret
-		let connectFlag = setInterval(() => {
-			this.sendMsg('connect', 'server connect');
-		}, 1000);
+		// let connectFlag = setInterval(() => {
+		// 	this.sendMsg('connect', 'server connect');
+		// }, 1000);
 
 		window.addEventListener("message", e => {
 			if (e.origin === util.getEgretDomain()) {
@@ -224,7 +224,8 @@ module.exports = React.createClass({
 							//装饰背包
 							2: <Item2 type={'dec'} setDecorate={this.setDecorate.bind(this)} list={this.state.userBagInfo}/>,
 							//装饰商店
-							3: <Item2 getUserInfoList={this.getUserInfoList.bind(this)}  type={'market'} setDecorate={this.setDecorate.bind(this)} list={this.state.commodityList}/>,
+							3: <Item2 getUserInfoList={this.getUserInfoList.bind(this)} type={'market'}
+												setDecorate={this.setDecorate.bind(this)} list={this.state.commodityList}/>,
 							//孵化
 							7: <Item7 getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
@@ -232,11 +233,12 @@ module.exports = React.createClass({
 												handleShow={this.changeShowFlag.bind(this)}
 												item={this.state.curItem}/>,
 							//寄语编辑页面
-							10: <Item10 item={this.state.curItem} getUserInfoList={this.getUserInfoList.bind(this)}/>,
+							10: <Item10 changeType={this.changeType.bind(this)} item={this.state.curItem}
+													getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼市页面
 							12: <Item12/>,
 							//寄语历史页面
-							13: <Item13/>
+							13: <Item13 item={this.state.curItem}/>
 						}[this.state.type]}
 					</div>
 					}

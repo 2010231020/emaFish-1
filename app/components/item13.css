@@ -1,10 +1,9 @@
 .item13 {
   width: 100%;
-  height: 98%;
+  height: 100%;
   background: url("../images/hist_bg1.png") no-repeat center;
-  background-size: 7.66rem 9.22rem;
+  background-size: 7.66rem 8.99rem;
   position: absolute;
-  padding-bottom: 17%;
 }
 .item13 .fish_num {
   color: #fff;
@@ -17,88 +16,38 @@
   left: 38%;
   font-weight: bold;
 }
-.item13 .msg1 {
+.item13 .list-hist {
+  width: 100%;
+  height: 81%;
+  margin-top: 0.6rem;
+}
+.item13 .list-hist ul {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.item13 .list-hist ul li {
   width: 6.18rem;
   height: 2.25rem;
   background: url("../images/hist_bg2.png") no-repeat center;
-  margin: auto;
-  margin-top: 1rem;
   position: relative;
+  overflow: hidden;
+  left: 10%;
 }
-.item13 .msg1 > textarea {
+.item13 .list-hist ul li p {
   position: absolute;
-  width: 80%;
-  height: 66%;
-  left: 9%;
-  top: 0%;
-  display: block;
-  margin: auto;
-  background: none;
-  border: none;
+  width: 70%;
+  height: 36%;
+  margin: 0.6rem auto auto;
+  left: 15%;
+  overflow: scroll;
   color: #ffffff;
-}
-.item13 .msg1 > textarea::placeholder {
-  color: #fff;
-  padding-top: 0.5rem;
   text-align: center;
-  font-weight: bold;
-  z-index: -1;
-}
-.item13 .msg2 {
-  width: 6.18rem;
-  height: 2.25rem;
-  background: url("../images/hist_bg2.png") no-repeat center;
-  margin: auto;
-  margin-top: 0.1rem;
-  position: relative;
-}
-.item13 .msg2 > textarea {
-  position: absolute;
-  width: 80%;
-  height: 66%;
-  left: 9%;
-  top: 0%;
-  display: block;
-  margin: auto;
-  background: none;
-  border: none;
-  color: white;
-}
-.item13 .msg2 > textarea::placeholder {
-  color: #fff;
-  padding-top: 0.5rem;
-  text-align: center;
-  font-weight: bold;
-}
-.item13 .msg3 {
-  width: 6.18rem;
-  height: 2.25rem;
-  background: url("../images/hist_bg2.png") no-repeat center;
-  margin: auto;
-  margin-top: 0.1rem;
-  position: relative;
-}
-.item13 .msg3 > textarea {
-  position: absolute;
-  width: 80%;
-  height: 66%;
-  left: 9%;
-  top: 0%;
-  display: block;
-  margin: auto;
-  background: none;
-  border: none;
-  color: white;
-}
-.item13 .msg3 > textarea::placeholder {
-  color: #fff;
-  padding-top: 0.5rem;
-  text-align: center;
-  font-weight: bold;
+  margin-top: 0.8rem;
 }
 .item13 .buttom {
   width: 100%;
-  height: 6%;
+  height: 5%;
   background: url("../images/hist_l_button.png") no-repeat center;
-  position: relative;
+  position: absolute;
 }

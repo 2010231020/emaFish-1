@@ -1,12 +1,10 @@
 .item13 {
   width: 100%;
-  height: 98%;
+  height: 100%;
   background: url("../images/hist_bg1.png") no-repeat center;
-  background-size: 7.66rem 9.22rem;
+  background-size: 7.66rem 8.99rem;
   position: absolute;
-  padding-bottom:17%;
-
-  .fish_num{
+  .fish_num {
     color: #fff;
     position: absolute;
     display: inline-block;
@@ -17,91 +15,66 @@
     left: 38%;
     font-weight: bold;
   }
-  .msg1 {
-    width: 6.18rem;
-    height: 2.25rem;
-    background: url("../images/hist_bg2.png") no-repeat center;
-    margin: auto;
-    margin-top: 1rem;
-    position: relative;
-    > textarea {
-      position: absolute;
-      width: 80%;
-      height: 66%;
-      left: 9%;
-      top: 0%;
-      display: block;
-      margin: auto;
-      background: none;
-      border: none;
-      color: #ffffff;
-      &::placeholder {
-        color: #fff;
-        padding-top: 0.5rem;
-        text-align: center;
-        font-weight: bold;
-        z-index: -1;
-      }
-    }
-  }
-  .msg2 {
-    width: 6.18rem;
-    height: 2.25rem;
-    background: url("../images/hist_bg2.png") no-repeat center;
-    margin: auto;
-    margin-top: 0.1rem;
-    position: relative;
-    > textarea {
-      position: absolute;
-      width: 80%;
-      height: 66%;
-      left: 9%;
-      top: 0%;
-      display: block;
-      margin: auto;
-      background: none;
-      border: none;
-      color: white;
-      &::placeholder {
-        color: #fff;
-        padding-top: 0.5rem;
-        text-align: center;
-        font-weight: bold;
-      }
-    }
-  }
-  .msg3 {
-    width: 6.18rem;
-    height: 2.25rem;
-    background: url("../images/hist_bg2.png") no-repeat center;
-    margin: auto;
-    margin-top: 0.1rem;
-    position: relative;
-    > textarea {
-      position: absolute;
-      width: 80%;
-      height: 66%;
-      left: 9%;
-      top: 0%;
-      display: block;
-      margin: auto;
-      background: none;
-      border: none;
-      color: white;
-      &::placeholder {
-        color: #fff;
-        padding-top: 0.5rem;
-        text-align: center;
-        font-weight: bold;
-      }
-    }
-  }
-  .buttom{
+  .list-hist {
     width: 100%;
-    height: 6%;
+    height: 81%;
+    margin-top: 0.6rem;
+    ul {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      li {
+        width: 6.18rem;
+        height: 2.25rem;
+        background: url("../images/hist_bg2.png") no-repeat center;
+        position: relative;
+        overflow: hidden;
+        left: 10%;
+          p {
+            position: absolute;
+            width: 70%;
+            height: 36%;
+            margin: 0.6rem auto auto;
+            left: 15%;
+            overflow: scroll;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 0.8rem;
+          }
+        }
+      }
+    }
+  //.msg3 {
+  //  width: 6.18rem;
+  //  height: 2.25rem;
+  //  background: url("../images/hist_bg2.png") no-repeat center;
+  //  margin: auto;
+  //  margin-top: 0.1rem;
+  //  position: relative;
+  //  > textarea {
+  //    position: absolute;
+  //    width: 80%;
+  //    height: 35%;
+  //    left: 9%;
+  //    display: block;
+  //    margin: 0.7rem auto 0.5rem;
+  //    border: none;
+  //    background: none;
+  //    &::placeholder {
+  //      color: #fff;
+  //      padding: 0rem 0.5rem;
+  //      text-align: center;
+  //      font-weight: bold;
+  //      font-size: 0.37rem;
+  //    }
+  //  }
+  //}
+  .buttom {
+    width: 100%;
+    height: 5%;
     background: url("../images/hist_l_button.png") no-repeat center;
-    position: relative;
+    position: absolute;
   }
-
 }
+
 
