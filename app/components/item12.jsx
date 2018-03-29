@@ -71,6 +71,9 @@ module.exports = React.createClass({
 			console.log(data);
 			util.hideLoading();
 			util.popShow('购买成功');
+			setTimeout(() => {
+				location.reload();
+			}, 2000);
 		})
 	},
 	render: function () {
@@ -109,6 +112,7 @@ module.exports = React.createClass({
 							<div className={'pay'} onClick={this.buy.bind(this, item.fishId, item.orderId)}>
 								<i className={`coin${this.state.coinType}`}/>
 							</div>
+							<span className={'fish_num'}>#{item.fishId}</span>
 						</li>)}
 					</ul>
 				</div>

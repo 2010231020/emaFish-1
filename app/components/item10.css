@@ -71,6 +71,17 @@
   height: 1rem;
   position: relative;
 }
+.item10 .fee .l .special_num,
+.item10 .fee .r .special_num {
+  position: absolute;
+  width: 1.3rem;
+  left: 1.3rem;
+  top: 0.2rem;
+}
+.item10 .fee .l.only1,
+.item10 .fee .r.only1 {
+  margin-left: 25%;
+}
 .item10 .fee .l > i,
 .item10 .fee .r > i {
   display: inline-block;

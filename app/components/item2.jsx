@@ -1,6 +1,7 @@
 require('./item2.css');
 import React from 'react';
 import Num from './num';
+import DecorateBox from './decorateBox';
 
 let util = require('../util/util');
 
@@ -49,14 +50,21 @@ module.exports = React.createClass({
 			}, 2000);
 		}
 	},
-	getList() {
+	buy(commondyId, propId, e) {
+		//阻止事件冒泡
+		e.stopPropagation();
+		e.nativeEvent.stopImmediatePropagation();
 		let uid = util.getCookie('uid');
 		const postData = {
-			uid: uid
+			uid: uid,
+			propId: propId,
+			pondId: util.getCookie('pondId'),
+			commondyId: commondyId
 		};
-		util.reqPost('/emaCat/currency/getUserDecorateInfo', postData, data => {
+		util.reqPost('/emaCat/transcation/buyCommodity', postData, data => {
 			util.hideLoading();
 			console.log(data);
+			this.props.getUserInfoList();
 		});
 	},
 	render() {
@@ -68,24 +76,20 @@ module.exports = React.createClass({
 				<div className={'list'}>
 					<ul id={'domUl'} className={this.state.positionClass}
 							style={{width: `${Math.ceil(list.length / 2) * 3.06}rem`}}>
-						{type === 'dec' && list.map((item, i) => <li
-							onClick={this.props.setDecorate.bind(this, item.type, item.id)}>
-							<img src={require(`../images/d${item.type}${item.id}l.png`)}/>
-							<span className={'num'}>{item.name}</span>
+						{type === 'dec' && list.map((item, i) => <li onClick={this.props.setDecorate.bind(this, item.propId)}>
+							<DecorateBox propId={item.propId}/>
 						</li>)}
 						{type === 'fish' && list.map((item, i) => <li
 							onClick={this.props.changeCurItem.bind(this, 1, item.fishId)}>
 							<img src={`${util.getImgHost()}/fish/${item.fishId}/small_icon_${item.fishId}.png`}/>
-							<span className={'num'}>#{item.fishId}</span>
+							<span className={'name'}>#{item.fishId}</span>
 						</li>)}
-						{type === 'market' && list.map((item, i) => <li
-							onClick={this.props.setDecorate.bind(this, item.type, item.id)}>
-							<img src={require(`../images/d${item.type}${item.id}l.png`)}/>
-							<span className={'num'}>{item.name}</span>
-							<div className={'price'}>
+						{type === 'market' && list.map((item, i) => <li onClick={this.props.setDecorate.bind(this, item.propId)}>
+							<DecorateBox propId={item.propId}/>
+							<div className={'price'} onClick={this.buy.bind(this, item.id, item.propId)}>
 								<i className={'coin2'}/>
 								<i className={'underline'}/>
-								<Num number={888}/>
+								<Num number={item.price}/>
 							</div>
 						</li>)}
 					</ul>

@@ -1,16 +1,14 @@
 @import "util";
 
-.itemBgLoop(@counter) when (@counter > 0) { //循环生成相应背景图
-  .itemBgLoop((@counter - 1)); // 递归调用自身
+.stoneBg(@counter){
   &.stone@{counter} {
-    .commonBackground('../images/d2@{counter}.png');
+    .commonBackground('../images/d@{counter}.png');
   }
 }
 
-.bgLoop(@counter) when (@counter > 0) { //循环生成相应背景图
-  .bgLoop((@counter - 1)); // 递归调用自身
+.bg(@counter){ //循环生成相应背景图 0 1 2
   &.bg@{counter} {
-    .commonBackground('../images/d1@{counter}.jpg');
+    .commonBackground('../images/d@{counter}.jpg');
   }
 }
 
@@ -25,7 +23,8 @@
 }
 
 #home {
-  .bgLoop(3);
+  .bg(3);
+  .bg(6);
   height: 100%;
   .show {
     top: 0;
@@ -38,7 +37,8 @@
     width: 10rem;
     height: 100%;
     z-index: 0;
-    .itemBgLoop(3);
+    .stoneBg(4);
+    .stoneBg(7);
   }
   button {
     position: absolute;
@@ -53,9 +53,6 @@
   position: absolute;
   top: 0.3rem;
   z-index: 11;
-  p {
-    color: red;
-  }
   .a1 > i {
     display: inline-block;
     width: 1.56rem;

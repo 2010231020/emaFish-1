@@ -378,11 +378,12 @@
   position: relative;
 }
 #item2 .list > ul li img {
-  width: 90%;
-  padding-top: 7%;
-  padding-left: 3%;
+  display: block;
+  margin: auto;
+  width: 1.5rem;
+  margin-top: 0.78rem;
 }
-#item2 .list > ul li .num {
+#item2 .list > ul li .name {
   position: absolute;
   top: 3%;
   width: 46%;
@@ -391,7 +392,7 @@
   color: #000;
 }
 #item2 .list > ul li .price {
-  width: 2.17rem;
+  width: 3.17rem;
   height: 1rem;
   position: absolute;
   z-index: 1;

@@ -26,6 +26,36 @@ function common(url, options, callback) {
 	})
 }
 
+const Dictionary = {
+	"0": {
+		propName: '背景1'
+	},
+	"1": {
+		propName: '背景2'
+	},
+	"2": {
+		propName: '背景3'
+	},
+	"3": {
+		propName: '石头1'
+	},
+	"4": {
+		propName: '石头2'
+	},
+	"5": {
+		propName: '石头3'
+	},
+	"6": {
+		propName: '浮萍1'
+	},
+	"7": {
+		propName: '浮萍2'
+	},
+	"8": {
+		propName: '浮萍3'
+	},
+};
+
 module.exports = {
 	reqGet(url, postData, callback) {
 		let options = {
@@ -95,6 +125,9 @@ module.exports = {
 			url = 'emfstatic.lemonade-game.com';
 		}
 		return url;
+	},
+	getDecorateObj(propId) {
+		return Dictionary[propId];
 	}
 };
 

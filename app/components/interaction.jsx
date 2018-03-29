@@ -5,13 +5,9 @@ let util = require('../util/util');
 
 module.exports = React.createClass({
 	getInitialState: function () {
-		return {
-			ungetResourceNum: 0
-		}
+		return {}
 	},
 	componentDidMount() {
-		this.getRes(0);
-		this.getPraise(0);
 	},
 	getRes(type) {
 		let uid = util.getCookie('uid');
@@ -21,13 +17,11 @@ module.exports = React.createClass({
 		};
 		util.reqPost('/emaCat/currency/chargingSinkInfo', postData, data => {
 			util.hideLoading();
-			this.setState({
-				ungetResourceNum: data.chargingSink.ungetResourceNum
-			});
-			console.log(data);
+			console.log('chargingSinkInfo', data);
+			this.props.getUserInfoList();
 		});
 	},
-	getPraise(type) {
+	getPraise(type) {//鱼塘点赞
 		let uid = util.getCookie('uid');
 		let pondId = util.getCookie('pondId');
 		const postData = {
@@ -38,18 +32,20 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/travel/fabulousFishPond', postData, data => {
 			util.hideLoading();
 			console.log(data);
+			this.props.getUserInfoList();
 		});
 	},
 	render: function () {
+		const {userPondInfo, chargingSink} = this.props;
 		return (
 			<div id='interaction'>
-				<div className={'a1'} onClick={this.getPraise.bind(this, 1)}>
+				<div className={'a1'} onClick={this.getPraise.bind(this, 0)}>
 					<img src={require('../images/interaction1.png')}/>
-					<span className={'num'}></span>
+					<span className={'num'}>{userPondInfo.attractiveness || ''}</span>
 				</div>
 				<div className={'a2'} onClick={this.getRes.bind(this, 1)}>
 					<img src={require('../images/interaction2.png')}/>
-					<span className={'num'}>{this.state.ungetResourceNum || ''}</span>
+					<span className={'num'}>{chargingSink.ungetResourceNum || ''}</span>
 				</div>
 			</div>
 		);

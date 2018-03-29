@@ -64,7 +64,19 @@
   height: 2.63rem;
   background: url("../images/market_list_bg.png") no-repeat center;
   background-size: 100% 100%;
+  position: relative;
   overflow: hidden;
+}
+.item12 .list-content ul li .fish_num {
+  color: #fff;
+  position: absolute;
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+  font-size: 0.34rem;
+  top: 3%;
+  left: 38%;
+  font-weight: bold;
 }
 .item12 .list-content ul li .l {
   width: 2.22rem;

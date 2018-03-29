@@ -5,7 +5,6 @@ let util = require('../util/util');
 module.exports = React.createClass({
 	close() {
 		util.popHide();
-		location.reload();
 	},
 	render() {
 		const {str} = this.props;

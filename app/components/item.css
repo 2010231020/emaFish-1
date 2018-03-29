@@ -3,9 +3,6 @@
   top: 0.3rem;
   z-index: 10;
 }
-#item p {
-  color: red;
-}
 #item .a1 > i {
   display: inline-block;
   width: 1.56rem;
