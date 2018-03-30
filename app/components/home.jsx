@@ -135,22 +135,37 @@ module.exports = React.createClass({
 		let domain = util.getEgretDomain();
 		document.getElementById("iframe").contentWindow.postMessage({type: type, msg: msg}, domain);
 	},
-	setDecorate(propId) {//1-9
+	setDecorate(propId, isPre) {//1-9
 		let propItem = User.getInstance().getProp(propId);
 		let type = propItem.propType + '';
+		let postData = {};
 		if (type === '1' && propId === 2) {
 			this.changeType(7);
+		} else {
+			postData = {
+				uid: util.getCookie('uid')
+			};
 		}
 		if (type === '2') {//背景123
 			this.setState({
 				decorate1: propId
 			});
+			postData.backgroundId = propId;
 		} else if (type === '3') {//石头456
 			this.setState({
 				decorate2: propId
 			});
+			postData.stoneId = propId;
 		} else if (type === '4') {//荷叶789
 			this.sendMsg('setDec', propId);
+			postData.duckweedId = propId;
+		}
+
+		if (!isPre && postData.uid) {
+			util.reqPost('/emaCat/currency/updateUserPondInfo', postData, data => {
+				util.hideLoading();
+				console.log(data);
+			});
 		}
 	},
 	changeShowFlag() {
@@ -231,18 +246,21 @@ module.exports = React.createClass({
 							1: <Item2 type={'fish'} list={this.state.fishList}
 												changeCurItem={this.changeCurItem.bind(this)}/>,
 							//装饰背包
-							2: <Item2 popState={this.popState.bind(this)} type={'dec'} setDecorate={this.setDecorate.bind(this)} list={this.state.userBagInfo}/>,
+							2: <Item2 popState={this.popState.bind(this)} type={'dec'} setDecorate={this.setDecorate.bind(this)}
+												list={this.state.userBagInfo}/>,
 							//装饰商店
-							3: <Item2 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)} type={'market'}
+							3: <Item2 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}
+												type={'market'}
 												setDecorate={this.setDecorate.bind(this)} list={this.state.commodityList}/>,
 							//孵化
 							7: <Item7 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
 							9: <Cattr getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
 												handleShow={this.changeShowFlag.bind(this)} refreshInfo={this.refreshInfo.bind(this)}
-												item={this.state.curItem}/>,
+												item={this.state.curItem} popState={this.popState.bind(this)}/>,
 							//寄语编辑页面
-							10: <Item10 popState={this.popState.bind(this)} changeType={this.changeType.bind(this)} item={this.state.curItem}
+							10: <Item10 popState={this.popState.bind(this)} changeType={this.changeType.bind(this)}
+													item={this.state.curItem}
 													getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼市页面
 							12: <Item12 popState={this.popState.bind(this)}/>,

@@ -29,25 +29,28 @@ module.exports = React.createClass({
 	},
 	changePosition(type) {
 		if (type === 'next' && this.state.listPosition < this.state.maxPosition) {
+			document.getElementById('domUl').style.left = (1 + this.state.listPosition) * (-3.06) + 'rem';
 			this.setState({
 				positionClass: `position${this.state.listPosition}${this.state.listPosition + 1}`,
 				listPosition: ++this.state.listPosition
 			});
-			setTimeout(() => {
-				if (document.getElementById('domUl')) {
-					document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
-				}
-			}, 2000);
+			// setTimeout(() => {
+			// 	if (document.getElementById('domUl')) {
+			// 		document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
+			// 	}
+			// }, 2000);
 		} else if (type === 'pre' && this.state.listPosition > 0) {
+			document.getElementById('domUl').style.left = (this.state.listPosition - 1) * (-3.06) + 'rem';
 			this.setState({
 				positionClass: `position${this.state.listPosition}${this.state.listPosition - 1}`,
 				listPosition: --this.state.listPosition
 			});
-			setTimeout(() => {
-				if (document.getElementById('domUl')) {
-					document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
-				}
-			}, 2000);
+
+			// setTimeout(() => {
+			// 	if (document.getElementById('domUl')) {
+			// 		document.getElementById('domUl').style.left = -this.state.listPosition * 3.06 + 'rem';
+			// 	}
+			// }, 2000);
 		}
 	},
 	buy(commondyId, propId, e) {
@@ -64,8 +67,9 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/transcation/buyCommodity', postData, data => {
 			util.hideLoading();
 			console.log(data);
+			this.props.setDecorate(propId, false);
 			util.popShow(data.resultMsg.replace('java.lang.Exception: ', ''));
-			this.props.getUserInfoList();
+			// this.props.getUserInfoList();
 		});
 	},
 	render() {
@@ -75,9 +79,10 @@ module.exports = React.createClass({
 			<div id='item2'>
 				{this.state.listPosition > 0 && <i className={'pre'} onClick={this.changePosition.bind(this, 'pre')}/>}
 				<div className={'list'}>
-					<ul id={'domUl'} className={this.state.positionClass}
+					<ul id={'domUl'}
 							style={{width: `${Math.ceil(list.length / 2) * 3.06}rem`}}>
-						{type === 'dec' && list.map((item, i) => <li onClick={this.props.setDecorate.bind(this, item.propId)}>
+						{type === 'dec' && list.map((item, i) => <li
+							onClick={this.props.setDecorate.bind(this, item.propId, false)}>
 							<DecorateBox propId={item.propId}/>
 						</li>)}
 						{type === 'fish' && list.map((item, i) => <li
@@ -87,7 +92,8 @@ module.exports = React.createClass({
 							{item.fishStatus === '1' && <span className={'status'}>上架中</span>}
 							{item.fishStatus === '10002' && <span className={'status'}>出游中</span>}
 						</li>)}
-						{type === 'market' && list.map((item, i) => <li onClick={this.props.setDecorate.bind(this, item.propId)}>
+						{type === 'market' && list.map((item, i) => <li
+							onClick={this.props.setDecorate.bind(this, item.propId, true)}>
 							<DecorateBox propId={item.propId}/>
 							<div className={'price'} onClick={this.buy.bind(this, item.id, item.propId)}>
 								<i className={'coin2'}/>

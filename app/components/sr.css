@@ -1,4 +1,12 @@
-.sr {
+.rarity {
   top: -4%;
   right: -4%;
+}
+.rarity .sr,
+.rarity .ur {
+  width: 0.95rem;
+}
+.rarity .r,
+.rarity .n {
+  width: 0.64rem;
 }

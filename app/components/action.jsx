@@ -11,8 +11,12 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	toSale() {
-		this.props.toSale();
+	toSale(item) {
+		if (item.fishStatus === '1') {
+			util.popShow('已上架了');
+		} else {
+			this.props.toSale();
+		}
 	},
 	feed(fishId) {
 		//暂无喂养接口

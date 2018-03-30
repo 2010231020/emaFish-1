@@ -22,9 +22,14 @@
   display: inline-block;
   position: absolute;
 }
-.gen > ul li i.sr,
-.gen > ul li i.n,
 .gen > ul li i.r,
+.gen > ul li i.n {
+  width: 0.41rem;
+  height: 0.46rem;
+  right: 0;
+  top: 0.24rem;
+}
+.gen > ul li i.sr,
 .gen > ul li i.ur {
   width: 0.63rem;
   height: 0.46rem;
@@ -33,15 +38,19 @@
 }
 .gen > ul li i.n {
   background: url("../images/rare_n.png") no-repeat center;
+  background-size: 100%;
 }
 .gen > ul li i.r {
   background: url("../images/rare_r.png") no-repeat center;
+  background-size: 100%;
 }
 .gen > ul li i.sr {
   background: url("../images/rare_sr.png") no-repeat center;
+  background-size: 100%;
 }
 .gen > ul li i.ur {
   background: url("../images/rare_ur.png") no-repeat center;
+  background-size: 100%;
 }
 .gen > ul li i.underline {
   width: 1.79rem;

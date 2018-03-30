@@ -34,7 +34,6 @@ module.exports = React.createClass({
 			<div id="login">
 				<p>用户名：<input id='userName' type='text'/></p>
 				<button onClick={this.login} className='btn'/>
-
 			</div>
 		);
 	}

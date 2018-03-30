@@ -19,6 +19,8 @@ module.exports = React.createClass({
 					<div className={'exp'}><span className={'lv'}>Lv{item.level}</span><i style={{width: `${item.exp}%`}}
 																																								className={'exp-bar'}/></div>
 					<Sr ssr={item.rarity}/>
+					{item.fishStatus === '1' && <span className={'status'}>上架中</span>}
+					{item.fishStatus === '10002' && <span className={'status'}>出游中</span>}
 				</div>
 			</div>
 		)
