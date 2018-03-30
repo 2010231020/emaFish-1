@@ -23,12 +23,12 @@ module.exports = React.createClass({
 		router: React.PropTypes.object
 	},
 	buy(fishId, orderId) {
-			console.log(fishId, orderId);
-			let postData = {
-				uid: util.getCookie('uid'),
-				fishId: fishId,
-				orderId: orderId
-			};
+		console.log(fishId, orderId);
+		let postData = {
+			uid: util.getCookie('uid'),
+			fishId: fishId,
+			orderId: orderId
+		};
 		util.reqPost('/emaCat/transcation/buyFish', postData, data => {
 			console.log(data);
 			util.hideLoading();
@@ -42,13 +42,7 @@ module.exports = React.createClass({
 		this.props.handlePop(fishId);
 	},
 	refreshInfo(data) {
-		let tmpObj = {
-			exp: data.exp,
-			level: data.level
-		};
-		this.setState({
-			item: Object.assign(this.state.item, tmpObj)
-		});
+		this.props.refreshInfo(data);
 		this.props.getUserInfoList();
 	},
 	changeType() {
@@ -76,9 +70,6 @@ module.exports = React.createClass({
 		})
 	},
 	componentDidMount() {
-		this.setState({
-			item: this.props.item
-		})
 	},
 	handleInputChange(e) {
 		console.log(e.target.value);
@@ -87,7 +78,9 @@ module.exports = React.createClass({
 		})
 	},
 	render() {
-		const {saleFlag, inputValue, item} = this.state;
+		const {saleFlag, inputValue} = this.state;
+		const {item} = this.props;
+		console.log(9, item);
 		return (
 			<div id='cattr'>
 				{!saleFlag && <div className='fish_content'>

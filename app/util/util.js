@@ -1,4 +1,13 @@
-let {env} = require("json!../../process.json");
+let config = require("json!../../process.json");
+
+let geneDictionary = {
+	"1": "FP",
+	"2": "FG",
+	"3": "FB",
+	"4": "FW",
+	"5": "FY",
+	"6": "FR"
+};
 
 function common(url, options, callback) {
 	document.getElementById('loading').style.display = 'block';
@@ -26,36 +35,6 @@ function common(url, options, callback) {
 		if (data) callback(data);
 	})
 }
-
-const Dictionary = {
-	"0": {
-		propName: '背景1'
-	},
-	"1": {
-		propName: '背景2'
-	},
-	"2": {
-		propName: '背景3'
-	},
-	"3": {
-		propName: '石头1'
-	},
-	"4": {
-		propName: '石头2'
-	},
-	"5": {
-		propName: '石头3'
-	},
-	"6": {
-		propName: '浮萍1'
-	},
-	"7": {
-		propName: '浮萍2'
-	},
-	"8": {
-		propName: '浮萍3'
-	},
-};
 
 module.exports = {
 	reqGet(url, postData, callback) {
@@ -92,18 +71,14 @@ module.exports = {
 	delCookie(name) {
 		document.cookie = `${name}='';expires=-1`;
 	},
-	getImgHost() {
+	getImg(gene) {
 		//缩略图图片服务器
-		let imgHost = '';
-		if (env === 'dev') {
-			// imgHost = 'http://192.168.11.2:8099/emaCat';
-			imgHost = 'http://114.55.250.173:8080/emaCat';
-		} else if (env === 'test') {
-
-		} else if (env === 'production') {
-
+		let returnStr = require('../images/birth_1.png');
+		if (gene) {
+			let geneArray = gene.split(',');
+			returnStr = `${config[config.env].imgHost}/${geneDictionary[geneArray[0]]}-ba_${geneArray[2]}-bo_${geneArray[1]}-e_1-s_${geneArray[4]}-t_${geneArray[5]}-w_${geneArray[3]}.png`;
 		}
-		return imgHost;
+		return returnStr;
 	},
 	hideLoading() {
 		document.getElementById('loading').style.display = 'none';
@@ -117,18 +92,7 @@ module.exports = {
 	},
 	getEgretDomain() {
 		//egret服务器
-		let url = '';
-		if (env === 'dev') {
-			url = 'http://cober1.com:5239';
-		} else if (env === 'test') {
-			url = 'http://test-emfstatic.lemonade-game.com';
-		} else if (env === 'production') {
-			url = 'emfstatic.lemonade-game.com';
-		}
-		return url;
-	},
-	getDecorateObj(propId) {
-		return Dictionary[propId];
+		return config[config.env].EgretDomain;
 	}
 };
 

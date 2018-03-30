@@ -14,7 +14,8 @@ class User {
 		this.UserInfo = {
 			uid: 0,
 			growDictionary: [],
-			propDictionary: []
+			propDictionary: [],
+			fishGene: []
 		};
 	}
 
@@ -36,6 +37,10 @@ class User {
 
 	getPropDictionary() {
 		return this.UserInfo.propDictionary;
+	}
+
+	setFishGene(obj) {
+		this.UserInfo.fishGene = obj;
 	}
 
 	getGrassFromGrow(rarity, level) {

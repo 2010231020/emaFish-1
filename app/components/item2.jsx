@@ -64,7 +64,7 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/transcation/buyCommodity', postData, data => {
 			util.hideLoading();
 			console.log(data);
-			util.popShow(data.resultMsg.replace('java.lang.Exception: ',''));
+			util.popShow(data.resultMsg.replace('java.lang.Exception: ', ''));
 			this.props.getUserInfoList();
 		});
 	},
@@ -82,7 +82,7 @@ module.exports = React.createClass({
 						</li>)}
 						{type === 'fish' && list.map((item, i) => <li
 							onClick={this.props.changeCurItem.bind(this, 1, item.fishId)}>
-							<img src={`${util.getImgHost()}/fish/${item.fishId}/small_icon_${item.fishId}.png`}/>
+							<img src={util.getImg(item.gene)}/>
 							<span className={'name'}>#{item.fishId}</span>
 						</li>)}
 						{type === 'market' && list.map((item, i) => <li onClick={this.props.setDecorate.bind(this, item.propId)}>

@@ -96,6 +96,15 @@ module.exports = React.createClass({
 			console.log('个人信息', data);
 		});
 	},
+	refreshInfo(data) {
+		let tmpObj = {
+			exp: data.exp,
+			level: data.level
+		};
+		this.setState({
+			item: Object.assign(this.state.curItem, tmpObj)
+		});
+	},
 	componentDidMount() {
 		this.getList();
 		this.getUserInfoList();
@@ -230,7 +239,7 @@ module.exports = React.createClass({
 							7: <Item7 getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
 							9: <Cattr getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
-												handleShow={this.changeShowFlag.bind(this)}
+												handleShow={this.changeShowFlag.bind(this)} refreshInfo={this.refreshInfo.bind(this)}
 												item={this.state.curItem}/>,
 							//寄语编辑页面
 							10: <Item10 changeType={this.changeType.bind(this)} item={this.state.curItem}
