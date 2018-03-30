@@ -36,8 +36,12 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/currency/hatchFish', postData, data => {
 			util.hideLoading();
 			console.log(data);
-			util.popShow('孵化成功');
-			this.props.popState();
+			if (data.resultCode === 300) {
+				util.popShow(data.resultMsg.replace('java.lang.Exception: ', ''));
+			} else if (data.resultCode === 200) {
+				util.popShow("孵化成功！");
+				this.props.popState();
+			}
 		});
 	},
 	render: function () {

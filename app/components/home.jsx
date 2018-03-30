@@ -165,6 +165,7 @@ module.exports = React.createClass({
 			util.reqPost('/emaCat/currency/updateUserPondInfo', postData, data => {
 				util.hideLoading();
 				console.log(data);
+				this.getUserInfoList();
 			});
 		}
 	},

@@ -69,7 +69,6 @@ module.exports = React.createClass({
 			console.log(data);
 			this.props.setDecorate(propId, false);
 			util.popShow(data.resultMsg.replace('java.lang.Exception: ', ''));
-			// this.props.getUserInfoList();
 		});
 	},
 	render() {
