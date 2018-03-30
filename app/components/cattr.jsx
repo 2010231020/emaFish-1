@@ -53,10 +53,10 @@ module.exports = React.createClass({
 			saleFlag: true
 		});
 	},
-	sale() {
+	sale(fishId) {
 		let postData = {
 			uid: util.getCookie('uid'),
-			fishId: this.state.item.fishId,
+			fishId: fishId,
 			upDays: 3,
 			price: this.state.inputValue
 		};
@@ -64,9 +64,7 @@ module.exports = React.createClass({
 			console.log(data);
 			util.hideLoading();
 			util.popShow('上架成功');
-			setTimeout(() => {
-				location.reload();
-			}, 2000);
+			this.props.popState();
 		})
 	},
 	componentDidMount() {
@@ -119,7 +117,7 @@ module.exports = React.createClass({
 					<div className={'fee'}>
 						<span>手续费：</span><span>3</span>
 					</div>
-					<div className={'ok'} onClick={this.sale.bind(this)}>
+					<div className={'ok'} onClick={this.sale.bind(this, item.fishId)}>
 						<i/>
 					</div>
 				</div>}

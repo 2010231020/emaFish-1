@@ -59,9 +59,7 @@ module.exports = React.createClass({
 			util.hideLoading();
 			console.log('修改寄语', data);
 			util.popShow('修改寄语成功');
-			setTimeout(() => {
-				location.reload();
-			}, 2000);
+			this.props.popState();
 		});
 	},
 	handleTextareaChange(e) {

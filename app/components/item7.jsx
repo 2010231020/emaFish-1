@@ -37,9 +37,7 @@ module.exports = React.createClass({
 			util.hideLoading();
 			console.log(data);
 			util.popShow('孵化成功');
-			setTimeout(() => {
-				location.reload();
-			}, 2000);
+			this.props.popState();
 		});
 	},
 	render: function () {

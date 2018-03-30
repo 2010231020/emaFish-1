@@ -54,7 +54,9 @@
     > ul {
       height: 100%;
       overflow-x: scroll;
-      &::-webkit-scrollbar {display:none}
+      &::-webkit-scrollbar {
+        display: none
+      }
       position: absolute;
 
       li {
@@ -76,7 +78,14 @@
           width: 46%;
           left: 27%;
           text-align: center;
-          color: #000;
+        }
+        .status {
+          position: absolute;
+          bottom: 12%;
+          width: 46%;
+          left: 27%;
+          text-align: center;
+          color: lime;
         }
 
         .price {

@@ -231,21 +231,21 @@ module.exports = React.createClass({
 							1: <Item2 type={'fish'} list={this.state.fishList}
 												changeCurItem={this.changeCurItem.bind(this)}/>,
 							//装饰背包
-							2: <Item2 type={'dec'} setDecorate={this.setDecorate.bind(this)} list={this.state.userBagInfo}/>,
+							2: <Item2 popState={this.popState.bind(this)} type={'dec'} setDecorate={this.setDecorate.bind(this)} list={this.state.userBagInfo}/>,
 							//装饰商店
-							3: <Item2 getUserInfoList={this.getUserInfoList.bind(this)} type={'market'}
+							3: <Item2 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)} type={'market'}
 												setDecorate={this.setDecorate.bind(this)} list={this.state.commodityList}/>,
 							//孵化
-							7: <Item7 getUserInfoList={this.getUserInfoList.bind(this)}/>,
+							7: <Item7 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
 							9: <Cattr getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
 												handleShow={this.changeShowFlag.bind(this)} refreshInfo={this.refreshInfo.bind(this)}
 												item={this.state.curItem}/>,
 							//寄语编辑页面
-							10: <Item10 changeType={this.changeType.bind(this)} item={this.state.curItem}
+							10: <Item10 popState={this.popState.bind(this)} changeType={this.changeType.bind(this)} item={this.state.curItem}
 													getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼市页面
-							12: <Item12/>,
+							12: <Item12 popState={this.popState.bind(this)}/>,
 							//寄语历史页面
 							13: <Item13 item={this.state.curItem}/>
 						}[this.state.type]}
@@ -253,7 +253,7 @@ module.exports = React.createClass({
 					}
 				</div>
 				{this.state.showF && <Show/>}
-				{this.state.loadingFlag && <div className={'loading'}/>}
+				{/*{this.state.loadingFlag && <div className={'loading'}/>}*/}
 				<Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>
 				<Interaction getUserInfoList={this.getUserInfoList.bind(this)} userPondInfo={this.state.userPondInfo}
 										 chargingSink={this.state.chargingSink}/>

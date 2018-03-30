@@ -392,7 +392,14 @@
   width: 46%;
   left: 27%;
   text-align: center;
-  color: #000;
+}
+#item2 .list > ul li .status {
+  position: absolute;
+  bottom: 12%;
+  width: 46%;
+  left: 27%;
+  text-align: center;
+  color: lime;
 }
 #item2 .list > ul li .price {
   width: 3.17rem;

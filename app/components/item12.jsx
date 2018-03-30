@@ -70,9 +70,7 @@ module.exports = React.createClass({
 			console.log(data);
 			util.hideLoading();
 			util.popShow('购买成功');
-			setTimeout(() => {
-				location.reload();
-			}, 2000);
+			this.props.popState();
 		})
 	},
 	render: function () {

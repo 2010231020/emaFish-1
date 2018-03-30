@@ -84,6 +84,7 @@ module.exports = React.createClass({
 							onClick={this.props.changeCurItem.bind(this, 1, item.fishId)}>
 							<img src={util.getImg(item.gene)}/>
 							<span className={'name'}>#{item.fishId}</span>
+							<span className={'status'}>{item.fishStatus === '0' ? '' : '上架中'}</span>
 						</li>)}
 						{type === 'market' && list.map((item, i) => <li onClick={this.props.setDecorate.bind(this, item.propId)}>
 							<DecorateBox propId={item.propId}/>

@@ -6,12 +6,12 @@
   },
   "test": {
     "emaCat": "http://192.168.1.12:8080/emaCat",
-    "imgHost": "http://192.168.1.12:8080/emaCat/src/main/webapp/fish",
+    "imgHost": "http://test-picture.lemonade-game.com/fish",
     "EgretDomain": "http://test-emfstatic.lemonade-game.com"
   },
   "dev": {
     "emaCat": "http://192.168.1.12:8080/emaCat",
-    "imgHost": "http://192.168.1.12:8080/emaCat/src/main/webapp/fish",
+    "imgHost": "http://test-picture.lemonade-game.com/fish",
     "EgretDomain": "http://cober1.com:5239"
   },
   "dev1": {
@@ -19,5 +19,5 @@
     "imgHost": "http://114.55.250.173:8080/emaCat",
     "EgretDomain": "http://test-emfstatic.lemonade-game.com"
   },
-  "env": "test"
+  "env": "dev"
 }
