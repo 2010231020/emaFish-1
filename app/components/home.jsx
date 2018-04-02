@@ -24,8 +24,8 @@ module.exports = React.createClass({
 			visitorList: [],
 			decorate1: 1,
 			decorate2: 2,
-			popFlag: false,
-			itemFlag: false,
+			popFlag: false,//是否显示功能列表
+			popArr: [],//访问历史
 			type: 0,
 			connectFlag: true,
 			userInfo: {},
@@ -33,6 +33,7 @@ module.exports = React.createClass({
 			userData: {},//用户信息，不包括水草
 			chargingSink: {},//水草信息
 			userBagInfo: [],//背包信息
+			message: '测试'
 		}
 	},
 	contextTypes: {
@@ -78,6 +79,16 @@ module.exports = React.createClass({
 			this.setState({
 				commodityList: data.commodityList
 			})
+		});
+	},
+	getUserFishList() {
+		let uid = util.getCookie('uid');
+		let pondId = util.getCookie('pondId');
+		util.reqPost('/emaCat/currency/getUserFishList', {uid: uid, destinationPoolId: pondId}, data => {
+			this.setState({
+				fishList: data.fishList,
+				visitorList: data.fishTravelInfoList,
+			});
 		});
 	},
 	getUserInfoList() {
@@ -139,7 +150,7 @@ module.exports = React.createClass({
 		let propItem = User.getInstance().getProp(propId);
 		let type = propItem.propType + '';
 		let postData = {};
-		if (type === '1' && propId === 2) {
+		if (type === '1' && propId == 2 && !isPre) {
 			this.changeType(7);
 		} else {
 			postData = {
@@ -197,26 +208,44 @@ module.exports = React.createClass({
 		this.changeType(9);
 	},
 	popState() {
-		if (this.state.popFlag) {
+		this.state.popArr.pop();
+		let type = this.state.popArr[this.state.popArr.length - 1];
+		if (this.state.popArr.length > 0) {
 			this.setState({
-				type: 0
+				type: type
+			})
+		} else {
+			if (this.state.popFlag) {
+				this.setState({
+					type: 0
+				})
+			} else {
+				this.state.popArr.push(0);
+			}
+			this.setState({
+				popFlag: !this.state.popFlag
 			})
 		}
-		this.setState({
-			popFlag: !this.state.popFlag,
-			itemFlag: !this.state.itemFlag
-		})
 	},
 	changeType(type) {
+		this.state.popArr.push(type);
+		console.log(this.state.popArr);
 		this.setState({
 			type: type,
 			popFlag: true
 		});
-		if (type === 9) {
+		if (type === 9) {//如果是鱼
 			this.setState({
 				popFlag: true
 			})
 		}
+	},
+	closeAll() {
+		this.setState({
+			popArr: [],
+			popFlag: false,
+			type: 0
+		});
 	},
 	render() {
 		return (
@@ -256,11 +285,13 @@ module.exports = React.createClass({
 							//孵化
 							7: <Item7 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
-							9: <Cattr getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
+							9: <Cattr getUserFishList={this.getUserFishList.bind(this)}
+												getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
 												handleShow={this.changeShowFlag.bind(this)} refreshInfo={this.refreshInfo.bind(this)}
 												item={this.state.curItem} popState={this.popState.bind(this)}/>,
 							//寄语编辑页面
-							10: <Item10 popState={this.popState.bind(this)} changeType={this.changeType.bind(this)}
+							10: <Item10 getUserFishList={this.getUserFishList.bind(this)} popState={this.popState.bind(this)}
+													changeType={this.changeType.bind(this)}
 													item={this.state.curItem}
 													getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼市页面
@@ -272,6 +303,7 @@ module.exports = React.createClass({
 					}
 				</div>
 				{this.state.showF && <Show/>}
+				{this.state.popFlag && <div className={'mask'} onClick={this.closeAll.bind(this)}/>}
 				{/*{this.state.loadingFlag && <div className={'loading'}/>}*/}
 				<Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>
 				<Interaction getUserInfoList={this.getUserInfoList.bind(this)} userPondInfo={this.state.userPondInfo}

@@ -26,7 +26,6 @@ module.exports = React.createClass({
 			sortType: type//1 根据 价格升序  2 根据稀有度 降序
 		};
 		util.reqPost('/emaCat/commodity/getFishDealList', postData, data => {
-			util.hideLoading();
 			this.setState({
 				list: data.fishList
 			});
@@ -66,12 +65,18 @@ module.exports = React.createClass({
 			fishId: fishId,
 			orderId: orderId
 		};
-		util.reqPost('/emaCat/transcation/buyFish', postData, data => {
-			console.log(data);
-			util.hideLoading();
-			util.popShow('购买成功');
-			this.props.popState();
-		})
+		util.popShow(`确认购买${fishId}？`, () => {
+			util.reqPost('/emaCat/transcation/buyFish', postData, data => {
+				console.log(data);
+				if (data.resultCode === 300) {
+					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
+				} else if (data.resultCode === 200) {
+					util.alert('购买成功！', () => {
+						this.props.popState();
+					});
+				}
+			})
+		});
 	},
 	render: function () {
 		return (

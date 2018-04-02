@@ -33,15 +33,17 @@ module.exports = React.createClass({
 			uid: uid,
 			word: this.state.textareaValue
 		};
-		util.reqPost('/emaCat/currency/hatchFish', postData, data => {
-			util.hideLoading();
-			console.log(data);
-			if (data.resultCode === 300) {
-				util.popShow(data.resultMsg.replace('java.lang.Exception: ', ''));
-			} else if (data.resultCode === 200) {
-				util.popShow("孵化成功！");
-				this.props.popState();
-			}
+		util.popShow('确认孵化？', () => {
+			util.reqPost('/emaCat/currency/hatchFish', postData, data => {
+				console.log(data);
+				if (data.resultCode === 300) {
+					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
+				} else if (data.resultCode === 200) {
+					util.alert("孵化成功！", () => {
+						this.props.popState();
+					});
+				}
+			});
 		});
 	},
 	render: function () {

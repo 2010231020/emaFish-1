@@ -12,6 +12,7 @@ let geneDictionary = {
 function common(url, options, callback) {
 	document.getElementById('loading').style.display = 'block';
 	fetch(url, options).then(res => {
+			document.getElementById('loading').style.display = 'none';
 			if (res.ok) {
 				return res.json()
 			} else {
@@ -35,6 +36,12 @@ function common(url, options, callback) {
 		if (data) callback(data);
 	})
 }
+
+let popup = {
+	message: '',
+	action: '',
+	int: null
+};
 
 module.exports = {
 	reqGet(url, postData, callback) {
@@ -83,12 +90,37 @@ module.exports = {
 	hideLoading() {
 		document.getElementById('loading').style.display = 'none';
 	},
-	popShow(str) {
+	popShow(str = '这样可以吗？', callback) {
 		document.getElementById('popup').style.display = 'block';
 		document.getElementById('popup-text').innerHTML = str;
+		document.getElementById('popup-no').style.display = 'inline-block';
+		popup.int = setInterval(() => {
+			if (popup.action === 'ok') {
+				this.popHide();
+				callback && callback();
+			} else if (popup.action === 'cancel') {
+				this.popHide();
+			}
+		}, 100);
 	},
 	popHide() {
+		clearInterval(popup.int);
+		popup.action = '';
 		document.getElementById('popup').style.display = 'none';
+	},
+	popAction(action) {
+		popup.action = action;
+	},
+	alert(str = '这样可以吗？', callback) {
+		document.getElementById('popup').style.display = 'block';
+		document.getElementById('popup-text').innerHTML = str;
+		document.getElementById('popup-no').style.display = 'none';
+		popup.int = setInterval(() => {
+			if (popup.action === 'ok') {
+				this.popHide();
+				callback && callback();
+			}
+		}, 100);
 	},
 	getEgretDomain() {
 		//egret服务器

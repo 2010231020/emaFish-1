@@ -60,12 +60,18 @@ module.exports = React.createClass({
 			upDays: 3,
 			price: this.state.inputValue
 		};
-		util.reqPost('/emaCat/transcation/createFishOrder', postData, data => {
-			console.log(data);
-			util.hideLoading();
-			util.popShow('上架成功');
-			this.props.popState();
-		})
+		util.popShow('确认上架？', () => {
+			util.reqPost('/emaCat/transcation/createFishOrder', postData, data => {
+				console.log(data);
+				if (data.resultCode === 300) {
+					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
+				} else if (data.resultCode === 200) {
+					util.alert("上架成功！", () => {
+						this.props.popState();
+					});
+				}
+			})
+		});
 	},
 	componentDidMount() {
 	},

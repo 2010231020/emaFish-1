@@ -55,11 +55,18 @@ module.exports = React.createClass({
 			fishNote: this.state.textareaValue,
 			fishId: fishId
 		};
-		util.reqPost('/emaCat/currency/updateFishnote', postData, data => {
-			util.hideLoading();
-			console.log('修改寄语', data);
-			util.popShow('修改寄语成功');
-			this.props.popState();
+		util.popShow('确认修改？',()=>{
+			util.reqPost('/emaCat/currency/updateFishnote', postData, data => {
+				console.log('修改寄语', data);
+				if (data.resultCode === 300) {
+					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
+				} else if (data.resultCode === 200) {
+					util.alert('修改寄语成功！',()=>{
+						this.props.getUserFishList();
+						this.props.popState();
+					});
+				}
+			});
 		});
 	},
 	handleTextareaChange(e) {

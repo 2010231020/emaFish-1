@@ -23,6 +23,13 @@
   background: url("../images/loading.jpg") no-repeat center;
   background-size: 100% 100%;
 }
+#home .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
 #home .bg-stone {
   position: absolute;
   top: 0;

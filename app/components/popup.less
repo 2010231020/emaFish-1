@@ -1,33 +1,51 @@
-#popup{
+#popup {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 10000;
   display: none;
-  .pop-content{
-    width: 4rem;
-    height: 3rem;
+  &.show {
+    display: block;
+    //display: none;
+  }
+  &.hide {
+    display: none;
+  }
+  .pop-content {
+    width: 6rem;
+    //height: 3.32rem;
     position: absolute;
     top: 35%;
-    left: 3rem;
-    background-color: white;
-    border-radius: 0.2rem;
-    #popup-text{
+    left: 2rem;
+    background: url("../images/confirm_bg.png") no-repeat center;
+    background-size: 100% 100%;
+    padding-bottom: 0.5rem;
+    #popup-text {
       text-align: center;
-      padding: 1rem 0.1rem 0;
-      font-size: 0.35rem;
-    }
-    .btn{
-      width: 1.6rem;
-      background-color: green;
-      text-align: center;
-      border-radius: 5px;
+      padding: 0.6rem 0.5rem 0.3rem;
+      font-size: 0.46rem;
+      font-family: "Microsoft YaHei", arial, sans-serif;
       color: white;
-      padding: 0.1rem 0;
-      position: absolute;
-      left: 1.1rem;
-      bottom: 0.3rem;
+    }
+    .pop-actions {
+      text-align: center;
+      .btn {
+        width: 1.25rem;
+        height: 1.25rem;
+        text-align: center;
+        display: inline-block;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        &.yes {
+          background: url("../images/yes.png") no-repeat center;
+          background-size: 100%;
+        }
+        &.no {
+          background: url("../images/no.png") no-repeat center;
+          background-size: 100%;
+        }
+      }
     }
   }
 }

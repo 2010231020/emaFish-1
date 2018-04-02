@@ -13,7 +13,7 @@ module.exports = React.createClass({
 	},
 	toSale(item) {
 		if (item.fishStatus === '1') {
-			util.popShow('已上架了');
+			util.alert('已上架了');
 		} else {
 			this.props.toSale();
 		}

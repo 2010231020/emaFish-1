@@ -2,11 +2,11 @@
   top: -4%;
   right: -4%;
 }
-.rarity .sr,
-.rarity .ur {
+.rarity .rarity_sr,
+.rarity .rarity_ur {
   width: 0.95rem;
 }
-.rarity .r,
-.rarity .n {
+.rarity .rarity_r,
+.rarity .rarity_n {
   width: 0.64rem;
 }
