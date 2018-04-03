@@ -78,6 +78,11 @@ module.exports = {
 	delCookie(name) {
 		document.cookie = `${name}='';expires=-1`;
 	},
+	getUrlParams(name) {
+		let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		let r = decodeURI(window.location.search).substr(1).match(reg);
+		return r != null ? r[2] : null;
+	},
 	getImg(gene) {
 		//缩略图图片服务器
 		let returnStr = require('../images/birth_1.png');

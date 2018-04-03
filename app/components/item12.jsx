@@ -58,7 +58,10 @@ module.exports = React.createClass({
 	componentDidMount() {
 		this.getList(1);
 	},   //加载DOM之前运行的方法。默认运行一次
-	buy(fishId, orderId) {
+	buy(fishId, orderId, e) {
+		//阻止事件冒泡
+		e.stopPropagation();
+		e.nativeEvent.stopImmediatePropagation();
 		console.log(fishId, orderId);
 		let postData = {
 			uid: util.getCookie('uid'),
@@ -93,7 +96,7 @@ module.exports = React.createClass({
 				</div>
 				<div className={'list-content'}>
 					<ul>
-						{this.state.list.map((item, i) => <li>
+						{this.state.list.map((item, i) => <li onClick={this.props.changeCurItem.bind(this, 3, item)}>
 							<div className={'l'}>
 								<Avatar item={item}/>
 							</div>

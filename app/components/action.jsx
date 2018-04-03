@@ -46,7 +46,10 @@ module.exports = React.createClass({
 	},
 	render: function () {
 		const {item} = this.props;
-		const flag = item.travelUid ? 2 : 1;//1:自家鱼；2:访客鱼
+		let flag = item.travelUid ? 2 : 1;//1:自家鱼；2:访客鱼
+		if (item.orderId) {
+			flag = 3;
+		}
 		return (
 			<div className='action'>
 				{flag === 1 && <div>

@@ -25,6 +25,7 @@
 #home {
   .bg(3);
   .bg(6);
+  .bg(9);
   height: 100%;
   .show {
     top: 0;
@@ -39,11 +40,21 @@
     z-index: 2000;
     .commonBackground("../images/loading.jpg");
   }
-  .mask{
+  .mask {
     position: absolute;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+  }
+  .go_home {
+    position: absolute;
+    display: block;
+    width: 1.56rem;
+    height: 1.57rem;
+    .commonBackground("../images/item_close.png");
+    right: 1rem;
+    top: 1rem;
     z-index: 10;
   }
   .bg-stone {
@@ -54,6 +65,7 @@
     z-index: 0;
     .stoneBg(4);
     .stoneBg(7);
+    .stoneBg(10);
   }
   .bo {
     mix-blend-mode: overlay;
@@ -94,14 +106,14 @@
     left: 1.17rem;
     .commonBackground("../images/item_popup.png");
     &.popup12 {
-       width: 8.41rem;
-       height: 10.97rem;
-       top: 1.2rem;
-       left: 0.8rem;
-       .commonBackground("../images/item_popup1.png");
-     }
+      width: 8.41rem;
+      height: 10.97rem;
+      top: 1.2rem;
+      left: 0.8rem;
+      .commonBackground("../images/item_popup1.png");
+    }
     &.popup13 {
-      width: 7.66rem ;
+      width: 7.66rem;
       height: 8.99rem;
       top: 2.6rem;
       .commonBackground("../images/item_popup13.png");

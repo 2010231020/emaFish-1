@@ -9,6 +9,10 @@
   background: url('../images/d6.jpg') no-repeat center;
   background-size: 100% 100%;
 }
+#home.bg9 {
+  background: url('../images/d9.jpg') no-repeat center;
+  background-size: 100% 100%;
+}
 #home .show {
   top: 0;
   width: 10rem;
@@ -30,6 +34,17 @@
   background: rgba(0, 0, 0, 0.4);
   z-index: 10;
 }
+#home .go_home {
+  position: absolute;
+  display: block;
+  width: 1.56rem;
+  height: 1.57rem;
+  background: url("../images/item_close.png") no-repeat center;
+  background-size: 100% 100%;
+  right: 1rem;
+  top: 1rem;
+  z-index: 10;
+}
 #home .bg-stone {
   position: absolute;
   top: 0;
@@ -43,6 +58,10 @@
 }
 #home .bg-stone.stone7 {
   background: url('../images/d7.png') no-repeat center;
+  background-size: 100% 100%;
+}
+#home .bg-stone.stone10 {
+  background: url('../images/d10.png') no-repeat center;
   background-size: 100% 100%;
 }
 #home .bo {
@@ -96,7 +115,7 @@
   background-size: 100% 100%;
 }
 #item .popup.popup13 {
-  width: 7.66rem ;
+  width: 7.66rem;
   height: 8.99rem;
   top: 2.6rem;
   background: url("../images/item_popup13.png") no-repeat center;

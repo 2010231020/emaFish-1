@@ -94,7 +94,7 @@ module.exports = React.createClass({
 				<div className={'list'}>
 					<ul id={'domUl'}
 							style={{width: `${Math.ceil(list.length / 2) * 3.06}rem`}}>
-						{type === 'dec' && list.map((item, i) => <li
+						{type === 'dec' && list.map((item, i) => item.propId !== 1 && <li
 							onClick={this.setDecorate.bind(this, item, false)}>
 							<DecorateBox propId={item.propId}/>
 						</li>)}

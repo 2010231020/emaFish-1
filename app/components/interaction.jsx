@@ -23,7 +23,7 @@ module.exports = React.createClass({
 	},
 	getPraise(type) {//鱼塘点赞
 		let uid = util.getCookie('uid');
-		let pondId = util.getCookie('pondId');
+		let pondId = util.getUrlParams('pondId') || util.getCookie('pondId');
 		const postData = {
 			uid: uid,
 			pondId: pondId,
@@ -36,17 +36,17 @@ module.exports = React.createClass({
 		});
 	},
 	render: function () {
-		const {userPondInfo, chargingSink} = this.props;
+		const {userPondInfo, chargingSink, isTraveller} = this.props;
 		return (
 			<div id='interaction'>
-				<div className={'a1'} onClick={this.getPraise.bind(this, 0)}>
+				{<div className={'a1'} onClick={this.getPraise.bind(this, 0)}>
 					<img src={require('../images/interaction1.png')}/>
 					<span className={'num'}>{userPondInfo.attractiveness || ''}</span>
-				</div>
-				<div className={'a2'} onClick={this.getRes.bind(this, 1)}>
+				</div>}
+				{!isTraveller && <div className={'a2'} onClick={this.getRes.bind(this, 1)}>
 					<img src={require('../images/interaction2.png')}/>
 					<span className={'num'}>{chargingSink.ungetResourceNum || ''}</span>
-				</div>
+				</div>}
 			</div>
 		);
 	}

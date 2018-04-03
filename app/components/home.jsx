@@ -33,16 +33,30 @@ module.exports = React.createClass({
 			userData: {},//用户信息，不包括水草
 			chargingSink: {},//水草信息
 			userBagInfo: [],//背包信息
-			message: '测试'
+			isTraveller: false,//是否是来访者
 		}
 	},
 	contextTypes: {
 		router: React.PropTypes.object
 	},
+	getUserData() {
+		let user = {
+			uid: null,
+			pondId: null
+		};
+		if (util.getUrlParams('uid') && util.getUrlParams('pondId')) {
+			user.uid = util.getUrlParams('uid');
+			user.pondId = util.getUrlParams('pondId');
+		} else {
+			user.uid = util.getCookie('uid');
+			user.pondId = util.getCookie('pondId');
+		}
+		return user;
+	},
 	getList() {
-		let uid = util.getCookie('uid');
+		let userData = this.getUserData();
 		const postData = {
-			uid: uid
+			uid: userData.uid
 		};
 		util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
 			util.hideLoading();
@@ -50,7 +64,7 @@ module.exports = React.createClass({
 
 			if (data && data.length > 0 && data[0].id) {
 				util.setCookie('pondId', data[0].id);
-				util.reqPost('/emaCat/currency/getUserFishList', {uid: uid, destinationPoolId: data[0].id}, data => {
+				util.reqPost('/emaCat/currency/getUserFishList', {uid: postData.uid, destinationPoolId: data[0].id}, data => {
 					util.hideLoading();
 					console.log(data);
 					this.setState({
@@ -82,9 +96,12 @@ module.exports = React.createClass({
 		});
 	},
 	getUserFishList() {
-		let uid = util.getCookie('uid');
-		let pondId = util.getCookie('pondId');
-		util.reqPost('/emaCat/currency/getUserFishList', {uid: uid, destinationPoolId: pondId}, data => {
+		let userData = this.getUserData();
+		const postData = {
+			uid: userData.uid,
+			destinationPoolId: userData.pondId
+		};
+		util.reqPost('/emaCat/currency/getUserFishList', postData, data => {
 			this.setState({
 				fishList: data.fishList,
 				visitorList: data.fishTravelInfoList,
@@ -92,8 +109,11 @@ module.exports = React.createClass({
 		});
 	},
 	getUserInfoList() {
-		let uid = util.getCookie('uid');
-		util.reqPost('/emaCat/currency/getUserBagAndPond', {uid: uid}, data => {
+		let userData = this.getUserData();
+		const postData = {
+			uid: userData.uid
+		};
+		util.reqPost('/emaCat/currency/getUserBagAndPond', postData, data => {
 			util.hideLoading();
 			this.setState({
 				userInfo: data,
@@ -117,9 +137,14 @@ module.exports = React.createClass({
 		});
 	},
 	componentDidMount() {
+		if (util.getUrlParams('uid') && util.getUrlParams('pondId') && util.getUrlParams('uid') !== util.getCookie('uid')) {
+			this.setState({
+				isTraveller: true
+			});
+		}
+
 		this.getList();
 		this.getUserInfoList();
-		util.delCookie('from');
 
 		// 连接egret
 		let connectFlag = setInterval(() => {
@@ -154,7 +179,7 @@ module.exports = React.createClass({
 			this.changeType(7);
 		} else {
 			postData = {
-				uid: util.getCookie('uid')
+				uid: this.getUserData().uid
 			};
 		}
 		if (type === '2') {//背景123
@@ -185,17 +210,19 @@ module.exports = React.createClass({
 			showFlag: !this.state.showFlag
 		});
 	},
-	changeCurItem(type, fishId) {//type:1自家鱼;2:访客鱼
+	changeCurItem(type, fish) {//type:1自家鱼;2:访客鱼,3:商店鱼
 		let item = {};
 		let list = [];
 		if (type == 1) {
 			list = this.state.fishList;
-		} else {
+		} else if (type == 2) {
 			list = this.state.visitorList;
+		} else if (type == 3) {
+			item = fish;
 		}
 
 		for (let i = 0; i < list.length; i++) {
-			if (fishId == list[i].fishId) {
+			if (fish == list[i].fishId) {
 				item = list[i];
 			}
 		}
@@ -253,12 +280,12 @@ module.exports = React.createClass({
 				<div className={`bg-stone stone${this.state.decorate2}`}/>
 
 				<div id='item'>
-					<div className={'a1'} onClick={this.popState.bind(this)}>
+					{!this.state.isTraveller && <div className={'a1'} onClick={this.popState.bind(this)}>
 						<i className={this.state.popFlag ? 'icon2' : 'icon1'}/>
-					</div>
-					<div className={'a2'} onClick={this.changeType.bind(this, 12)}>
+					</div>}
+					{!this.state.isTraveller && <div className={'a2'} onClick={this.changeType.bind(this, 12)}>
 						<i className={'icon1'}/>
-					</div>
+					</div>}
 					{this.state.popFlag && <div className={`popup popup${this.state.type}`}>
 						{{//功能列表
 							0: <ul className={'item0'}>
@@ -285,7 +312,7 @@ module.exports = React.createClass({
 							//孵化
 							7: <Item7 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
-							9: <Cattr getUserFishList={this.getUserFishList.bind(this)}
+							9: <Cattr isTraveller={this.state.isTraveller} getUserFishList={this.getUserFishList.bind(this)}
 												getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
 												handleShow={this.changeShowFlag.bind(this)} refreshInfo={this.refreshInfo.bind(this)}
 												item={this.state.curItem} popState={this.popState.bind(this)}/>,
@@ -295,18 +322,21 @@ module.exports = React.createClass({
 													item={this.state.curItem}
 													getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼市页面
-							12: <Item12 popState={this.popState.bind(this)}/>,
+							12: <Item12 changeCurItem={this.changeCurItem.bind(this)} popState={this.popState.bind(this)}/>,
 							//寄语历史页面
 							13: <Item13 item={this.state.curItem}/>
 						}[this.state.type]}
 					</div>
 					}
 				</div>
-				{this.state.showF && <Show/>}
+				{this.state.showF && <Show uid={this.getUserData().uid}/>}
 				{this.state.popFlag && <div className={'mask'} onClick={this.closeAll.bind(this)}/>}
 				{/*{this.state.loadingFlag && <div className={'loading'}/>}*/}
-				<Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>
-				<Interaction getUserInfoList={this.getUserInfoList.bind(this)} userPondInfo={this.state.userPondInfo}
+				{!this.state.isTraveller && <Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>}
+				{this.state.isTraveller && <a className={'go_home'} href={'/home'}/>}
+
+				<Interaction isTraveller={this.state.isTraveller} getUserInfoList={this.getUserInfoList.bind(this)}
+										 userPondInfo={this.state.userPondInfo}
 										 chargingSink={this.state.chargingSink}/>
 				<Popup/>
 			</div>
