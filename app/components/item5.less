@@ -1,0 +1,129 @@
+@import "util";
+
+.item5 {
+  width: 7.66rem;
+  height: 8.91rem;
+  position: absolute;
+  background: url("../images/fds_bg1.png");
+  background-size: 100%;
+  .fds {
+    overflow: hidden;
+    width: 80%;
+    margin: 0.6rem auto 0;
+    text-align: center;
+    font-size: 0;
+    background: url("../images/fds_l.png") no-repeat bottom;
+    background-size: 5.47rem 0.03rem;
+    .fds_btn {
+      display: inline-block;
+      color: #74edff;
+      font-weight: bold;
+      font-size: 0.32rem;
+      font-family: "宋体", arial, sans-serif;
+      text-align: center;
+      &.btn_l {
+        width: 40%;
+      }
+      &.btn_r {
+        width: 60%;
+      }
+      &.fds_btn1 {
+        font-size: 0.46rem;
+        color: #fff;
+        padding-bottom: 0.2rem;
+        background: url("../images/fds_button.png") no-repeat bottom;
+        background-size: 0.35rem 0.19rem;
+      }
+    }
+  }
+  .fds_list {
+    width: 100%;
+    height: 75%;
+    ul {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none
+      }
+      li {
+        width: 6.19rem;
+        height: 1.26rem;
+        padding: 0.2rem;
+        margin: auto;
+        background: url("../images/fds_bg2.png") no-repeat center;
+        background-size: 100% 100%;
+        position: relative;
+        overflow: hidden;
+        p{
+          width: 50%;
+          margin-left: 30%;
+          margin-top: 0.15rem;
+          text-align: left;
+          color: #fff;
+        }
+        .fish{
+          width: 1rem;
+          height: 1rem;
+          position: absolute;
+          background: url("../images/fds_fish.png") no-repeat center;
+          background-size: 100% 100%;
+          top: 0.4rem;
+          left:0.4rem;
+          .icon {
+            display: inline-block;
+            position: absolute;
+            width: 0.48rem;
+            height: 0.45rem;
+            background: url("../images/fds_num.png") no-repeat center;
+            background-size: 100% 100%;
+            left: -0.1rem;
+            top: -0.1rem;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: black 0.01rem 0.01rem 0.2rem;
+
+            &.icon0 {
+              background: url("../images/fds_num1.png") no-repeat center;
+              background-size: 100% 100%;
+            }
+            &.icon1 {
+              background: url("../images/fds_num2.png") no-repeat center;
+              background-size: 100% 100%;
+            }
+            &.icon2 {
+              background: url("../images/fds_num3.png") no-repeat center;
+              background-size: 100% 100%;
+            }
+        }
+          p {
+            position: absolute;
+            width: 57%;
+            margin: 0.8rem auto auto;
+            left: 22%;
+            overflow: scroll;
+            color: #74edff;
+            text-align: left;
+            margin-top: 0.9rem;
+            font-size: 12px;
+            span {
+              border-bottom: 1px solid #74edff;
+              display: inline-block;
+            }
+          }
+        }
+        .fds_go {
+          display: inline-block;
+          width: 0.61rem;
+          height: 0.62rem;
+          background: url("../images/fds_go.png") no-repeat center;
+          background-size: 100% 100%;
+          right: 9%;
+          margin-top: -0.6rem;
+          position: absolute;
+        }
+      }
+    }
+  }
+}

@@ -127,6 +127,20 @@
   background: url("../images/item_popup.png") no-repeat center;
   background-size: 100% 100%;
 }
+#item .popup.popup4 {
+  width: 7.66rem ;
+  height: 9rem;
+  top: 2.6rem;
+  background: url("../images/item_popup4.png") no-repeat center;
+  background-size: 100% 100%;
+}
+#item .popup.popup5 {
+  width: 7.66rem ;
+  height: 8.91rem;
+  top: 2.6rem;
+  background: url("../images/item_popup5.png") no-repeat center;
+  background-size: 100% 100%;
+}
 #item .popup.popup12 {
   width: 8.41rem;
   height: 10.97rem;
