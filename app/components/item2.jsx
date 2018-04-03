@@ -21,7 +21,7 @@ module.exports = React.createClass({
 	setDecorate(item, isPre) {
 		this.props.setDecorate(item.propId, isPre);
 		if (isPre) {//商城
-			if (this.state.curPropId === item.propId) {
+			if (this.state.curPropId === item.propId || item.propId == 2) {
 				this.buy(item.id, item.propId);
 			} else {
 				this.setState({

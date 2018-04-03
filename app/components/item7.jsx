@@ -40,7 +40,8 @@ module.exports = React.createClass({
 					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
 				} else if (data.resultCode === 200) {
 					this.props.getUserFishList();
-					util.alert("孵化成功！", () => {
+					this.props.getUserInfoList();
+					util.alert("孵化中！", () => {
 						this.props.popState();
 					});
 				}
