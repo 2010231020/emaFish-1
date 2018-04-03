@@ -162,9 +162,9 @@ module.exports = React.createClass({
 		this.getUserInfoList();
 
 		//连接egret
-		// let connectFlag = setInterval(() => {
-		// 	this.sendMsg('connect', 'server connect');
-		// }, 1000);
+		let connectFlag = setInterval(() => {
+			this.sendMsg('connect', 'server connect');
+		}, 1000);
 
 		window.addEventListener("message", e => {
 			if (e.origin === util.getEgretDomain()) {
