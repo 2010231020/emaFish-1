@@ -10,6 +10,8 @@ import Item10 from './item10';
 import Item12 from './item12';
 import Item13 from './item13';
 import Popup from './popup';
+import Item4 from './item4';
+import Item5 from './item5';
 
 let util = require('../util/util');
 let User = require('../util/User');
@@ -146,10 +148,10 @@ module.exports = React.createClass({
 		this.getList();
 		this.getUserInfoList();
 
-		// 连接egret
-		let connectFlag = setInterval(() => {
-			this.sendMsg('connect', 'server connect');
-		}, 1000);
+		//连接egret
+		// let connectFlag = setInterval(() => {
+		// 	this.sendMsg('connect', 'server connect');
+		// }, 1000);
 
 		window.addEventListener("message", e => {
 			if (e.origin === util.getEgretDomain()) {
@@ -287,15 +289,15 @@ module.exports = React.createClass({
 						<i className={'icon1'}/>
 					</div>}
 					{this.state.popFlag && <div className={`popup popup${this.state.type}`}>
-						{{//功能列表
+						{{//功能列表popState
 							0: <ul className={'item0'}>
 								<li className={'l1'} onClick={this.changeType.bind(this, 1)}><i/></li>
 								<li className={'l2'} onClick={this.changeType.bind(this, 3)}><i/></li>
 								<li className={'l3'} onClick={this.changeType.bind(this, 12)}><i/></li>
-								<li className={'l4'}><i/></li>
-								<li className={'l5'} onClick={this.popState.bind(this)}><i/></li>
+								<li className={'l4'} onClick={this.changeType.bind(this, 4)}><i/></li>
+								<li className={'l5'}><i/></li>
 								<li className={'l6'} onClick={this.changeType.bind(this, 2)}><i/></li>
-								<li className={'l7'}><i/></li>
+								<li className={'l7'}  onClick={this.changeType.bind(this, 5)}><i/></li>
 								<li className={'l8'}><i/></li>
 								<li className={'l9'}><i/></li>
 							</ul>,
@@ -309,6 +311,10 @@ module.exports = React.createClass({
 							3: <Item2 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}
 												type={'market'}
 												setDecorate={this.setDecorate.bind(this)} list={this.state.commodityList}/>,
+							//访客历史记录
+							4: <Item4 popState={this.popState.bind(this)}/>,
+							//好友列表
+							5: <Item5 item={this.state.curItem} popState={this.popState.bind(this)}/>,
 							//孵化
 							7: <Item7 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
