@@ -25,6 +25,7 @@
   background: none;
   border: none;
   color: white;
+  font-size: 0.4rem;
 }
 .item10 .msg > textarea::placeholder {
   color: #3aa8cb;

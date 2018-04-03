@@ -66,6 +66,7 @@ module.exports = React.createClass({
 				if (data.resultCode === 300) {
 					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
 				} else if (data.resultCode === 200) {
+					this.props.getUserFishList();
 					util.alert("上架成功！", () => {
 						this.props.popState();
 					});
@@ -115,7 +116,7 @@ module.exports = React.createClass({
 						<div className={'r'}>
 							<i className={'price'}/>
 							<i className={'underline'}/>
-							<Num number={inputValue}/>
+							{/*<Num number={inputValue}/>*/}
 							<input className={'price_input'} value={inputValue} onChange={this.handleInputChange} type='number'
 										 defaultValue='0'/>
 						</div>

@@ -12,7 +12,7 @@ module.exports = React.createClass({
 		router: React.PropTypes.object
 	},
 	toSale(item) {
-		if (item.fishStatus === '1') {
+		if (item.fishStatus === '1' || item.fishStatus === '10001') {
 			util.alert('已上架了');
 		} else {
 			this.props.toSale();

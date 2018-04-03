@@ -6,8 +6,8 @@ module.exports = React.createClass({
 		const {number} = this.props;
 		const numArr = (number + '').split('');
 		return (
-			<div className='special_num'>
-				{numArr.map(item => <i className={`num${item}`}/>)}
+			<div className='special_num'>{number}
+				{/*{numArr.map(item => <i className={`num${item}`}/>)}*/}
 			</div>
 		)
 	}

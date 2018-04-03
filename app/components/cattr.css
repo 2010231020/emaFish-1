@@ -113,15 +113,20 @@
   background-size: 100% 100%;
 }
 #cattr .sale_content .sale_info .price_input {
-  font-size: 0;
   display: block;
-  width: 100%;
-  height: 1rem;
+  width: 50%;
+  height: 0.5rem;
+  right: 0;
   background: none;
   border: 0;
   position: absolute;
   z-index: 3;
-  color: #18a5cc;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.1em;
+  text-align: center;
+  padding: 0.16rem 0.2rem 0.4rem 0.5rem;
+  font-weight: bold;
+  font-size: 0.5rem;
 }
 #cattr .sale_content .fee {
   text-align: center;

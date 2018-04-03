@@ -34,6 +34,7 @@ module.exports = React.createClass({
 			chargingSink: {},//水草信息
 			userBagInfo: [],//背包信息
 			isTraveller: false,//是否是来访者
+			eggs: [],//鱼卵数目
 		}
 	},
 	contextTypes: {
@@ -59,14 +60,12 @@ module.exports = React.createClass({
 			uid: userData.uid
 		};
 		util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
-			util.hideLoading();
-			console.log(data);
 
 			if (data && data.length > 0 && data[0].id) {
-				util.setCookie('pondId', data[0].id);
+				if (!this.state.isTraveller) {
+					util.setCookie('pondId', data[0].id);
+				}
 				util.reqPost('/emaCat/currency/getUserFishList', {uid: postData.uid, destinationPoolId: data[0].id}, data => {
-					util.hideLoading();
-					console.log(data);
 					this.setState({
 						fishList: data.fishList,
 						visitorList: data.fishTravelInfoList,
@@ -77,10 +76,17 @@ module.exports = React.createClass({
 					});
 				});
 				util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
-					util.hideLoading();
-					console.log(data);
 					User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
 					User.getInstance().setPropDictionary(data.propDictionaryInfos);
+				});
+				util.reqPost('/emaCat/currency/getUserHatchingFishList', {
+					uid: postData.uid,
+					destinationPoolId: data[0].id
+				}, data => {
+					console.log('鱼卵信息', data);
+					this.setState({
+						eggs: data.hatchingFishList
+					})
 				});
 			}
 
@@ -106,6 +112,13 @@ module.exports = React.createClass({
 				fishList: data.fishList,
 				visitorList: data.fishTravelInfoList,
 			});
+		});
+
+		util.reqPost('/emaCat/currency/getUserHatchingFishList', postData, data => {
+			console.log('鱼卵信息', data);
+			this.setState({
+				eggs: data.hatchingFishList
+			})
 		});
 	},
 	getUserInfoList() {
@@ -310,7 +323,8 @@ module.exports = React.createClass({
 												type={'market'}
 												setDecorate={this.setDecorate.bind(this)} list={this.state.commodityList}/>,
 							//孵化
-							7: <Item7 popState={this.popState.bind(this)} getUserInfoList={this.getUserInfoList.bind(this)}/>,
+							7: <Item7 getUserFishList={this.getUserFishList.bind(this)} popState={this.popState.bind(this)}
+												getUserInfoList={this.getUserInfoList.bind(this)}/>,
 							//鱼属性页面
 							9: <Cattr isTraveller={this.state.isTraveller} getUserFishList={this.getUserFishList.bind(this)}
 												getUserInfoList={this.getUserInfoList.bind(this)} changeType={this.changeType.bind(this)}
@@ -334,7 +348,9 @@ module.exports = React.createClass({
 				{/*{this.state.loadingFlag && <div className={'loading'}/>}*/}
 				{!this.state.isTraveller && <Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>}
 				{this.state.isTraveller && <a className={'go_home'} href={'/home'}/>}
-
+				{this.state.eggs.map((item, i) =>
+					<i className={`egg egg${i}`}/>
+				)}
 				<Interaction isTraveller={this.state.isTraveller} getUserInfoList={this.getUserInfoList.bind(this)}
 										 userPondInfo={this.state.userPondInfo}
 										 chargingSink={this.state.chargingSink}/>

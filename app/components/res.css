@@ -24,8 +24,12 @@
   display: inline-block;
   width: 60%;
   margin-left: 1rem;
-  margin-top: 0.2rem;
+  margin-top: 0.17rem;
   height: 0.5rem;
   text-align: center;
   font-size: 0.4rem;
+  color: white;
+  font-family: "Microsoft YaHei", arial, sans-serif;
+  font-weight: bold;
+  text-shadow: black 0.1em 0.1em 0.2em;
 }

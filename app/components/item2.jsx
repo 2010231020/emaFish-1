@@ -87,6 +87,7 @@ module.exports = React.createClass({
 				if (propId != 2) {
 					this.props.setDecorate(propId, false);
 				}
+				this.props.getUserInfoList();
 				util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
 			});
 		});
@@ -103,6 +104,7 @@ module.exports = React.createClass({
 						{list.map((item, i) => item.propId !== 1 && <li
 							onClick={this.setDecorate.bind(this, item, false)}>
 							<DecorateBox propId={item.propId}/>
+							{item.propId === 2 && <span className={'propNum'}>{item.propNum}</span>}
 						</li>)}
 					</ul>}
 					{type === 'fish' &&
@@ -111,7 +113,8 @@ module.exports = React.createClass({
 							onClick={this.props.changeCurItem.bind(this, 1, item.fishId)}>
 							<img src={util.getImg(item.gene)}/>
 							<span className={'name'}>#{item.fishId}</span>
-							{item.fishStatus === '1' && <span className={'status'}>上架中</span>}
+							{item.fishStatus === '1' && <span className={'status'}>已上架</span>}
+							{item.fishStatus === '10001' && <span className={'status'}>上架中</span>}
 							{item.fishStatus === '10002' && <span className={'status'}>出游中</span>}
 						</li>)}
 					</ul>

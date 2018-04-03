@@ -30,8 +30,23 @@ module.exports = React.createClass({
 			type: type
 		};
 		util.reqPost('/emaCat/travel/fabulousFishPond', postData, data => {
-			util.hideLoading();
 			console.log(data);
+			this.props.getUserInfoList();
+		});
+	},
+	follow() {
+		let uid = util.getCookie('uid');
+		let pondId = util.getCookie('pondId');
+		let befolUid = util.getUrlParams('uid');
+		let befolPondId = util.getUrlParams('pondId');
+		const postData = {
+			uid: uid,
+			pondId: pondId,
+			befolUid: befolUid,
+			befolPondId: befolPondId
+		};
+		util.reqPost('/emaCat/currency/followUserPond', postData, data => {
+			console.log('关注', data);
 			this.props.getUserInfoList();
 		});
 	},
@@ -46,6 +61,9 @@ module.exports = React.createClass({
 				{!isTraveller && <div className={'a2'} onClick={this.getRes.bind(this, 1)}>
 					<img src={require('../images/interaction2.png')}/>
 					<span className={'num'}>{chargingSink.ungetResourceNum || ''}</span>
+				</div>}
+				{isTraveller && <div className={'a2'} onClick={this.follow.bind(this)}>
+					<img src={require('../images/interaction2.png')}/>
 				</div>}
 			</div>
 		);

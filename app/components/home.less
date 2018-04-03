@@ -12,6 +12,10 @@
   }
 }
 
+.egg() {
+
+}
+
 .itemBoxLoop(@counter) when (@counter > 0) { //循环生成相应背景图
   .itemBoxLoop((@counter - 1)); // 递归调用自身
   &.l@{counter} {
@@ -56,6 +60,26 @@
     right: 1rem;
     top: 1rem;
     z-index: 10;
+  }
+  .egg {
+    position: absolute;
+    display: block;
+    width: 1.72rem;
+    height: 1.78rem;
+    z-index: 0;
+    .commonBackground("../images/d2.png");
+    &.egg0{
+      bottom: 5rem;
+      right: 2rem;
+    }
+    &.egg1{
+      bottom: 8rem;
+      right: 4rem;
+    }
+    &.egg2{
+      bottom: 9rem;
+      right: 3rem;
+    }
   }
   .bg-stone {
     position: absolute;
