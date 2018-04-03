@@ -9,6 +9,7 @@
   width: 6.18rem;
   height: 3.62rem;
   background: url("../images/msg_bg1.png") no-repeat center;
+  background-size: 100% 100%;
   margin: auto;
   margin-top: 1rem;
   position: relative;

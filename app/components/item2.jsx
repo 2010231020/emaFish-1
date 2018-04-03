@@ -32,9 +32,15 @@ module.exports = React.createClass({
 	},
 	componentDidMount() {
 		if (this.props.list.length > 0) {
-			this.setState({
-				maxPosition: Math.ceil(this.props.list.length / 2) - 2
-			});
+			if (this.props.type === 'dec') {
+				this.setState({
+					maxPosition: Math.ceil((this.props.list.length - 1) / 2) - 2
+				});
+			} else {
+				this.setState({
+					maxPosition: Math.ceil(this.props.list.length / 2) - 2
+				});
+			}
 		}
 		// this.getList();
 	},
@@ -92,20 +98,27 @@ module.exports = React.createClass({
 			<div id='item2'>
 				{this.state.listPosition > 0 && <i className={'pre'} onClick={this.changePosition.bind(this, 'pre')}/>}
 				<div className={'list'}>
-					<ul id={'domUl'}
-							style={{width: `${Math.ceil(list.length / 2) * 3.06}rem`}}>
-						{type === 'dec' && list.map((item, i) => item.propId !== 1 && <li
+					{type === 'dec' &&
+					<ul id={'domUl'} style={{width: `${Math.ceil((list.length - 1) / 2) * 3.06}rem`}}>
+						{list.map((item, i) => item.propId !== 1 && <li
 							onClick={this.setDecorate.bind(this, item, false)}>
 							<DecorateBox propId={item.propId}/>
 						</li>)}
-						{type === 'fish' && list.map((item, i) => <li
+					</ul>}
+					{type === 'fish' &&
+					<ul id={'domUl'} style={{width: `${Math.ceil((list.length) / 2) * 3.06}rem`}}>
+						{list.map((item, i) => <li
 							onClick={this.props.changeCurItem.bind(this, 1, item.fishId)}>
 							<img src={util.getImg(item.gene)}/>
 							<span className={'name'}>#{item.fishId}</span>
 							{item.fishStatus === '1' && <span className={'status'}>上架中</span>}
 							{item.fishStatus === '10002' && <span className={'status'}>出游中</span>}
 						</li>)}
-						{type === 'market' && list.map((item, i) => <li
+					</ul>
+					}
+					{type === 'market' &&
+					<ul id={'domUl'} style={{width: `${Math.ceil((list.length) / 2) * 3.06}rem`}}>
+						{list.map((item, i) => <li
 							onClick={this.setDecorate.bind(this, item, true)}>
 							<DecorateBox propId={item.propId}/>
 							<div className={'price'}>
@@ -115,6 +128,7 @@ module.exports = React.createClass({
 							</div>
 						</li>)}
 					</ul>
+					}
 				</div>
 				{this.state.listPosition < this.state.maxPosition &&
 				<i className={'next'} onClick={this.changePosition.bind(this, 'next')}/>}
