@@ -26,7 +26,7 @@ module.exports = React.createClass({
 		const postData = {
 			uid: uid,
 			pondId: util.getCookie('pondId'),
-			type:type//1 查询来访 2 查询出游
+			type: type//1 查询来访 2 查询出游
 		};
 		util.reqPost('/emaCat/currency/findPondTravelHistory', postData, data => {//请求和传递的方式post
 			this.setState({
@@ -36,12 +36,12 @@ module.exports = React.createClass({
 		});
 	},
 	changeSortType(type) {
-			if (type === 1) {
-				this.setState({
-					sortType: type
-				});
-			}
-		 else {
+		if (type === 1) {
+			this.setState({
+				sortType: type
+			});
+		}
+		else {
 			this.setState({
 				sortType: type
 			});
@@ -55,11 +55,11 @@ module.exports = React.createClass({
 			<div className={'item4'}>
 				<div className={'vist_hist'}>
 					<ul>
-					{this.state.list.map((item, i) => <li>
-						<div className={'fish_p'}/>
-						<p>访问了<span>ID：{item.travelPondId}</span>的鱼塘</p>
-						<div className={'vist_go'}/>
-					</li>)}
+						{this.state.list.map((item, i) => <li>
+							<div className={'fish_p'}/>
+							<p>访问了<span>ID：{item.travelPondId}</span>的鱼塘</p>
+							<div className={'vist_go'}/>
+						</li>)}
 					</ul>
 				</div>
 			</div>

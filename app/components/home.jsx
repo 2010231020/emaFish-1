@@ -68,6 +68,7 @@ module.exports = React.createClass({
 					util.setCookie('pondId', data[0].id);
 				}
 				util.reqPost('/emaCat/currency/getUserFishList', {uid: postData.uid, destinationPoolId: data[0].id}, data => {
+					console.log('鱼列表', data);
 					this.setState({
 						fishList: data.fishList,
 						visitorList: data.fishTravelInfoList,
@@ -80,6 +81,8 @@ module.exports = React.createClass({
 				util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
 					User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
 					User.getInstance().setPropDictionary(data.propDictionaryInfos);
+					User.getInstance().setFishGene(data.fishGeneInfos);
+					console.log('字典信息', data);
 				});
 				util.reqPost('/emaCat/currency/getUserHatchingFishList', {
 					uid: postData.uid,
@@ -96,8 +99,6 @@ module.exports = React.createClass({
 
 		//获取装饰商城
 		util.reqPost('/emaCat/transcation/getCommodityList', {curPage: 1, pageSize: 100}, data => {
-			util.hideLoading();
-			console.log(data);
 			this.setState({
 				commodityList: data.commodityList
 			})
@@ -310,7 +311,7 @@ module.exports = React.createClass({
 								<li className={'l4'} onClick={this.changeType.bind(this, 4)}><i/></li>
 								<li className={'l5'}><i/></li>
 								<li className={'l6'} onClick={this.changeType.bind(this, 2)}><i/></li>
-								<li className={'l7'}  onClick={this.changeType.bind(this, 5)}><i/></li>
+								<li className={'l7'} onClick={this.changeType.bind(this, 5)}><i/></li>
 								<li className={'l8'}><i/></li>
 								<li className={'l9'}><i/></li>
 							</ul>,

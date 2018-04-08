@@ -13,9 +13,9 @@ class User {
 	constructor() {
 		this.UserInfo = {
 			uid: 0,
-			growDictionary: [],
-			propDictionary: [],
-			fishGene: []
+			growDictionary: [],//等级对应经验值的字典
+			propDictionary: [],//背包物品id对应字典
+			fishGene: []//基因字典
 		};
 	}
 
