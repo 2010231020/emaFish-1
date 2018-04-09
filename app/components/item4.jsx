@@ -67,6 +67,7 @@ module.exports = React.createClass({
 								{this.state.sortType === 2 && <a className={'vist_go'} href={`/home?uid=${item.uid}&pondId=${item.destinationPoolId}`}/>}
 							</li>)}
 							</ul>
+								<div className={'hbuon'} onClick={}/>
 							</div>
 							</div>
 							);
