@@ -4,17 +4,39 @@
   background: url("../images/vish_bg1.png") no-repeat center;
   background-size: 7.66rem 9rem;
   position: absolute;
+  .vist_chose {
+    overflow: hidden;
+    width: 80%;
+    margin: 0.6rem auto 0;
+    text-align: center;
+    font-size: 0;
+    .vist_btn {
+      display: inline-block;
+      color: #74edff;
+      font-weight: bold;
+      font-size: 0.32rem;
+      font-family: "宋体", arial, sans-serif;
+      text-align: center;
+      &.btn_l {
+        width: 50%;
+      }
+      &.btn_r {
+        width: 50%;
+      }
+      .on{
+        border-bottom: 1px solid #74edff;
+      }
+    }
+  }
   .vist_hist {
     width: 100%;
     height: 81%;
-    margin-top: 0.6rem;
+    margin-top: 0.3rem;
     ul {
       width: 100%;
-      height: 100%;
+      height: 93%;
       overflow-y: scroll;
-      &::-webkit-scrollbar {
-        display: none
-      }
+      &::-webkit-scrollbar {display:none}
       li {
         width: 6.19rem;
         height: 2.25rem;
@@ -41,7 +63,7 @@
           color: #74edff;
           text-align: left;
           margin-top: 0.9rem;
-          font-size: 12px;
+          &::-webkit-scrollbar {display:none}
           span {
             border-bottom: 1px solid #74edff;
             display: inline-block;
