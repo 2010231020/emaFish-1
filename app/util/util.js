@@ -11,6 +11,7 @@ let geneDictionary = {
 
 function common(url, options, callback) {
 	document.getElementById('loading').style.display = 'block';
+
 	fetch(url, options).then(res => {
 			document.getElementById('loading').style.display = 'none';
 			if (res.ok) {
@@ -44,6 +45,16 @@ let popup = {
 };
 
 module.exports = {
+	getPostStr(obj) {
+		let postArr = [];
+		let postStr = '';
+		for (let i in obj) {
+			let tmpStr = i + '=' + obj[i];
+			postArr.push(tmpStr);
+		}
+		postStr = postArr.join('&');
+		return postStr;
+	},
 	reqGet(url, postData, callback) {
 		let options = {
 			method: 'get',
@@ -52,10 +63,19 @@ module.exports = {
 		common(url, options, callback);
 	},
 	reqPost(url, postData, callback) {
-		if (typeof postData === "function") callback = postData;
+		let bodyData = {};
+		if (typeof postData === "function") {
+			callback = postData;
+		} else {
+			bodyData = postData;
+		}
+		bodyData.token = this.getCookie('token');
 		let options = {
 			method: 'post',
-			body: postData && JSON.stringify(postData)
+			body: this.getPostStr(bodyData),
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+			}
 		};
 		common(url, options, callback);
 	},
@@ -73,7 +93,7 @@ module.exports = {
 		let path = options !== undefined && options.path !== undefined ? options.path : '/';
 		let date = new Date();
 		date.setDate(date.getDate() + days);
-		document.cookie = `${name}=${value};expires=${date};path=${path}`;
+		document.cookie = `${name}=${encodeURIComponent(value)};expires=${date};path=${path}`;
 	},
 	delCookie(name) {
 		document.cookie = `${name}='';expires=-1`;
