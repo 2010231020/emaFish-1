@@ -8,15 +8,11 @@ module.exports = React.createClass({
 		return {
 			// coinType: 1,
 			list: [],
+			sortType: 1
 		}
 	},
 	contextTypes: {
 		router: React.PropTypes.object
-	},
-	changeCoinType(type) {
-		this.setState({
-			coinType: type
-		});
 	},
 	componentDidMount() {
 		this.getList(1);
@@ -49,20 +45,31 @@ module.exports = React.createClass({
 		this.getList(type);
 	},
 	render: function () {
-		// const {item} = this.popState();
-		// const item = this.props.item;
 		return (
 			<div className={'item4'}>
-				<div className={'vist_hist'}>
-					<ul>
-						{this.state.list.map((item, i) => <li>
-							<div className={'fish_p'}/>
-							<p>访问了<span>ID：{item.travelPondId}</span>的鱼塘</p>
-							<div className={'vist_go'}/>
-						</li>)}
-					</ul>
-				</div>
-			</div>
-		);
-	}
-});
+				<div className={'vist_chose'}>
+					<span className={`vist_btn btn_l ${this.state.sortType === 1 && 'fds_btn1'}`}
+								onClick={this.changeSortType.bind(this, 1)}>
+						<span className={this.state.sortType === 1 ? 'on' : ''}>访问我的</span>
+					</span>
+					<span className={`vist_btn btn_r ${this.state.sortType === 2 && 'fds_btn1'}`}
+								onClick={this.changeSortType.bind(this, 2)}>
+						<span className={this.state.sortType === 2 ? 'on' : ''} > 我访问的 </span>
+							</span>
+							</div>
+							<div className={'vist_hist'}>
+							<ul>
+							{this.state.list.map((item, i) => <li>
+								<div className={'fish_p'}/>
+								{this.state.sortType === 1 && <p><span>ID：{item.travelPondId}</span>访问了我的鱼塘</p>}
+								{this.state.sortType === 2 && <p>访问了<span>ID：{item.destinationPoolId}</span>的鱼塘</p>}
+								{this.state.sortType === 1 && <a className={'vist_go'} href={`/home?uid=${item.uid}&pondId=${item.travelPondId}`}/>}
+								{this.state.sortType === 2 && <a className={'vist_go'} href={`/home?uid=${item.uid}&pondId=${item.destinationPoolId}`}/>}
+							</li>)}
+							</ul>
+								<div className={'hbuon'} onClick={}/>
+							</div>
+							</div>
+							);
+							}
+						});

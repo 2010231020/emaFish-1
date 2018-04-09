@@ -5,10 +5,34 @@
   background-size: 7.66rem 9rem;
   position: absolute;
 }
+.item4 .vist_chose {
+  overflow: hidden;
+  width: 80%;
+  margin: 0.6rem auto 0;
+  text-align: center;
+  font-size: 0;
+}
+.item4 .vist_chose .vist_btn {
+  display: inline-block;
+  color: #74edff;
+  font-weight: bold;
+  font-size: 0.32rem;
+  font-family: "宋体", arial, sans-serif;
+  text-align: center;
+}
+.item4 .vist_chose .vist_btn.btn_l {
+  width: 50%;
+}
+.item4 .vist_chose .vist_btn.btn_r {
+  width: 50%;
+}
+.item4 .vist_chose .vist_btn .on {
+  border-bottom: 1px solid #74edff;
+}
 .item4 .vist_hist {
   width: 100%;
-  height: 81%;
-  margin-top: 0.6rem;
+  height: 75%;
+  margin-top: 0.3rem;
 }
 .item4 .vist_hist ul {
   width: 100%;
@@ -45,7 +69,9 @@
   color: #74edff;
   text-align: left;
   margin-top: 0.9rem;
-  font-size: 12px;
+}
+.item4 .vist_hist ul li p::-webkit-scrollbar {
+  display: none;
 }
 .item4 .vist_hist ul li p span {
   border-bottom: 1px solid #74edff;
@@ -59,4 +85,11 @@
   right: 9%;
   margin-top: 0.85rem;
   position: absolute;
+}
+.item4 .vist_hist .hbuon {
+  width: 100%;
+  height: 0.33rem;
+  background: url("../images/button1.png") no-repeat center;
+  background-size: 0.42rem 100%;
+  margin-top: 0.15rem;
 }
