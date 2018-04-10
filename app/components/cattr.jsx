@@ -62,7 +62,6 @@ module.exports = React.createClass({
 		};
 		util.popShow('确认上架？', () => {
 			util.reqPost('/emaCat/transcation/createFishOrder', postData, data => {
-				console.log(data);
 				if (data.resultCode === 300) {
 					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
 				} else if (data.resultCode === 200) {
