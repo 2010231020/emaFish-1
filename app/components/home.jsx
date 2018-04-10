@@ -61,48 +61,54 @@ module.exports = React.createClass({
 		const postData = {
 			uid: userData.uid
 		};
-		util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
+		if (!postData.uid) {
+			const path = '/login';
+			this.context.router.push(path);
+		} else {
+			util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
 
-			if (data && data.length > 0 && data[0].id) {
-				if (!this.state.isTraveller) {
-					util.setCookie('pondId', data[0].id);
+				if (data && data.length > 0 && data[0].id) {
+					if (!this.state.isTraveller) {
+						util.setCookie('pondId', data[0].id);
+					}
+					util.reqPost('/emaCat/currency/getUserFishList', {uid: postData.uid, destinationPoolId: data[0].id}, data => {
+						console.log('鱼列表', data);
+						this.setState({
+							fishList: data.fishList,
+							visitorList: data.fishTravelInfoList,
+						});
+
+						this.setState({
+							showF: true
+						});
+					});
+					util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
+						User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
+						User.getInstance().setPropDictionary(data.propDictionaryInfos);
+						User.getInstance().setFishGene(data.fishGeneInfos);
+						console.log('字典信息', data);
+					});
+					util.reqPost('/emaCat/currency/getUserHatchingFishList', {
+						uid: postData.uid,
+						destinationPoolId: data[0].id
+					}, data => {
+						console.log('鱼卵信息', data);
+						this.setState({
+							eggs: data.hatchingFishList
+						})
+					});
 				}
-				util.reqPost('/emaCat/currency/getUserFishList', {uid: postData.uid, destinationPoolId: data[0].id}, data => {
-					console.log('鱼列表', data);
-					this.setState({
-						fishList: data.fishList,
-						visitorList: data.fishTravelInfoList,
-					});
 
-					this.setState({
-						showF: true
-					});
-				});
-				util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
-					User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
-					User.getInstance().setPropDictionary(data.propDictionaryInfos);
-					User.getInstance().setFishGene(data.fishGeneInfos);
-					console.log('字典信息', data);
-				});
-				util.reqPost('/emaCat/currency/getUserHatchingFishList', {
-					uid: postData.uid,
-					destinationPoolId: data[0].id
-				}, data => {
-					console.log('鱼卵信息', data);
-					this.setState({
-						eggs: data.hatchingFishList
-					})
-				});
-			}
+			});
 
-		});
+			//获取装饰商城
+			util.reqPost('/emaCat/transcation/getCommodityList', {curPage: 1, pageSize: 100}, data => {
+				this.setState({
+					commodityList: data.commodityList
+				})
+			});
 
-		//获取装饰商城
-		util.reqPost('/emaCat/transcation/getCommodityList', {curPage: 1, pageSize: 100}, data => {
-			this.setState({
-				commodityList: data.commodityList
-			})
-		});
+		}
 	},
 	getUserFishList() {
 		let userData = this.getUserData();
@@ -159,28 +165,33 @@ module.exports = React.createClass({
 			});
 		}
 
-		this.getList();
-		this.getUserInfoList();
+		if (!this.getUserData().uid) {
+			const path = '/login';
+			this.context.router.push(path);
+		} else {
+			this.getList();
+			this.getUserInfoList();
 
-		//连接egret
-		let connectFlag = setInterval(() => {
-			this.sendMsg('connect', 'server connect');
-		}, 1000);
+			//连接egret
+			let connectFlag = setInterval(() => {
+				this.sendMsg('connect', 'server connect');
+			}, 1000);
 
-		window.addEventListener("message", e => {
-			if (e.origin === util.getEgretDomain()) {
-				console.log(e.data);
-				if (e.data.type === 'show') {
-					this.changeCurItem(e.data.msg.type, e.data.msg.fishId);
-				} else if (e.data.type === 'connect') {
-					clearInterval(connectFlag);
-					this.setState({
-						loadingFlag: false
-					});
-					console.log('egret connected');
+			window.addEventListener("message", e => {
+				if (e.origin === util.getEgretDomain()) {
+					console.log(e.data);
+					if (e.data.type === 'show') {
+						this.changeCurItem(e.data.msg.type, e.data.msg.fishId);
+					} else if (e.data.type === 'connect') {
+						clearInterval(connectFlag);
+						this.setState({
+							loadingFlag: false
+						});
+						console.log('egret connected');
+					}
 				}
-			}
-		});
+			});
+		}
 	},
 	sendMsg(type, msg) {
 		console.log('send msg');
