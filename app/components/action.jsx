@@ -45,10 +45,13 @@ module.exports = React.createClass({
 		this.props.refreshInfo(data);
 	},
 	render: function () {
-		const {item} = this.props;
+		const {item, isTraveller} = this.props;
 		let flag = item.travelUid ? 2 : 1;//1:自家鱼；2:访客鱼
-		if (item.orderId) {
+		if (item.orderId) {//商店的鱼
 			flag = 3;
+		}
+		if (isTraveller) {//别人家的鱼
+			flag = 4;
 		}
 		return (
 			<div className='action'>
