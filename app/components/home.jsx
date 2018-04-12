@@ -149,7 +149,7 @@ module.exports = React.createClass({
 			console.log('个人信息', data);
 		});
 	},
-	refreshInfo(data) {
+	refreshInfo(data) {//喂养方法
 		let tmpObj = {
 			exp: data.exp,
 			level: data.level

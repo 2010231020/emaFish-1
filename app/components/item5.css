@@ -57,6 +57,9 @@
   position: relative;
   overflow: hidden;
 }
+.item5 .fds_list ul li::-webkit-scrollbar {
+  display: none;
+}
 .item5 .fds_list ul li p {
   width: 50%;
   margin-left: 30%;

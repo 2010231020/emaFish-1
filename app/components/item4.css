@@ -51,6 +51,9 @@
   overflow: hidden;
   left: 10%;
 }
+.item4 .vist_hist ul li::-webkit-scrollbar {
+  display: none;
+}
 .item4 .vist_hist ul li .fish_p {
   width: 0.76rem;
   height: 0.79rem;

@@ -27,6 +27,9 @@
   color: white;
   font-size: 0.4rem;
 }
+.item10 .msg > textarea::-webkit-scrollbar {
+  display: none;
+}
 .item10 .msg > textarea::placeholder {
   color: #3aa8cb;
   padding-top: 1rem;

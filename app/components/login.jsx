@@ -19,7 +19,6 @@ module.exports = React.createClass({
 			data && data.token && util.setCookie('token', data.token , {path: '/'});
 			const path = '/home';
 			this.context.router.push(path);
-
 		});
 	},
 	render: function () {

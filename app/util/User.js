@@ -43,7 +43,20 @@ class User {
 		this.UserInfo.fishGene = obj;
 	}
 
-	getGrassFromGrow(rarity, level) {
+	getRarityFromGene(gene, group) {//传进来gene字符传以及对应的group
+		let geneArr = gene.split(',');//把基因字符串转换成数组，共有7个基因，对应group 1-7
+		let len = this.UserInfo.fishGene.length;
+		let rarity = '';
+		for (let i = 0; 0 < len; i++) {
+			if (this.UserInfo.fishGene[i].group == group && this.UserInfo.fishGene[i].type == geneArr[group - 1]) {
+				rarity = this.UserInfo.fishGene[i].rarity.toLowerCase();
+				break;
+			}
+		}
+		return rarity;
+	}
+
+	getGrassFromGrow(rarity, level) {//根据稀有度获得需要喂草量
 		let grass = '';
 		if (rarity && level) {
 			for (let i = 0; i < this.UserInfo.growDictionary.length; i++) {
@@ -56,7 +69,7 @@ class User {
 		return grass;
 	}
 
-	getProp(propId) {
+	getProp(propId) {//根据装饰ID获得装饰品所有信息
 		let obj = {};
 		if (propId) {
 			for (let i = 0; i < this.UserInfo.propDictionary.length; i++) {

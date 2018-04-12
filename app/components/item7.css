@@ -42,10 +42,14 @@
   background: none;
   border: none;
   color: white;
+  font-size: 0.4rem;
+}
+.item7 .info .r > textarea::-webkit-scrollbar {
+  display: none;
 }
 .item7 .info .r > textarea::placeholder {
   color: #3aa8cb;
-  padding-top: 0.7rem;
+  padding-top: 0.5rem;
   text-align: center;
 }
 .item7 .fee {

@@ -29,9 +29,11 @@
         width: 6.18rem;
         height: 2.25rem;
         background: url("../images/hist_bg2.png") no-repeat center;
+        background-size: 100%;
         position: relative;
         overflow: hidden;
         left: 10%;
+        &::-webkit-scrollbar {display:none};
           p {
             position: absolute;
             width: 70%;
@@ -42,6 +44,7 @@
             color: #ffffff;
             text-align: center;
             margin-top: 0.8rem;
+            &::-webkit-scrollbar {display:none};
           }
         }
       }

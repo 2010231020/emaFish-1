@@ -61,8 +61,8 @@ module.exports = React.createClass({
 							<ul>
 							{this.state.list.map((item, i) => <li>
 								<div className={'fish_p'}/>
-								{this.state.sortType === 1 && <p><span>ID：{item.travelPondId}</span>访问了我的鱼塘</p>}
-								{this.state.sortType === 2 && <p>访问了<span>ID：{item.destinationPoolId}</span>的鱼塘</p>}
+								{this.state.sortType === 1 && <p><span>ID：{item.uid}</span>访问了我的鱼塘</p>}
+								{this.state.sortType === 2 && <p>访问了<span>ID：{item.uid}</span>的鱼塘</p>}
 								{this.state.sortType === 1 && <a className={'vist_go'} href={`/home?uid=${item.uid}&pondId=${item.travelPondId}`}/>}
 								{this.state.sortType === 2 && <a className={'vist_go'} href={`/home?uid=${item.uid}&pondId=${item.destinationPoolId}`}/>}
 							</li>)}
