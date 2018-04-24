@@ -1,6 +1,7 @@
 require('./interaction.css');
 import React from 'react';
 
+
 let util = require('../util/util');
 
 module.exports = React.createClass({
@@ -32,6 +33,10 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/travel/fabulousFishPond', postData, data => {
 			console.log(data);
 			this.props.getUserInfoList();
+			//点赞成功
+				util.alert('Success！', () => {
+					this.props.popState();
+				});
 		});
 	},
 	follow() {
@@ -45,13 +50,18 @@ module.exports = React.createClass({
 			befolUid: befolUid,
 			befolPondId: befolPondId
 		};
-		util.reqPost('/emaCat/currency/followUserPond', postData, data => {
-			console.log('关注', data);
-			this.props.getUserInfoList();
-		});
+			util.reqPost('/emaCat/currency/followUserPond', postData, data => {
+				//关注
+				console.log('Focus on', data);
+				this.props.getUserInfoList();
+				//关注成功!
+					util.alert('Success!', () => {
+						this.props.popState();
+					});
+			});
 	},
 	render: function () {
-		const {userPondInfo, chargingSink, isTraveller} = this.props;
+		const {userPondInfo, chargingSink, isTraveller,} = this.props;
 		return (
 			<div id='interaction'>
 				{<div className={'a1'} onClick={this.getPraise.bind(this, 0)}>

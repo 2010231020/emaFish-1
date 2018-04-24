@@ -50,19 +50,21 @@ module.exports = React.createClass({
 				<div className={'vist_chose'}>
 					<span className={`vist_btn btn_l ${this.state.sortType === 1 && 'fds_btn1'}`}
 								onClick={this.changeSortType.bind(this, 1)}>
-						<span className={this.state.sortType === 1 ? 'on' : ''}>访问我的</span>
+						{/*//访问我的*/}
+						<span className={this.state.sortType === 1 ? 'on' : ''}>Visitors</span>
 					</span>
 					<span className={`vist_btn btn_r ${this.state.sortType === 2 && 'fds_btn1'}`}
 								onClick={this.changeSortType.bind(this, 2)}>
-						<span className={this.state.sortType === 2 ? 'on' : ''} > 我访问的 </span>
+						{/*//我访问的*/}
+						<span className={this.state.sortType === 2 ? 'on' : ''} >Visited</span>
 							</span>
 							</div>
 							<div className={'vist_hist'}>
 							<ul>
 							{this.state.list.map((item, i) => <li>
 								<div className={'fish_p'}/>
-								{this.state.sortType === 1 && <p><span>ID：{item.uid}</span>访问了我的鱼塘</p>}
-								{this.state.sortType === 2 && <p>访问了<span>ID：{item.uid}</span>的鱼塘</p>}
+								{this.state.sortType === 1 && <p><span>ID：{item.uid}</span> visitors me fish pond</p>}
+								{this.state.sortType === 2 && <p>I visited <span>ID：{item.uid}</span> fish pond</p>}
 								{this.state.sortType === 1 && <a className={'vist_go'} href={`/home?uid=${item.uid}&pondId=${item.travelPondId}`}/>}
 								{this.state.sortType === 2 && <a className={'vist_go'} href={`/home?uid=${item.uid}&pondId=${item.destinationPoolId}`}/>}
 							</li>)}

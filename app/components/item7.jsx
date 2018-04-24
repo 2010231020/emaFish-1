@@ -33,7 +33,8 @@ module.exports = React.createClass({
 			uid: uid,
 			word: this.state.textareaValue
 		};
-		util.popShow('确认孵化？', () => {
+		//确认孵化
+		util.popShow('incubation？', () => {
 			util.reqPost('/emaCat/currency/hatchFish', postData, data => {
 				console.log(data);
 				if (data.resultCode === 300) {
@@ -41,7 +42,8 @@ module.exports = React.createClass({
 				} else if (data.resultCode === 200) {
 					this.props.getUserFishList();
 					this.props.getUserInfoList();
-					util.alert("孵化中！", () => {
+					//孵化中
+					util.alert("In the incubation！", () => {
 						this.props.popState();
 					});
 				}
@@ -55,7 +57,8 @@ module.exports = React.createClass({
 				<div className={'info'}>
 					<div className={'l'}><i/></div>
 					<div className={'r'}>
-						<textarea value={textareaValue} onChange={this.handleTextareaChange} placeholder={'在这里写上寄语吧'}/>
+						{/*//在这里写上寄语把*/}
+						<textarea value={textareaValue} onChange={this.handleTextareaChange} placeholder={'Write your best wishes here.'}/>
 					</div>
 				</div>
 				<div className={'fee'}>

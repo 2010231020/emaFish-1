@@ -86,6 +86,7 @@ module.exports = React.createClass({
 						User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
 						User.getInstance().setPropDictionary(data.propDictionaryInfos);
 						User.getInstance().setFishGene(data.fishGeneInfos);
+						User.getInstance().setErrDictionary(data.errorDictionaryInfos);
 						console.log('字典信息', data);
 					});
 					util.reqPost('/emaCat/currency/getUserHatchingFishList', {
@@ -173,9 +174,9 @@ module.exports = React.createClass({
 			this.getUserInfoList();
 
 			//连接egret
-			let connectFlag = setInterval(() => {
-				this.sendMsg('connect', 'server connect');
-			}, 1000);
+			// let connectFlag = setInterval(() => {
+			// 	this.sendMsg('connect', 'server connect');
+			// }, 1000);
 
 			window.addEventListener("message", e => {
 				if (e.origin === util.getEgretDomain()) {

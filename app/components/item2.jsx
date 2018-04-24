@@ -34,11 +34,11 @@ module.exports = React.createClass({
 		if (this.props.list.length > 0) {
 			if (this.props.type === 'dec') {
 				this.setState({
-					maxPosition: Math.ceil((this.props.list.length - 1) / 2) - 2
+					maxPosition: Math.ceil((this.props.list.length - 1) / 4) - 1
 				});
 			} else {
 				this.setState({
-					maxPosition: Math.ceil(this.props.list.length / 2) - 2
+					maxPosition: Math.ceil(this.props.list.length / 4) -1
 				});
 			}
 		}
@@ -46,7 +46,7 @@ module.exports = React.createClass({
 	},
 	changePosition(type) {
 		if (type === 'next' && this.state.listPosition < this.state.maxPosition) {
-			document.getElementById('domUl').style.left = (1 + this.state.listPosition) * (-3.06) + 'rem';
+			document.getElementById('domUl').style.left = (1 + this.state.listPosition) * (-6.12) + 'rem';
 			this.setState({
 				positionClass: `position${this.state.listPosition}${this.state.listPosition + 1}`,
 				listPosition: ++this.state.listPosition
@@ -57,7 +57,7 @@ module.exports = React.createClass({
 			// 	}
 			// }, 2000);
 		} else if (type === 'pre' && this.state.listPosition > 0) {
-			document.getElementById('domUl').style.left = (this.state.listPosition - 1) * (-3.06) + 'rem';
+			document.getElementById('domUl').style.left = (this.state.listPosition - 1) * (-6.12) + 'rem';
 			this.setState({
 				positionClass: `position${this.state.listPosition}${this.state.listPosition - 1}`,
 				listPosition: --this.state.listPosition
@@ -81,7 +81,8 @@ module.exports = React.createClass({
 			pondId: util.getCookie('pondId'),
 			commondyId: commondyId
 		};
-		util.popShow(`确认购买${User.getInstance().getProp(propId).propName}？`, () => {
+		//确认购买
+		util.popShow(`Buy the purchase${User.getInstance().getProp(propId).propName}？`, () => {
 			util.reqPost('/emaCat/transcation/buyCommodity', postData, data => {
 				console.log(data);
 				if (propId != 2) {
@@ -113,9 +114,12 @@ module.exports = React.createClass({
 							onClick={this.props.changeCurItem.bind(this, 1, item.fishId)}>
 							<img src={util.getImg(item.gene)}/>
 							<span className={'name'}>#{item.fishId}</span>
-							{item.fishStatus === '1' && <span className={'status'}>已上架</span>}
-							{item.fishStatus === '10001' && <span className={'status'}>上架中</span>}
-							{item.fishStatus === '10002' && <span className={'status'}>出游中</span>}
+							{/*//已上架*/}
+							{item.fishStatus === '1' && <span className={'status'}>Selling</span>}
+							{/*//上架中*/}
+							{item.fishStatus === '10001' && <span className={'status'}>Sell</span>}
+							{/*//出游中*/}
+							{item.fishStatus === '10002' && <span className={'status'}>Travelling</span>}
 						</li>)}
 					</ul>
 					}

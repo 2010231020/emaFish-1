@@ -19,11 +19,17 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	getList(type) {
+	getList(type, flag) {
+		let postType = 1;
+		if (type === 1) {
+			postType = flag ? 1 : 3;
+		} else {
+			postType = flag ? 2 : 4;
+		}
 		const postData = {
 			curPage: 1,
 			pageSize: 100,
-			sortType: type//1 根据 价格升序  2 根据稀有度 降序
+			sortType: postType// 1、价格升序 2、rarity升序 3、价格降序 4、rarity降序
 		};
 		util.reqPost('/emaCat/commodity/getFishDealList', postData, data => {
 			this.setState({
@@ -35,10 +41,13 @@ module.exports = React.createClass({
 	changeSortType(type) {
 		if (this.state.sortType === type) {
 			if (type === 1) {
+				this.getList(type, !this.state.priceType);
 				this.setState({
 					priceType: !this.state.priceType
 				});
-			} else {
+			}
+			else {
+				this.getList(type, !this.state.rareType);
 				this.setState({
 					rareType: !this.state.rareType
 				});
@@ -47,8 +56,13 @@ module.exports = React.createClass({
 			this.setState({
 				sortType: type
 			});
+			if (type === 1) {
+				this.getList(type, this.state.priceType);
+			}
+			else {
+				this.getList(type, this.state.rareType);
+			}
 		}
-		this.getList(type);
 	},
 	changeCoinType(type) {
 		this.setState({
@@ -56,7 +70,7 @@ module.exports = React.createClass({
 		});
 	},
 	componentDidMount() {
-		this.getList(1);
+		this.getList(1, this.state.priceType);
 	},   //加载DOM之前运行的方法。默认运行一次
 	buy(fishId, orderId, e) {
 		//阻止事件冒泡
@@ -66,18 +80,17 @@ module.exports = React.createClass({
 		let postData = {
 			uid: util.getCookie('uid'),
 			fishId: fishId,
-			orderId: orderId
+			orderId: orderId,
+			poolId:util.getCookie('poolId')
 		};
-		util.popShow(`确认购买${fishId}？`, () => {
+		//确认购买
+		util.popShow(`Buy the ID fish ${fishId}？`, () => {
 			util.reqPost('/emaCat/transcation/buyFish', postData, data => {
 				console.log(data);
-				if (data.resultCode === 300) {
-					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
-				} else if (data.resultCode === 200) {
-					util.alert('购买成功！', () => {
+				//购买成功
+					util.alert('succeed！', () => {
 						this.props.popState();
 					});
-				}
 			})
 		});
 	},
@@ -85,12 +98,10 @@ module.exports = React.createClass({
 		return (
 			<div className={'item12'}>
 				<div className={'sort'}>
-					<div className={`sort_btn ${this.state.sortType === 1 && 'on'}`}
-							 onClick={this.changeSortType.bind(this, 1)}>
+					<div className={`sort_btn ${this.state.sortType === 1 && 'on'}`} onClick={this.changeSortType.bind(this, 1)}>
 						<span>Price</span><i className={this.state.priceType ? 'up' : 'down'}/>
 					</div>
-					<div className={`sort_btn ${this.state.sortType === 2 && 'on'}`}
-							 onClick={this.changeSortType.bind(this, 2)}>
+					<div className={`sort_btn ${this.state.sortType === 2 && 'on'}`} onClick={this.changeSortType.bind(this, 2)}>
 						<span>Rare</span><i className={this.state.rareType ? 'up' : 'down'}/>
 					</div>
 				</div>

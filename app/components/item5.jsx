@@ -49,7 +49,7 @@ module.exports = React.createClass({
 				<div className={'fds'}>
 					<span className={`fds_btn btn_l ${this.state.sortType === 1 && 'fds_btn1'}`}
 								onClick={this.changeSortType.bind(this, 1)}>
-						<span>Friend</span>
+						<span>Friends</span>
 					</span>
 					<span className={`fds_btn btn_r ${this.state.sortType === 2 && 'fds_btn1'}`}
 								onClick={this.changeSortType.bind(this, 2)}>

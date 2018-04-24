@@ -26,14 +26,14 @@
 .gen > ul li i.n {
   width: 0.41rem;
   height: 0.46rem;
-  right: 0;
+  right: 0.3rem;
   top: 0.24rem;
 }
 .gen > ul li i.sr,
 .gen > ul li i.ur {
   width: 0.63rem;
   height: 0.46rem;
-  right: 0;
+  right: 0.3rem;
   top: 0.24rem;
 }
 .gen > ul li i.n {
@@ -53,17 +53,17 @@
   background-size: 100% 100%;
 }
 .gen > ul li i.underline {
-  width: 1.79rem;
+  width: 1.3rem;
   height: 0.05rem;
   background: url("../images/cattr_underline1.png") no-repeat center;
   background-size: 100% 100%;
   bottom: 0.21rem;
-  left: 0.18rem;
+  left: 0.4rem;
 }
 .gen > ul li i.cattr {
   width: 0.58rem;
   height: 0.72rem;
-  left: 0;
+  left: 0.2rem;
   top: 0.09rem;
   z-index: 2;
 }

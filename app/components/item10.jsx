@@ -55,13 +55,16 @@ module.exports = React.createClass({
 			fishNote: this.state.textareaValue,
 			fishId: fishId
 		};
-		util.popShow('确认修改？',()=>{
+		//确认修改
+		util.popShow('Change？',()=>{
 			util.reqPost('/emaCat/currency/updateFishnote', postData, data => {
-				console.log('修改寄语', data);
+				//修改寄语
+				console.log('Change wishes', data);
 				if (data.resultCode === 300) {
 					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
 				} else if (data.resultCode === 200) {
-					util.alert('修改寄语成功！',()=>{
+					//修改寄语成功
+					util.alert('Success！',()=>{
 						this.props.getUserFishList();
 						this.props.popState();
 					});
@@ -86,7 +89,8 @@ module.exports = React.createClass({
 		return (
 			<div className={'item10'}>
 				<div className={'msg'}>
-					<textarea value={textareaValue} onChange={this.handleTextareaChange} placeholder={'在这里写上寄语吧'}/>
+					{/*//在这里写上寄语把*/}
+					<textarea value={textareaValue} onChange={this.handleTextareaChange} placeholder={'Write your best wishes here.'}/>
 				</div>
 
 				{this.state.actionType === 1 && <div className={'action10'}>
