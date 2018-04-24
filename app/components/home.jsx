@@ -68,6 +68,12 @@ module.exports = React.createClass({
 			util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
 
 				if (data && data.length > 0 && data[0].id) {
+
+					this.setState({
+						decorate1: data[0].backgroundId,
+						decorate2: data[0].stoneId
+					});
+
 					if (!this.state.isTraveller) {
 						util.setCookie('pondId', data[0].id);
 					}
@@ -137,14 +143,11 @@ module.exports = React.createClass({
 			uid: userData.uid
 		};
 		util.reqPost('/emaCat/currency/getUserBagAndPond', postData, data => {
-			util.hideLoading();
 			this.setState({
 				userInfo: data,
 				userPondInfo: data.userPondInfoList[0],
 				userData: data.userData,
 				chargingSink: data.chargingSink,
-				decorate1: data.userPondInfoList[0].backgroundId,
-				decorate2: data.userPondInfoList[0].stoneId,
 				userBagInfo: data.userBagInfo.concat(data.userDecorateInfoList)
 			});
 			console.log('个人信息', data);
