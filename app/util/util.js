@@ -1,5 +1,5 @@
 let config = require("json!../../process.json");
-
+let User = require('../util/User');
 let geneDictionary = {
 	"1": "FP",
 	"2": "FG",
@@ -9,35 +9,6 @@ let geneDictionary = {
 	"6": "FR"
 };
 
-function common(url, options, callback) {
-	document.getElementById('loading').style.display = 'block';
-
-	fetch(url, options).then(res => {
-			document.getElementById('loading').style.display = 'none';
-			if (res.ok) {
-				return res.json()
-			} else {
-				{
-					console.error(res);
-
-				}
-			}
-		}
-	).then(json => {
-		if (json.resultCode && (json.resultCode === 200 || json.resultCode === 300)) {  // 判断请求是否正确
-			if (json.data) {
-				return json.data
-			} else {
-				callback(json);
-			}
-		} else {
-			console.error(json);
-		}
-	}).then(data => {
-		if (data) callback(data);
-	})
-}
-
 let popup = {
 	message: '',
 	action: '',
@@ -45,6 +16,40 @@ let popup = {
 };
 
 module.exports = {
+	common(url, options, callback) {
+		document.getElementById('loading').style.display = 'block';
+
+		fetch(url, options).then(res => {
+				document.getElementById('loading').style.display = 'none';
+				if (res.ok) {
+					return res.json()
+				} else {
+					{
+						console.error(res);
+
+					}
+				}
+			}
+		).then(json => {
+			if (json.resultCode && (json.resultCode === 200 || json.resultCode === 300)) {  // 判断请求是否正确
+				if (json.resultCode === 200) {
+					if (json.data) {
+						return json.data
+					} else {
+						callback(json);
+					}
+				} else if (json.resultCode === 300) {
+					this.alert(User.getInstance().getErrStr(json.resultMsg.replace('java.lang.Exception: ', '')));
+				} else {
+					console.error(json);
+				}
+			} else {
+				console.error(json);
+			}
+		}).then(data => {
+			if (data) callback(data);
+		})
+	},
 	getPostStr(obj) {
 		let postArr = [];
 		let postStr = '';
@@ -69,7 +74,7 @@ module.exports = {
 		} else {
 			bodyData = postData;
 		}
-		bodyData.token = encodeURIComponent(encodeURIComponent(this.getCookie('token')));
+		bodyData.token = this.getCookie('token');
 		let options = {
 			method: 'post',
 			body: this.getPostStr(bodyData),
@@ -77,7 +82,7 @@ module.exports = {
 				'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
 			}
 		};
-		common(url, options, callback);
+		this.common(url, options, callback);
 	},
 	getCookie(name) {
 		let arr = document.cookie.replace(/\s/g, '').split(';');
