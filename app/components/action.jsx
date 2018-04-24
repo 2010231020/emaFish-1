@@ -13,7 +13,7 @@ module.exports = React.createClass({
 	},
 	toSale(item) {
 		if (item.fishStatus === '1' || item.fishStatus === '10001') {
-			util.alert('已上架了');
+			util.alert('Has been sold');
 		} else {
 			this.props.toSale();
 		}
@@ -23,7 +23,8 @@ module.exports = React.createClass({
 		let uid = util.getCookie('uid');
 		const postData = {
 			uid: uid,
-			fishId: fishId
+			fishId: fishId,
+			//少一个鱼塘ID
 		};
 		util.reqPost('/emaCat/currency/fishEatFood', postData, data => {
 			util.hideLoading();
@@ -31,8 +32,26 @@ module.exports = React.createClass({
 			this.refreshInfo(data.fishBaseInfo);
 		});
 	},
-	buy() {
-		this.props.buy();
+	buy(fishId, orderId, e) {
+		//阻止事件冒泡
+		e.stopPropagation();
+		e.nativeEvent.stopImmediatePropagation();
+		console.log(fishId, orderId);
+		let postData = {
+			uid: util.getCookie('uid'),
+			fishId: fishId,
+			orderId: orderId
+		};
+		//确认购买
+		util.popShow(`Buy the ID fish ${fishId}？`, () => {
+			util.reqPost('/emaCat/transcation/buyFish', postData, data => {
+				console.log(data);
+				//购买成功
+					util.alert('Success！', () => {
+						this.props.popState();
+					});
+			})
+		});
 	},
 	choice() {
 		this.props.choice();
@@ -45,13 +64,10 @@ module.exports = React.createClass({
 		this.props.refreshInfo(data);
 	},
 	render: function () {
-		const {item, isTraveller} = this.props;
+		const {item} = this.props;
 		let flag = item.travelUid ? 2 : 1;//1:自家鱼；2:访客鱼
-		if (item.orderId) {//商店的鱼
+		if (item.orderId) {
 			flag = 3;
-		}
-		if (isTraveller) {//别人家的鱼
-			flag = 4;
 		}
 		return (
 			<div className='action'>
@@ -73,7 +89,12 @@ module.exports = React.createClass({
 						<span className={'num'}>88</span>
 					</div>
 				</div>}
-
+				{flag === 3 && <div>
+					<div className={'action5'} onClick={this.buy.bind(this, item.fishId, item.orderId)}/>
+				</div>}
+				{flag === 3 && <div>
+					<a className={'action6'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>
+				</div>}
 			</div>
 		);
 	}

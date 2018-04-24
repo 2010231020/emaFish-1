@@ -3,6 +3,7 @@ import React from 'react';
 import Gen from './gen';
 import Action from './action';
 import Avatar from './avatar';
+
 import Num from './num';
 
 let util = require('../util/util');
@@ -32,7 +33,7 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/transcation/buyFish', postData, data => {
 			console.log(data);
 			util.hideLoading();
-			util.popShow('购买成功');
+			util.popShow('Success!');
 			this.props.handleShow();
 			this.props.buyCallback();
 		})
@@ -58,18 +59,16 @@ module.exports = React.createClass({
 			uid: util.getCookie('uid'),
 			fishId: fishId,
 			upDays: 3,
-			price: this.state.inputValue
+			price: this.state.inputValue,
 		};
-		util.popShow('确认上架？', () => {
+		//确认上架
+		util.popShow('Sell？', () => {
 			util.reqPost('/emaCat/transcation/createFishOrder', postData, data => {
-				if (data.resultCode === 300) {
-					util.alert(data.resultMsg.replace('java.lang.Exception: ', ''));
-				} else if (data.resultCode === 200) {
-					this.props.getUserFishList();
-					util.alert("上架成功！", () => {
-						this.props.popState();
-					});
-				}
+				this.props.getUserFishList();
+				//上架成功
+				util.alert("Success！", () => {
+					this.props.popState();
+				});
 			})
 		});
 	},
@@ -83,7 +82,7 @@ module.exports = React.createClass({
 	},
 	render() {
 		const {saleFlag, inputValue} = this.state;
-		const {item, isTraveller} = this.props;
+		const {item} = this.props;
 		console.log(9, item);
 		return (
 			<div id='cattr'>
@@ -94,14 +93,15 @@ module.exports = React.createClass({
 								<Avatar item={item}/>
 							</div>
 						</div>
-						<div className={'r'} onClick={this.changeType.bind(this)}>
-							<p className={'msg'}>{item.fishNote || '还没有寄语'}</p>
-						</div>
+						{/*判断orderId是否存在用的三段式*/}
+						{item.orderId === undefined ? <div className={'r'} onClick={this.changeType.bind(this)}>
+							{/*//还没有寄语*/}
+								<p className={'msg'}>{item.fishNote || 'No best wishes'}</p></div> :
+							<div className={'r'}><p className={'msg'}>{item.fishNote || 'No best wishes'}</p></div>}
 					</div>
 
-					<Gen item={item}/>
-					<Action isTraveller={isTraveller} toSale={this.toSale.bind(this)} refreshInfo={this.refreshInfo.bind(this)}
-									item={item}/>
+					< Gen item={item}/>
+					<Action toSale={this.toSale.bind(this)} refreshInfo={this.refreshInfo.bind(this)} item={item}/>
 				</div>}
 				{saleFlag && <div className={'sale_content'}>
 					<div className={'avatar_content'}>
@@ -122,7 +122,8 @@ module.exports = React.createClass({
 						</div>
 					</div>
 					<div className={'fee'}>
-						<span>手续费：</span><span>3</span>
+						{/*//手续费*/}
+						<span>poundage：</span><span>3</span>
 					</div>
 					<div className={'ok'} onClick={this.sale.bind(this, item.fishId)}>
 						<i/>
