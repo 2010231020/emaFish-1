@@ -20,14 +20,6 @@
   width: 100%;
   left: 0;
 }
-.avatar .head .status {
-  position: absolute;
-  bottom: 12%;
-  width: 46%;
-  left: 27%;
-  text-align: center;
-  color: lime;
-}
 .avatar .head .exp {
   width: 1.64rem;
   height: 0.33rem;

@@ -369,7 +369,7 @@ module.exports = React.createClass({
 				{this.state.popFlag && <div className={'mask'} onClick={this.closeAll.bind(this)}/>}
 				{/*{this.state.loadingFlag && <div className={'loading'}/>}*/}
 				{!this.state.isTraveller && <Res userData={this.state.userData} chargingSink={this.state.chargingSink}/>}
-				{this.state.isTraveller && <a className={'go_home'} href={'/home'}/>}
+				{this.state.isTraveller && <a className={'go_back'} href={'/home'}/>}
 				{this.state.eggs.map((item, i) =>
 					<i className={`egg egg${i}`}/>
 				)}

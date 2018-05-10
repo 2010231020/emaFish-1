@@ -1,6 +1,6 @@
 .gen {
-  width: 5.17rem;
-  height: 3.62rem;
+  width: 4.18rem;
+  height: 3.47rem;
   background: url("../images/cattr_bg.png") no-repeat center;
   background-size: 100% 100%;
   position: relative;
@@ -26,15 +26,15 @@
 .gen > ul li i.n {
   width: 0.41rem;
   height: 0.46rem;
-  right: 0.3rem;
-  top: 0.24rem;
+  left: 0.85rem;
+  top: 0.4rem;
 }
 .gen > ul li i.sr,
 .gen > ul li i.ur {
   width: 0.63rem;
   height: 0.46rem;
-  right: 0.3rem;
-  top: 0.24rem;
+  left: 0.8rem;
+  top: 0.4rem;
 }
 .gen > ul li i.n {
   background: url("../images/rare_n.png") no-repeat center;
@@ -52,18 +52,10 @@
   background: url("../images/rare_ur.png") no-repeat center;
   background-size: 100% 100%;
 }
-.gen > ul li i.underline {
-  width: 1.3rem;
-  height: 0.05rem;
-  background: url("../images/cattr_underline1.png") no-repeat center;
-  background-size: 100% 100%;
-  bottom: 0.21rem;
-  left: 0.4rem;
-}
 .gen > ul li i.cattr {
   width: 0.58rem;
   height: 0.72rem;
-  left: 0.2rem;
+  left: 0.4rem;
   top: 0.09rem;
   z-index: 2;
 }

@@ -20,6 +20,30 @@
 #cattr .fish_content .shelve .l .content {
   width: 100%;
 }
+#cattr .fish_content .shelve .status1 {
+  width: 1.13rem;
+  height: 1.23rem;
+  position: absolute;
+  background: url("../images/selling.png") no-repeat center;
+  background-size: 100%;
+  top: -0.04rem;
+}
+#cattr .fish_content .shelve .status2 {
+  width: 1.13rem;
+  height: 1.23rem;
+  position: absolute;
+  background: url("../images/sell.png") no-repeat center;
+  background-size: 100%;
+  top: -0.04rem;
+}
+#cattr .fish_content .shelve .status3 {
+  width: 1.13rem;
+  height: 1.23rem;
+  position: absolute;
+  background: url("../images/travell.png") no-repeat center;
+  background-size: 100%;
+  top: -0.04rem;
+}
 #cattr .fish_content .shelve .r {
   float: left;
   width: 56%;
@@ -37,9 +61,12 @@
   color: #fff;
   text-align: center;
 }
-#cattr .fish_content .gen,
+#cattr .fish_content .gen {
+  float: left;
+}
 #cattr .fish_content .action {
   float: left;
+  margin-left: -0.5rem;
 }
 #cattr .sale_content {
   position: absolute;

@@ -393,13 +393,32 @@
   left: 27%;
   text-align: center;
 }
-#item2 .list > ul li .status {
+#item2 .list > ul li .status1 {
+  width: 0.56rem;
+  height: 0.62rem;
   position: absolute;
-  bottom: 12%;
-  width: 46%;
-  left: 27%;
-  text-align: center;
-  color: lime;
+  background: url("../images/sellingmin.png") no-repeat center;
+  background-size: 100%;
+  top: 0.2rem;
+  left: 0.1rem;
+}
+#item2 .list > ul li .status2 {
+  width: 0.56rem;
+  height: 0.62rem;
+  position: absolute;
+  background: url("../images/sellmin.png") no-repeat center;
+  background-size: 100%;
+  top: 0.2rem;
+  left: 0.1rem;
+}
+#item2 .list > ul li .status3 {
+  width: 0.56rem;
+  height: 0.62rem;
+  position: absolute;
+  background: url("../images/travellmin.png") no-repeat center;
+  background-size: 100%;
+  top: 0.2rem;
+  left: 0.1rem;
 }
 #item2 .list > ul li .propNum {
   display: inline-block;

@@ -112,12 +112,6 @@ module.exports = React.createClass({
 								<Avatar item={item}/>
 							</div>
 							<div className={'price only1'}>
-								{/*<div onClick={this.changeCoinType.bind(this, 1)}>*/}
-								{/*<i className={this.state.coinType === 1 ? 'radio on' : 'radio'}/>*/}
-								{/*<i className={'coin1'}/>*/}
-								{/*<i className={'underline'}/>*/}
-								{/*<Num number={item.price}/>*/}
-								{/*</div>*/}
 								<div onClick={this.changeCoinType.bind(this, 2)}>
 									<i className={this.state.coinType === 2 ? 'radio on' : 'radio'}/>
 									<i className={'coin2'}/>

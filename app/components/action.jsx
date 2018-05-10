@@ -1,5 +1,6 @@
 require('./action.css');
 import React from 'react';
+import Num from './num';
 
 let util = require('../util/util');
 let User = require('../util/User');
@@ -71,30 +72,33 @@ module.exports = React.createClass({
 		}
 		return (
 			<div className='action'>
-				{flag === 1 && <div>
+				{flag === 1 && <div className={'div_all'}>
 					<div className={'action1'} onClick={this.toSale.bind(this, item)}/>
 				</div>}
-				{flag === 1 && <div>
+				{flag === 1 && <div className={'div_all'}>
 					<div className={'action2'} onClick={this.feed.bind(this, item.fishId)}>
 						<span className={'num'}>{User.getInstance().getGrassFromGrow(item.rarity, item.level) || ''}</span>
 					</div>
 				</div>}
-				{flag === 2 && <div>
+				{flag === 2 && <div className={'div_all'}>
 					<div className={'action3'}>
 						<span className={'num'}>88</span>
 					</div>
 				</div>}
-				{flag === 2 && <div>
+				{flag === 2 && <div className={'div_all'}>
 					<div className={'action4'} onClick={this.getRes.bind(this, item.fishId)}>
 						<span className={'num'}>88</span>
 					</div>
 				</div>}
-				{flag === 3 && <div>
+				{flag === 3 && <div className={'div_a3'}>
+					<div className={'price_only1'}>
+					<i className={'coin2'}/>
+					<i className={'underline'}/>
+					<Num number={item.price}/>
+				</div>
 					<div className={'action5'} onClick={this.buy.bind(this, item.fishId, item.orderId)}/>
 				</div>}
-				{flag === 3 && <div>
-					<a className={'action6'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>
-				</div>}
+				{flag === 3 && <a className={'action6'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>}
 			</div>
 		);
 	}

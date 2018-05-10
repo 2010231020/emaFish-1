@@ -115,11 +115,11 @@ module.exports = React.createClass({
 							<img src={util.getImg(item.gene)}/>
 							<span className={'name'}>#{item.fishId}</span>
 							{/*//已上架*/}
-							{item.fishStatus === '1' && <span className={'status'}>Selling</span>}
+							{item.fishStatus === '1' && <div className={'status1'}/>}
 							{/*//上架中*/}
-							{item.fishStatus === '10001' && <span className={'status'}>Sell</span>}
+							{item.fishStatus === '10001' && <div className={'status2'}/>}
 							{/*//出游中*/}
-							{item.fishStatus === '10002' && <span className={'status'}>Travelling</span>}
+							{item.fishStatus === '10002' && <div className={'status3'}/>}
 						</li>)}
 					</ul>
 					}

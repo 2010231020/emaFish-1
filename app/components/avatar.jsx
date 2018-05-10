@@ -19,12 +19,6 @@ module.exports = React.createClass({
 					<div className={'exp'}><span className={'lv'}>Lv{item.level}</span><i style={{width: `${item.exp}%`}}
 																																								className={'exp-bar'}/></div>
 					<Sr ssr={item.rarity}/>
-					{/*//已上架*/}
-					{item.fishStatus === '1' && <span className={'status'}>Selling</span>}
-					{/*//上架中*/}
-					{item.fishStatus === '10001' && <span className={'status'}>Sell</span>}
-					{/*//出游中*/}
-					{item.fishStatus === '10002' && <span className={'status'}>Travelling</span>}
 				</div>
 			</div>
 		)

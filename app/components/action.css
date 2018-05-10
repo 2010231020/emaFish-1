@@ -1,53 +1,99 @@
 .action {
-  width: 1.26rem;
+  width: 3.26rem;
   height: 3.62rem;
   margin-top: 0.1rem;
 }
-.action > div {
+.action .div_all {
   width: 1.26rem;
   height: 1.26rem;
   margin-top: 0.4rem;
   background: url("../images/action_bg1.png") no-repeat center;
   background-size: 100% 100%;
+  margin-left: 1.2rem;
 }
-.action > div .action1,
-.action > div .action2,
-.action > div .action3,
-.action > div .action4,
-.action > div .action5,
-.action > div .action6 {
+.action .div_all .action1,
+.action .div_all .action2,
+.action .div_all .action3,
+.action .div_all .action4 {
   width: 100%;
   height: 100%;
   position: relative;
 }
-.action > div .action1 {
+.action .div_all .action1 {
   background: url("../images/action_1.png") no-repeat center;
   background-size: 0.84rem 0.83rem;
 }
-.action > div .action2 {
+.action .div_all .action2 {
   background: url("../images/action_2.png") no-repeat center;
   background-size: 0.68rem 0.81rem;
 }
-.action > div .action3 {
+.action .div_all .action3 {
   background: url("../images/action_3.png") no-repeat center;
   background-size: 0.81rem 0.74rem;
 }
-.action > div .action4 {
+.action .div_all .action4 {
   background: url("../images/action_4.png") no-repeat center;
   background-size: 0.73rem 0.73rem;
 }
-.action > div .action5 {
-  background: url("../images/action_1.png") no-repeat center;
-  background-size: 0.83rem 0.84rem;
-}
-.action > div .action6 {
-  display: block;
-  background: url("../images/vish_go.png") no-repeat center;
-  background-size: 0.61rem 0.62rem;
-}
-.action > div .num {
+.action .div_all .num {
   color: #fff;
   position: absolute;
   right: 0.2rem;
   bottom: 0.12rem;
+}
+.action .div_a3 {
+  width: 3.26rem;
+  height: 3.62rem;
+}
+.action .div_a3 .price_only1 {
+  width: 3.17rem;
+  height: 2rem;
+  margin-left: 0.8rem;
+  margin-top: 0.2rem;
+}
+.action .div_a3 .price_only1 .underline {
+  position: absolute;
+  display: block;
+  width: 2.17rem;
+  height: 0.22rem;
+  background: url("../images/birth_underline.png") no-repeat center;
+  background-size: 100%;
+  top: 4.2rem;
+}
+.action .div_a3 .price_only1 .coin2 {
+  display: block;
+  width: 0.77rem;
+  height: 0.82rem;
+  position: absolute;
+  right: 1.8rem;
+  top: 3.55rem;
+  z-index: 2;
+  background: url("../images/action_4.png") no-repeat center;
+  background-size: 100%;
+}
+.action .div_a3 .price_only1 .special_num {
+  display: inline-block;
+  position: absolute;
+  right: 0.3rem;
+  top: 3.85rem;
+  z-index: 2;
+  width: 1.4rem;
+  height: 0.48rem;
+}
+.action .div_a3 .action5 {
+  width: 1.25rem;
+  height: 1.24rem;
+  background: url("../images/action_5.png") no-repeat center;
+  background-size: 100%;
+  margin-left: 1.2rem;
+  margin-top: -0.4rem;
+}
+.action .action6 {
+  display: block;
+  position: absolute;
+  margin-top: -1rem;
+  width: 0.61rem;
+  height: 0.62rem;
+  background: url("../images/vish_go.png") no-repeat center;
+  background-size: 100%;
 }

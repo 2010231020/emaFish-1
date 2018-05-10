@@ -93,6 +93,12 @@ module.exports = React.createClass({
 								<Avatar item={item}/>
 							</div>
 						</div>
+						{/*//已上架*/}
+						{item.fishStatus === '1' && <div className={'status1'}/>}
+						{/*//上架中*/}
+						{item.fishStatus === '10001' && <div className={'status2'}/>}
+						{/*//出游中*/}
+						{item.fishStatus === '10002' && <div className={'status3'}/>}
 						{/*判断orderId是否存在用的三段式*/}
 						{item.orderId === undefined ? <div className={'r'} onClick={this.changeType.bind(this)}>
 							{/*//还没有寄语*/}

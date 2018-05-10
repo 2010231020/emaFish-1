@@ -10,7 +10,7 @@ module.exports = React.createClass({
 	},
 	componentDidMount() {
 	},
-	getRes(type) {
+	getRes(type) {   //查询水草与收水草
 		let uid = util.getCookie('uid');
 		const postData = {
 			uid: uid,
@@ -24,19 +24,19 @@ module.exports = React.createClass({
 	},
 	getPraise(type) {//鱼塘点赞
 		let uid = util.getCookie('uid');
-		let pondId = util.getUrlParams('pondId') || util.getCookie('pondId');
+		// let pondId = util.getUrlParams('pondId') || util.getCookie('pondId');
 		const postData = {
 			uid: uid,
-			pondId: pondId,
-			type: type
+			// pondId: pondId,
+			// type: type
 		};
-		util.reqPost('/emaCat/travel/fabulousFishPond', postData, data => {
+		util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
 			console.log(data);
-			this.props.getUserInfoList();
-			//点赞成功
-				util.alert('Success！', () => {
-					this.props.popState();
-				});
+			// this.props.getUserInfoList();
+			// 点赞成功
+			// 	util.alert('Success！', () => {
+			// 		this.props.popState();
+			// 	});
 		});
 	},
 	follow() {
@@ -48,16 +48,17 @@ module.exports = React.createClass({
 			uid: uid,
 			pondId: pondId,
 			befolUid: befolUid,
-			befolPondId: befolPondId
+			befolPondId: befolPondId,
 		};
 			util.reqPost('/emaCat/currency/followUserPond', postData, data => {
 				//关注
 				console.log('Focus on', data);
-				this.props.getUserInfoList();
+				type =data.type;
+				// this.props.getUserInfoList();
 				//关注成功!
-					util.alert('Success!', () => {
-						this.props.popState();
-					});
+				// 	util.alert('Success!', () => {
+				// 		this.props.popState();
+				// 	});
 			});
 	},
 	render: function () {
@@ -73,7 +74,8 @@ module.exports = React.createClass({
 					<span className={'num'}>{chargingSink.ungetResourceNum || ''}</span>
 				</div>}
 				{isTraveller && <div className={'a2'} onClick={this.follow.bind(this)}>
-					<img src={require('../images/interaction2.png')}/>
+					{this.type === 0 && <img src={require('../images/interaction4.png')}/>}
+					{this.type === 1 && <img src={require('../images/interaction3.png')}/>}
 				</div>}
 			</div>
 		);
