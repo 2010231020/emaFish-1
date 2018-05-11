@@ -8,7 +8,7 @@ module.exports = React.createClass({
 		return (
 			<div>
 				<img src={require(`../images/d${propId}l.png`)}/>
-				<span className={'name'}>{User.getInstance().getProp(propId).propName}</span>
+				<span className={'name'}>LV{User.getInstance().getProp(propId).propLevel}</span>
 			</div>
 		)
 	}

@@ -187,11 +187,12 @@ module.exports = React.createClass({
 		} else {
 			this.getList();
 			this.getUserInfoList();
+			this.getUserPondInfo();
 
 			//连接egret
-			// let connectFlag = setInterval(() => {
-			// 	this.sendMsg('connect', 'server connect');
-			// }, 1000);
+			let connectFlag = setInterval(() => {
+				this.sendMsg('connect', 'server connect');
+			}, 1000);
 
 			window.addEventListener("message", e => {
 				if (e.origin === util.getEgretDomain()) {
@@ -336,7 +337,7 @@ module.exports = React.createClass({
 								<li className={'l2'} onClick={this.changeType.bind(this, 3)}><i/></li>
 								<li className={'l3'} onClick={this.changeType.bind(this, 12)}><i/></li>
 								<li className={'l4'} onClick={this.changeType.bind(this, 4)}><i/></li>
-								<li className={'l5'}><i/></li>
+								<li className={'l5'} onClick={this.popState.bind(this)}><i/></li>
 								<li className={'l6'} onClick={this.changeType.bind(this, 2)}><i/></li>
 								<li className={'l7'} onClick={this.changeType.bind(this, 5)}><i/></li>
 								<li className={'l8'}><i/></li>

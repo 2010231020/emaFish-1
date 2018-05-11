@@ -82,7 +82,7 @@ module.exports = React.createClass({
 			commondyId: commondyId
 		};
 		//确认购买
-		util.popShow(`Buy the purchase${User.getInstance().getProp(propId).propName}？`, () => {
+		util.popShow(`Buy the ${User.getInstance().getProp(propId).propName}？`, () => {
 			util.reqPost('/emaCat/transcation/buyCommodity', postData, data => {
 				console.log(data);
 				if (propId != 2) {
