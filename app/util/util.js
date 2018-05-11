@@ -74,7 +74,7 @@ module.exports = {
 		} else {
 			bodyData = postData;
 		}
-		bodyData.token = this.getCookie('token');
+		bodyData.token = encodeURIComponent(encodeURIComponent(this.getCookie('token')));
 		let options = {
 			method: 'post',
 			body: this.getPostStr(bodyData),

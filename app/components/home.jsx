@@ -153,6 +153,18 @@ module.exports = React.createClass({
 			console.log('个人信息', data);
 		});
 	},
+	getUserPondInfo() {
+		let userData = this.getUserData();
+		const postData = {
+			uid: userData.uid,
+		};
+		util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
+			console.log('getUserPondInfo', data);
+			this.setState({
+				userPondInfo: data[0],
+			});
+		});
+	},
 	refreshInfo(data) {//喂养方法
 		let tmpObj = {
 			exp: data.exp,
@@ -374,7 +386,7 @@ module.exports = React.createClass({
 					<i className={`egg egg${i}`}/>
 				)}
 				<Interaction isTraveller={this.state.isTraveller} getUserInfoList={this.getUserInfoList.bind(this)}
-										 userPondInfo={this.state.userPondInfo}
+										 userPondInfo={this.state.userPondInfo} getUserPondInfo={this.getUserPondInfo.bind(this)}
 										 chargingSink={this.state.chargingSink}/>
 				<Popup/>
 			</div>

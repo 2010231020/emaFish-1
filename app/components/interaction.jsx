@@ -24,19 +24,17 @@ module.exports = React.createClass({
 	},
 	getPraise(type) {//鱼塘点赞
 		let uid = util.getCookie('uid');
-		// let pondId = util.getUrlParams('pondId') || util.getCookie('pondId');
+		let pondId = util.getUrlParams('pondId') || util.getCookie('pondId');
 		const postData = {
 			uid: uid,
-			// pondId: pondId,
-			// type: type
+			pondId: pondId,
+			type: type
 		};
-		util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
+		util.reqPost('/emaCat/travel/fabulousFishPond', postData, data => {
 			console.log(data);
-			// this.props.getUserInfoList();
+			this.props.getUserPondInfo();
 			// 点赞成功
-			// 	util.alert('Success！', () => {
-			// 		this.props.popState();
-			// 	});
+			// util.alert('Success！');
 		});
 	},
 	follow() {
@@ -50,16 +48,13 @@ module.exports = React.createClass({
 			befolUid: befolUid,
 			befolPondId: befolPondId,
 		};
-			util.reqPost('/emaCat/currency/followUserPond', postData, data => {
-				//关注
-				console.log('Focus on', data);
-				type =data.type;
-				// this.props.getUserInfoList();
-				//关注成功!
-				// 	util.alert('Success!', () => {
-				// 		this.props.popState();
-				// 	});
-			});
+		util.reqPost('/emaCat/currency/followUserPond', postData, data => {
+			//关注
+			console.log('Focus on', data);
+			// this.props.getUserInfoList();
+			//关注成功!
+			// 	util.alert('Success!')
+		});
 	},
 	render: function () {
 		const {userPondInfo, chargingSink, isTraveller,} = this.props;
@@ -67,15 +62,16 @@ module.exports = React.createClass({
 			<div id='interaction'>
 				{<div className={'a1'} onClick={this.getPraise.bind(this, 0)}>
 					<img src={require('../images/interaction1.png')}/>
-					<span className={'num'}>{userPondInfo.attractiveness || ''}</span>
+					<span className={'num'}>{userPondInfo.attractiveness }</span>
 				</div>}
 				{!isTraveller && <div className={'a2'} onClick={this.getRes.bind(this, 1)}>
 					<img src={require('../images/interaction2.png')}/>
 					<span className={'num'}>{chargingSink.ungetResourceNum || ''}</span>
 				</div>}
 				{isTraveller && <div className={'a2'} onClick={this.follow.bind(this)}>
-					{this.type === 0 && <img src={require('../images/interaction4.png')}/>}
-					{this.type === 1 && <img src={require('../images/interaction3.png')}/>}
+					{/*<img src={require('../images/interaction4.png')}/>*/}
+					{this.uty === 1 ? <img src={require('../images/interaction3.png')}/> :
+						<img src={require('../images/interaction4.png')}/>}
 				</div>}
 			</div>
 		);
