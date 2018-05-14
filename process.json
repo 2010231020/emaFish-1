@@ -1,17 +1,17 @@
 {
   "production": {
     "emaCat": "http://116.228.88.149:8080/emaCat",
-    "imgHost": "http://picture.lemonade-game.com/fish",
+    "imgHost": "http://picture.lemonade-game.com/fish/thum",
     "EgretDomain": "http://emfstatic.lemonade-game.com"
   },
   "test": {
     "emaCat": "http://192.168.1.12:8080/emaCat",
-    "imgHost": "http://test-picture.lemonade-game.com/fish",
+    "imgHost": "http://test-picture.lemonade-game.com/fish/thum",
     "EgretDomain": "http://test-emfstatic.lemonade-game.com"
   },
   "dev": {
     "emaCat": "http://192.168.1.12:8080/emaCat",
-    "imgHost": "http://test-picture.lemonade-game.com/fish",
+    "imgHost": "http://test-picture.lemonade-game.com/fish/thum",
     "EgretDomain": "http://cober1.com:5239"
   },
   "dev1": {
