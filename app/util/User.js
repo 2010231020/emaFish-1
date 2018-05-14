@@ -16,7 +16,7 @@ class User {
 			growDictionary: [],//等级对应经验值的字典
 			propDictionary: [],//背包物品id对应字典
 			fishGene: [],//基因字典
-			errDictionary:[],//错误字典
+			errDictionary: [],//错误字典
 		};
 	}
 
@@ -35,7 +35,8 @@ class User {
 	setPropDictionary(obj) {
 		this.UserInfo.propDictionary = obj;
 	}
-	setErrDictionary(obj){
+
+	setErrDictionary(obj) {
 		this.UserInfo.errDictionary = obj;
 	}
 
@@ -87,11 +88,11 @@ class User {
 	}
 
 	getErrStr(errCode) {
-		let errStr = "no error";
-		if(errCode){
-			for(let i =0 ;i< this.UserInfo.errDictionary.length;i++){
-				if(this.UserInfo.errDictionary[i].code == errCode){
-					errStr= this.UserInfo.errDictionary[i].message;
+		let errStr = `error ${errCode}`;
+		if (errCode) {
+			for (let i = 0; i < this.UserInfo.errDictionary.length; i++) {
+				if (this.UserInfo.errDictionary[i].code == errCode) {
+					errStr = this.UserInfo.errDictionary[i].message;
 					break;
 				}
 			}

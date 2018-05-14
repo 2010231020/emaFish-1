@@ -19,21 +19,20 @@ module.exports = React.createClass({
 			pondId: pondId,
 			token: token
 		};
-		util.reqPost('/emaCat/currency/getUserFollowList', postData, data => {
-			//关注
-			console.log('getUserFollowList', data);
-			let followList = data.userPondFollowInfos;
-			for (let i = 0; followList[i]; i++) {
-				if (followList[i].befolPondId === +util.getUrlParams('pondId') && followList[i].befolUid === +util.getUrlParams('uid')) {
-					this.setState({
-						type: "0"
-					})
+		if (util.getUrlParams('pondId') && util.getUrlParams('uid') && util.getUrlParams('uid') != uid && util.getUrlParams('pondId') != pondId) {
+			util.reqPost('/emaCat/currency/getUserFollowList', postData, data => {
+				//关注
+				console.log('getUserFollowList', data);
+				let followList = data.userPondFollowInfos;
+				for (let i = 0; followList[i]; i++) {
+					if (followList[i].befolPondId === +util.getUrlParams('pondId') && followList[i].befolUid === +util.getUrlParams('uid')) {
+						this.setState({
+							type: "0"
+						})
+					}
 				}
-			}
-			// this.setState({
-			// 	type: data.type
-			// })
-		});
+			});
+		}
 
 	},
 	getRes(type) {   //查询水草与收水草
