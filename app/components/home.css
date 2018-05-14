@@ -174,8 +174,6 @@
 }
 #item .popup .item0 li {
   float: left;
-  background: url("../images/item_box_bg.png") no-repeat center;
-  background-size: 100% 100%;
   width: 33%;
   height: 33%;
 }
@@ -186,37 +184,37 @@
 }
 #item .popup .item0 li.l1 i {
   background: url("../images/item_box_1.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l2 i {
   background: url("../images/item_box_2.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l3 i {
   background: url("../images/item_box_3.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l4 i {
   background: url("../images/item_box_4.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l5 i {
   background: url("../images/item_box_5.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l6 i {
   background: url("../images/item_box_6.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l7 i {
   background: url("../images/item_box_7.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l8 i {
   background: url("../images/item_box_8.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
 #item .popup .item0 li.l9 i {
   background: url("../images/item_box_9.png") no-repeat center;
-  background-size: 1rem;
+  background-size: 100% 100%;
 }
