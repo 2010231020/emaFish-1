@@ -15,7 +15,7 @@
     left: 38%;
     font-weight: bold;
   }
-  .list-hist {
+  .list_hist {
     width: 100%;
     height: 81%;
     margin-top: 0.6rem;
@@ -23,7 +23,10 @@
       width: 100%;
       height: 93%;
       overflow-y: scroll;
-      &::-webkit-scrollbar {display:none};
+      &::-webkit-scrollbar {
+        display: none
+      }
+    ;
       margin-top: 0.9rem;
       li {
         width: 6.18rem;
@@ -33,27 +36,49 @@
         position: relative;
         overflow: hidden;
         left: 10%;
-        &::-webkit-scrollbar {display:none};
-          p {
-            position: absolute;
-            width: 70%;
-            height: 36%;
-            margin: 0.6rem auto auto;
-            left: 15%;
-            overflow: scroll;
-            color: #ffffff;
-            text-align: center;
-            margin-top: 0.8rem;
-            &::-webkit-scrollbar {display:none};
+        &::-webkit-scrollbar {
+          display: none
+        }
+      ;
+        p {
+          position: absolute;
+          width: 70%;
+          height: 36%;
+          margin: 0.6rem auto auto;
+          left: 15%;
+          overflow: scroll;
+          color: #ffffff;
+          text-align: center;
+          margin-top: 0.8rem;
+          &::-webkit-scrollbar {
+            display: none
           }
+        ;
+        }
+      }
+      .noh {
+        width: 6.18rem;
+        height: 2.25rem;
+        background: url("../images/hist_bg2.png") no-repeat center;
+        background-size: 100%;
+        position: relative;
+        margin: auto;
+        p {
+          position: absolute;
+          width: 50%;
+          margin-left: 38%;
+          margin-top: 0.9rem;
+          text-align: left;
+          color: #fff;
         }
       }
     }
-  .buttom {
-    width: 100%;
-    height: 5%;
-    background: url("../images/hist_l_button.png") no-repeat center;
-    position: absolute;
+    .buttom {
+      width: 100%;
+      height: 5%;
+      background: url("../images/hist_l_button.png") no-repeat center;
+      position: absolute;
+    }
   }
 }
 

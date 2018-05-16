@@ -16,21 +16,21 @@
   left: 38%;
   font-weight: bold;
 }
-.item13 .list-hist {
+.item13 .list_hist {
   width: 100%;
   height: 81%;
   margin-top: 0.6rem;
 }
-.item13 .list-hist ul {
+.item13 .list_hist ul {
   width: 100%;
   height: 93%;
   overflow-y: scroll;
   margin-top: 0.9rem;
 }
-.item13 .list-hist ul::-webkit-scrollbar {
+.item13 .list_hist ul::-webkit-scrollbar {
   display: none;
 }
-.item13 .list-hist ul li {
+.item13 .list_hist ul li {
   width: 6.18rem;
   height: 2.25rem;
   background: url("../images/hist_bg2.png") no-repeat center;
@@ -39,10 +39,10 @@
   overflow: hidden;
   left: 10%;
 }
-.item13 .list-hist ul li::-webkit-scrollbar {
+.item13 .list_hist ul li::-webkit-scrollbar {
   display: none;
 }
-.item13 .list-hist ul li p {
+.item13 .list_hist ul li p {
   position: absolute;
   width: 70%;
   height: 36%;
@@ -53,10 +53,26 @@
   text-align: center;
   margin-top: 0.8rem;
 }
-.item13 .list-hist ul li p::-webkit-scrollbar {
+.item13 .list_hist ul li p::-webkit-scrollbar {
   display: none;
 }
-.item13 .buttom {
+.item13 .list_hist ul .noh {
+  width: 6.18rem;
+  height: 2.25rem;
+  background: url("../images/hist_bg2.png") no-repeat center;
+  background-size: 100%;
+  position: relative;
+  margin: auto;
+}
+.item13 .list_hist ul .noh p {
+  position: absolute;
+  width: 50%;
+  margin-left: 38%;
+  margin-top: 0.9rem;
+  text-align: left;
+  color: #fff;
+}
+.item13 .list_hist .buttom {
   width: 100%;
   height: 5%;
   background: url("../images/hist_l_button.png") no-repeat center;

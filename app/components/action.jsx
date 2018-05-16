@@ -65,10 +65,13 @@ module.exports = React.createClass({
 		this.props.refreshInfo(data);
 	},
 	render: function () {
-		const {item} = this.props;
+		const {item, isTraveller} = this.props;
 		let flag = item.travelUid ? 2 : 1;//1:自家鱼；2:访客鱼
 		if (item.orderId) {
 			flag = 3;
+		}
+		if (isTraveller) {
+			flag = 4;
 		}
 		return (
 			<div className='action'>
@@ -80,16 +83,14 @@ module.exports = React.createClass({
 						<span className={'num'}>{User.getInstance().getGrassFromGrow(item.rarity, item.level) || ''}</span>
 					</div>
 				</div>}
-				{flag === 2 && <div className={'div_all'}>
-					<div className={'action3'}>
-						<span className={'num'}>88</span>
-					</div>
-				</div>}
-				{flag === 2 && <div className={'div_all'}>
-					<div className={'action4'} onClick={this.getRes.bind(this, item.fishId)}>
-						<span className={'num'}>88</span>
-					</div>
-				</div>}
+				{flag === 2 &&
+				<a className={'action7'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>}
+				{flag === 4 &&
+				<a className={'action7'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>}
+				{/*{flag === 2 && <div className={'div_all'}>*/}
+					{/*<div className={'action4'} onClick={this.getRes.bind(this, item.fishId)}>*/}
+					{/*</div>*/}
+				{/*</div>}*/}
 				{flag === 3 && <div className={'div_a3'}>
 					<div className={'price_only1'}>
 					<i className={'coin2'}/>

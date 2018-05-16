@@ -19,5 +19,5 @@
     "imgHost": "http://test-picture.lemonade-game.com/fish",
     "EgretDomain": "http://cober1.com:5239"
   },
-  "env": "production"
+  "env": "dev"
 }

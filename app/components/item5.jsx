@@ -58,10 +58,11 @@ module.exports = React.createClass({
 				</div>
 				<div className={'fds_list'}>
 					<ul>
+						{this.state.list.length === 0 && <div className={'nof'}><p>no friends</p></div>}
 						{this.state.list.map((item, i) => <li>
 							<p>Uid:<span>ID：{item.befolUid}</span></p>
 							<div className={'fish'}>
-								<i className={`icon icon${i}`}>{i+1}</i>
+								<i className={`icon icon${i}`}>{i + 1}</i>
 							</div>
 							<p>PondId:<span>ID：{item.befolPondId}</span></p>
 							<a className={'fds_go'} href={`/home?uid=${item.befolUid}&pondId=${item.befolPondId}`}/>

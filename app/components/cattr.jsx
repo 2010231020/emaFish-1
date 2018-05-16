@@ -82,7 +82,7 @@ module.exports = React.createClass({
 	},
 	render() {
 		const {saleFlag, inputValue} = this.state;
-		const {item} = this.props;
+		const {item,isTraveller} = this.props;
 		console.log(9, item);
 		return (
 			<div id='cattr'>
@@ -107,7 +107,7 @@ module.exports = React.createClass({
 					</div>
 
 					< Gen item={item}/>
-					<Action toSale={this.toSale.bind(this)} refreshInfo={this.refreshInfo.bind(this)} item={item}/>
+					<Action toSale={this.toSale.bind(this)} refreshInfo={this.refreshInfo.bind(this)} item={item} isTraveller={isTraveller}/>
 				</div>}
 				{saleFlag && <div className={'sale_content'}>
 					<div className={'avatar_content'}>
