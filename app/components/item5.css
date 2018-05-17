@@ -66,6 +66,11 @@
   margin-top: 0.15rem;
   text-align: left;
   color: #fff;
+  font-size: 0.2rem;
+}
+.item5 .fds_list ul li p span {
+  border-bottom: 1px solid #74edff;
+  display: inline-block;
 }
 .item5 .fds_list ul li .fish {
   width: 1rem;
@@ -101,21 +106,6 @@
 .item5 .fds_list ul li .fish .icon.icon2 {
   background: url("../images/fds_num3.png") no-repeat center;
   background-size: 100% 100%;
-}
-.item5 .fds_list ul li .fish p {
-  position: absolute;
-  width: 57%;
-  margin: 0.8rem auto auto;
-  left: 22%;
-  overflow: scroll;
-  color: #74edff;
-  text-align: left;
-  margin-top: 0.9rem;
-  font-size: 12px;
-}
-.item5 .fds_list ul li .fish p span {
-  border-bottom: 1px solid #74edff;
-  display: inline-block;
 }
 .item5 .fds_list ul li .fds_go {
   display: inline-block;

@@ -14,34 +14,29 @@ module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
 	},
-	getList() {
+	getList(type) {
 		let uid = util.getCookie('uid');
 		const postData = {
 			uid: uid,
 			pondId: util.getCookie('pondId'),
+			type: type
 		};
-		util.reqPost('/emaCat/currency/getUserFollowList', postData, data => {
+		util.reqPost('/emaCat/currency/fishPondRank', postData, data => {
 			util.hideLoading();
 			this.setState({
-				list: data.userPondFollowInfos
+				list: data.rankList
 			});
-			console.log('getUserFollowList', data);
+			console.log('fishPondRank', data);
 		});
 	},
 	changeSortType(type) {
-		if (type === 1) {
-			this.setState({
-				sortType: type
-			});
-		} else {
-			this.setState({
-				sortType: type
-			});
-		}
+		this.setState({
+			sortType: type
+		});
 		this.getList(type);
 	},
 	componentDidMount() {
-		this.getList();
+		this.getList(1);
 	},   //加载DOM之前运行的方法。默认运行一次
 	render: function () {
 		return (
@@ -51,8 +46,8 @@ module.exports = React.createClass({
 								onClick={this.changeSortType.bind(this, 1)}>
 						<span>Friends</span>
 					</span>
-					<span className={`fds_btn btn_r ${this.state.sortType === 2 && 'fds_btn1'}`}
-								onClick={this.changeSortType.bind(this, 2)}>
+					<span className={`fds_btn btn_r ${this.state.sortType === 0 && 'fds_btn1'}`}
+								onClick={this.changeSortType.bind(this, 0)}>
 						<span>Grobal ranking</span>
 					</span>
 				</div>
@@ -60,12 +55,12 @@ module.exports = React.createClass({
 					<ul>
 						{this.state.list.length === 0 && <div className={'nof'}><p>no friends</p></div>}
 						{this.state.list.map((item, i) => <li>
-							<p>Uid:<span>ID：{item.befolUid}</span></p>
+							<p>NickName:<span>{item.nickname}</span></p>
 							<div className={'fish'}>
 								<i className={`icon icon${i}`}>{i + 1}</i>
 							</div>
-							<p>PondId:<span>ID：{item.befolPondId}</span></p>
-							<a className={'fds_go'} href={`/home?uid=${item.befolUid}&pondId=${item.befolPondId}`}/>
+							<p>Attractiveness: <i>{item.attractiveness}</i></p>
+							<a className={'fds_go'} href={`/home?uid=${item.uid}&pondId=${item.pondId}`}/>
 						</li>)}
 					</ul>
 				</div>
