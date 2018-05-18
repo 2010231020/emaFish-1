@@ -53,7 +53,7 @@ module.exports = React.createClass({
 				</div>
 				<div className={'fds_list'}>
 					<ul>
-						{this.state.list.length === 0 && <div className={'nof'}><p>no friends</p></div>}
+						{this.state.list.length === 0 && <div className={'nof'}><p>no friend</p></div>}
 						{this.state.list.map((item, i) => <li>
 							<p>NickName:<span>{item.nickname}</span></p>
 							<div className={'fish'}>

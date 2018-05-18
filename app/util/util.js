@@ -44,6 +44,7 @@ module.exports = {
 					console.error(json);
 				}
 			} else {
+				this.alert(User.getInstance().getErrStr(json.msg));
 				console.error(json);
 			}
 		}).then(data => {

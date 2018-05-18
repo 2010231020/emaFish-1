@@ -25,7 +25,6 @@ module.exports = React.createClass({
 		const postData = {
 			uid: uid,
 			fishId: fishId,
-			//少一个鱼塘ID
 		};
 		util.reqPost('/emaCat/currency/fishEatFood', postData, data => {
 			util.hideLoading();
@@ -33,7 +32,7 @@ module.exports = React.createClass({
 			this.refreshInfo(data.fishBaseInfo);
 		});
 	},
-	buy(fishId, orderId, e) {
+	buy(fishId, orderId, e) { //购买鱼
 		//阻止事件冒泡
 		e.stopPropagation();
 		e.nativeEvent.stopImmediatePropagation();
@@ -44,13 +43,24 @@ module.exports = React.createClass({
 			orderId: orderId
 		};
 		//确认购买
-		util.popShow(`Buy the ID fish ${fishId}？`, () => {
+		util.popShow(`Buy this fish (#ID${fishId})？`, () => {
 			util.reqPost('/emaCat/transcation/buyFish', postData, data => {
 				console.log(data);
 				//购买成功
-					util.alert('Success！', () => {
-						this.props.popState();
-					});
+					util.alert('Success！')
+			})
+		});
+	},
+	shutdownFish(fishId){ //下架鱼
+		const postData = {
+			uid: util.getCookie('uid'),
+			fishId: fishId,
+		};
+		util.popShow(`Undo this fish (#ID${fishId})？`, () => {
+			util.reqPost('/emaCat/transcation/shutdownFish', postData, data => {
+				console.log(data);
+				//下架成功
+				util.alert('Success！')
 			})
 		});
 	},
@@ -73,6 +83,9 @@ module.exports = React.createClass({
 		if (isTraveller) {
 			flag = 4;
 		}
+		if(item.fishStatus === '1'){
+			flag = 5;
+		}
 		return (
 			<div className='action'>
 				{flag === 1 && <div className={'div_all'}>
@@ -87,6 +100,7 @@ module.exports = React.createClass({
 				<a className={'action7'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>}
 				{flag === 4 &&
 				<a className={'action7'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>}
+				{flag === 5 && <div className={'action8'} onClick={this.shutdownFish.bind(this, item.fishId)}/>}
 				{/*{flag === 2 && <div className={'div_all'}>*/}
 					{/*<div className={'action4'} onClick={this.getRes.bind(this, item.fishId)}>*/}
 					{/*</div>*/}
