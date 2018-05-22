@@ -373,12 +373,12 @@
   display: none;
 }
 #item2 .list > ul li {
-  float: left;
   width: 3.06rem;
   height: 3.06rem;
   background: url("../images/item_bg.png") no-repeat center;
   background-size: 100% 100%;
   position: relative;
+  display: inline-block;
 }
 #item2 .list > ul li img {
   display: block;

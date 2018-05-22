@@ -109,7 +109,7 @@ module.exports = React.createClass({
 						</li>)}
 					</ul>}
 					{type === 'fish' &&
-					<ul id={'domUl'} style={{width: `${Math.ceil((list.length) / 2) * 3.06}rem`}}>
+					<ul id={'domUl'} style={{width: `${Math.ceil(list.length) * 3.06}rem`}}>
 						{list.map((item, i) => <li
 							onClick={this.props.changeCurItem.bind(this, 1, item.fishId)}>
 							<img src={util.getImg(item.gene)}/>

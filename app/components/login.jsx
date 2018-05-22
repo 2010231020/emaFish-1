@@ -12,6 +12,7 @@ module.exports = React.createClass({
 	},
 	login: function (event) {
 		const applicationToken = document.getElementById('userName').value;
+		//loginType 1:用户名 2:fb
 		util.reqPost('/emaCat/user/userLogin', {
 			loginType: 1,
 			applicationType: 'ema',
