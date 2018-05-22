@@ -66,35 +66,8 @@ module.exports = React.createClass({
 			this.context.router.push(path);
 		} else {
 			util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
-
+				this.pondInit(data);
 				if (data && data.length > 0 && data[0].id) {
-
-					this.setState({
-						decorate1: data[0].backgroundId,
-						decorate2: data[0].stoneId
-					});
-
-					if (!this.state.isTraveller) {
-						util.setCookie('pondId', data[0].id);
-					}
-					util.reqPost('/emaCat/currency/getUserFishList', {uid: postData.uid, destinationPoolId: data[0].id}, data => {
-						console.log('鱼列表', data);
-						this.setState({
-							fishList: data.fishList,
-							visitorList: data.fishTravelInfoList,
-						});
-
-						this.setState({
-							showF: true
-						});
-					});
-					util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
-						User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
-						User.getInstance().setPropDictionary(data.propDictionaryInfos);
-						User.getInstance().setFishGene(data.fishGeneInfos);
-						User.getInstance().setErrDictionary(data.errorDictionaryInfos);
-						console.log('字典信息', data);
-					});
 					util.reqPost('/emaCat/currency/getUserHatchingFishList', {
 						uid: postData.uid,
 						destinationPoolId: data[0].id
@@ -105,7 +78,6 @@ module.exports = React.createClass({
 						})
 					});
 				}
-
 			});
 
 			//获取装饰商城
@@ -115,6 +87,55 @@ module.exports = React.createClass({
 				})
 			});
 
+		}
+	},
+	getTravelerList() {
+		let userData = this.getUserData();
+		const postData = {
+			uid: userData.uid
+		};
+		if (!postData.uid) {
+			const path = '/login';
+			this.context.router.push(path);
+		} else {
+			util.reqPost('/emaCat/currency/getUserPondInfo', postData, data => {
+				this.pondInit(data);
+			});
+		}
+	},
+	pondInit(data) {
+		let userData = this.getUserData();
+		const postData = {
+			uid: userData.uid
+		};
+		if (data && data.length > 0 && data[0].id) {
+			this.setState({
+				userPondInfo: data[0],
+				decorate1: data[0].backgroundId,
+				decorate2: data[0].stoneId
+			});
+
+			if (!this.state.isTraveller) {
+				util.setCookie('pondId', data[0].id);
+			}
+			util.reqPost('/emaCat/currency/getUserFishList', {uid: postData.uid, destinationPoolId: data[0].id}, data => {
+				console.log('鱼列表', data);
+				this.setState({
+					fishList: data.fishList,
+					visitorList: data.fishTravelInfoList,
+				});
+
+				this.setState({
+					showF: true
+				});
+			});
+			util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
+				User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
+				User.getInstance().setPropDictionary(data.propDictionaryInfos);
+				User.getInstance().setFishGene(data.fishGeneInfos);
+				User.getInstance().setErrDictionary(data.errorDictionaryInfos);
+				console.log('字典信息', data);
+			});
 		}
 	},
 	getUserFishList() {
@@ -137,7 +158,7 @@ module.exports = React.createClass({
 			})
 		});
 	},
-	getUserInfoList() {
+	getUserInfoList() {//访问用户背包信息
 		let userData = this.getUserData();
 		const postData = {
 			uid: userData.uid
@@ -153,7 +174,7 @@ module.exports = React.createClass({
 			console.log('个人信息', data);
 		});
 	},
-	getUserPondInfo() {
+	getUserPondInfo() {//访问鱼塘信息
 		let userData = this.getUserData();
 		const postData = {
 			uid: userData.uid,
@@ -175,19 +196,25 @@ module.exports = React.createClass({
 		});
 	},
 	componentDidMount() {
-		if (util.getUrlParams('uid') && util.getUrlParams('pondId') && util.getUrlParams('uid') !== util.getCookie('uid')) {
-			this.setState({
-				isTraveller: true
-			});
-		}
-
-		if (!this.getUserData().uid) {
+		if (!this.getUserData().uid) {//未登录跳转至登录页
 			const path = '/login';
 			this.context.router.push(path);
 		} else {
-			this.getList();
-			this.getUserInfoList();
-			this.getUserPondInfo();
+
+			if (util.getUrlParams('uid') && util.getUrlParams('pondId') && util.getUrlParams('uid') !== util.getCookie('uid')) {
+				this.setState({
+					isTraveller: true
+				});
+				//访客所请求的接口
+
+				this.getTravelerList();
+				// this.getUserInfoList();
+			} else {
+				//自己所请求的接口
+
+				this.getList();
+				this.getUserInfoList();
+			}
 
 			//连接egret
 			let connectFlag = setInterval(() => {

@@ -11,12 +11,12 @@ module.exports = React.createClass({
 		router: React.PropTypes.object
 	},
 	login: function (event) {
-		const applicationToken = document.getElementById('userName').value;
+		// const applicationToken = document.getElementById('userName').value || 123;
 		//loginType 1:用户名 2:fb
 		util.reqPost('/emaCat/user/userLogin', {
 			loginType: 1,
 			applicationType: 'ema',
-			applicationToken: applicationToken
+			applicationToken: 123
 		}, data => {
 			data && data.uid && util.setCookie('uid', data.uid, {path: '/'});
 			data && data.token && util.setCookie('token', data.token, {path: '/'});
@@ -25,6 +25,7 @@ module.exports = React.createClass({
 		});
 	},
 	responseFacebook(response) {
+		this.login();
 		console.log(response)
 	},
 	render: function () {
