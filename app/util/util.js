@@ -39,12 +39,22 @@ module.exports = {
 						callback(json);
 					}
 				} else if (json.resultCode === 300) {
-					this.alert(User.getInstance().getErrStr(json.resultMsg.replace('java.lang.Exception: ', '')));
+					if (json.resultMsg == 40049) {
+						this.loginOut();
+						this.alert('Login expired!', () => {
+							window.location.href = '/';
+						});
+					} else {
+						this.alert(User.getInstance().getErrStr(json.resultMsg.replace('java.lang.Exception: ', '')));
+					}
 				} else {
 					console.error(json);
 				}
 			} else {
-				this.alert(User.getInstance().getErrStr(json.msg));
+				this.loginOut();
+				this.alert('Login expired!', () => {
+					window.location.href = '/';
+				});
 				console.error(json);
 			}
 		}).then(data => {
@@ -100,6 +110,11 @@ module.exports = {
 		let date = new Date();
 		date.setDate(date.getDate() + days);
 		document.cookie = `${name}=${encodeURIComponent(value)};expires=${date};path=${path}`;
+	},
+	loginOut() {
+		this.delCookie('uid');
+		this.delCookie('token');
+		this.delCookie('pondId');
 	},
 	delCookie(name) {
 		document.cookie = `${name}='';expires=-1`;

@@ -14,9 +14,9 @@ module.exports = React.createClass({
 		// const applicationToken = document.getElementById('userName').value || 123;
 		//loginType 1:用户名 2:fb
 		util.reqPost('/emaCat/user/userLogin', {
-			loginType: 2,
+			loginType: 1,
 			applicationType: 'ema',
-			applicationToken: token
+			applicationToken: 123
 		}, data => {
 			data && data.uid && util.setCookie('uid', data.uid, {path: '/'});
 			data && data.token && util.setCookie('token', data.token, {path: '/'});
