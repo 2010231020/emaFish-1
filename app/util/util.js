@@ -44,6 +44,9 @@ module.exports = {
 						this.alert('Login expired!', () => {
 							window.location.href = '/';
 						});
+					}else if (json.resultMsg.replace('java.lang.Exception: ', '') == 40054||json.resultMsg.replace('java.lang.Exception: ', '') == 40055) {
+						this.delCookie('shareCode');
+						this.alert('invalid share code!');
 					} else {
 						this.alert(User.getInstance().getErrStr(json.resultMsg.replace('java.lang.Exception: ', '')));
 					}
@@ -117,7 +120,7 @@ module.exports = {
 		this.delCookie('pondId');
 	},
 	delCookie(name) {
-		document.cookie = `${name}='';expires=-1`;
+		document.cookie = `${name}=0;expires=-1`;
 	},
 	getUrlParams(name) {
 		let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");

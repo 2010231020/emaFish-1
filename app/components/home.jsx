@@ -114,13 +114,6 @@ module.exports = React.createClass({
 				decorate1: data[0].backgroundId,
 				decorate2: data[0].stoneId
 			});
-			util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
-				User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
-				User.getInstance().setPropDictionary(data.propDictionaryInfos);
-				User.getInstance().setFishGene(data.fishGeneInfos);
-				User.getInstance().setErrDictionary(data.errorDictionaryInfos);
-				console.log('字典信息', data);
-			});
 
 			if (!this.state.isTraveller) {
 				util.setCookie('pondId', data[0].id);
@@ -186,6 +179,15 @@ module.exports = React.createClass({
 			});
 		});
 	},
+	getShareFish(){//领取分享鱼
+		const postData = {
+			uid: util.getCookie('uid'),
+			shareCode: util.getCookie('shareCode'),
+		};
+		util.reqPost('/emaCat/transcation/getShareFish',postData,data =>{
+			console.log('getShareFish', data);
+		})
+	},
 	refreshInfo(data) {//喂养方法
 		let tmpObj = {
 			exp: data.exp,
@@ -196,6 +198,14 @@ module.exports = React.createClass({
 		});
 	},
 	componentDidMount() {
+
+		util.reqPost('/emaCat/dictionary/getGrowDictionaryInfo', data => {
+			User.getInstance().setGrowDictionary(data.growupDictionaryInfos);
+			User.getInstance().setPropDictionary(data.propDictionaryInfos);
+			User.getInstance().setFishGene(data.fishGeneInfos);
+			User.getInstance().setErrDictionary(data.errorDictionaryInfos);
+			console.log('字典信息', data);
+		});
 
 		if (!this.getUserData().uid) {//未登录跳转至登录页
 			const path = '/login';
@@ -212,7 +222,12 @@ module.exports = React.createClass({
 				// this.getUserInfoList();
 			} else {
 				//自己所请求的接口
-
+				if(util.getCookie('shareCode')&&util.getCookie('shareCode')!='0'){
+					//领取分享鱼
+					setTimeout(()=>{
+						this.getShareFish();
+					});
+				}
 				this.getList();
 				this.getUserInfoList();
 			}

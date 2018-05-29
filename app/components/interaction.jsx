@@ -79,7 +79,6 @@ module.exports = React.createClass({
 			this.setState({
 				type: data.type
 			})
-
 			// this.props.getUserInfoList();
 			//关注成功!
 			// 	util.alert('Success!')
@@ -98,7 +97,6 @@ module.exports = React.createClass({
 					<span className={'num'}>{chargingSink.ungetResourceNum || ''}</span>
 				</div>}
 				{isTraveller && <div className={'a2'} onClick={this.follow.bind(this)}>
-					{/*<img src={require('../images/interaction4.png')}/>*/}
 					{this.state.type === "1" ? <img src={require('../images/interaction3.png')}/> :
 						<img src={require('../images/interaction4.png')}/>}
 				</div>}

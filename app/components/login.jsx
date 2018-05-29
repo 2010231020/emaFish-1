@@ -16,11 +16,14 @@ module.exports = React.createClass({
 		util.reqPost('/emaCat/user/userLogin', {
 			loginType: 1,
 			applicationType: 'ema',
-			applicationToken: 123
+			applicationToken: 'xl001'
 		}, data => {
 			data && data.uid && util.setCookie('uid', data.uid, {path: '/'});
 			data && data.token && util.setCookie('token', data.token, {path: '/'});
-			const path = '/home';
+			let path = '/home';
+			if(util.getUrlParams('shareCode')){
+				util.setCookie('shareCode', util.getUrlParams('shareCode'), {path: '/'});
+			}
 			this.context.router.push(path);
 		});
 	},
@@ -45,7 +48,8 @@ module.exports = React.createClass({
 					/>
 				</div>
 				<ShareBtn
-					url={'http://cober1.com:1234/login'}
+					url={'http://cober2.com:1234/login?shareCode="?"'}
+
 					text={'你的鱼儿到了，快来这领取吧！'}
 					className='ib'
 					displayText='Share'

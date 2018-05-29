@@ -51,6 +51,21 @@ module.exports = React.createClass({
 			})
 		});
 	},
+
+	share(fishId){//分享鱼
+		const postData = {
+			uid: util.getCookie('uid'),
+			fishId: fishId,
+		};
+		util.popShow(`Share this fish (#ID${fishId})？`, () => {
+			util.reqPost('/emaCat/transcation/shareFish', postData, data => {
+				console.log(data);
+				//分享成功
+				location.href = `http://www.facebook.com/sharer/sharer.php?u=${location.origin}?shareCode=${data.shareCode}`;
+				util.alert('Success！')
+			})
+		});
+	},
 	shutdownFish(fishId){ //下架鱼
 		const postData = {
 			uid: util.getCookie('uid'),
@@ -114,6 +129,7 @@ module.exports = React.createClass({
 					<div className={'action5'} onClick={this.buy.bind(this, item.fishId, item.orderId)}/>
 				</div>}
 				{flag === 3 && <a className={'action6'} href={`/home?uid=${item.uid}&pondId=${item.poolId}`}/>}
+				{flag === 1 && <i className={'action9'} onClick={this.share.bind(this,item.fishId)}/>}
 			</div>
 		);
 	}

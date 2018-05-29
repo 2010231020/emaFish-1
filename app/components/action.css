@@ -116,3 +116,12 @@
   background: url("../images/drop.png") no-repeat center;
   background-size: 100%;
 }
+.action .action9 {
+  display: block;
+  position: absolute;
+  margin-top: -1rem;
+  width: 0.61rem;
+  height: 0.62rem;
+  background: url("../images/share.png") no-repeat center;
+  background-size: 100%;
+}
